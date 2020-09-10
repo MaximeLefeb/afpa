@@ -1,3 +1,7 @@
+progress {
+	display: block;
+}
+
 #posteNomPrenom, #coordonnees{
 	display: inline-block;
 	vertical-align: top;

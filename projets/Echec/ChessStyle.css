@@ -2,8 +2,10 @@ body {
 	height: 100vh;
 }
 
-table {
-	border: 1px solid black;
+th {
+	text-align: center;
+	width     : 100px;
+	height    : 100px;
 }
 
 td {
@@ -13,11 +15,18 @@ td {
 	text-align: center;
 }
 
+img {
+	min-width: 90px;
+	max-width: 90px;
+	min-height: 90px;
+	max-height: 90px;
+}
+
 .whiteCase {
 	background-color: white;
 }
 
 .blackCase {
-	background-color: black;
+	background-color: grey;
 	color           : white;
 }
