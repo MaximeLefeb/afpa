@@ -1,0 +1,454 @@
+font-family: 'Cinzel', serif;
+
+ul {
+	padding      : 0px;
+	margin-bottom: 0px !important;
+}
+
+form {
+	text-align: center;
+	width    : 100%;
+}
+
+body {
+	height          : 100vh !important;
+}
+
+label {
+	color      : black;
+	font-weight: bold;
+	font-size  : 13px;
+}
+
+h2 {
+	color: white;
+}
+
+hr {
+	margin-bottom: 0px !important;
+}
+
+ul {
+	margin-bottom: 0px !important;
+}
+
+.image {
+	max-height   : 500px !important;
+	z-index      : 10;
+	border-radius: 0px 20px 20px 0px;
+}
+
+
+.navLi {
+	display   : block;
+	padding   : 30px 50px 30px 50px;
+	text-align: center;
+}
+
+.lienNav {
+	padding  : 0px !important;
+	color    : black !important;
+	font-size: 20px !important;
+}
+
+.lienNav:hover {
+	text-decoration: none !important;
+	color          : black !important;
+	font-weight    : bold !important;
+}
+
+#navBar {
+	background-color: #fbfbfb;
+	padding         : 0px;
+	margin          : 0px;
+	border-bottom   : 1px solid rgba(0,0,0,.1);
+	width           : 100%;
+	display         : block;
+}
+
+#descriptif > p {
+	text-align: justify;
+}
+
+#descriptif > h1{
+	text-align: center;
+}
+
+.bouttonForm {
+	height          : 50px !important;
+	width           : 150px !important;
+	border-style    : none !important;
+	color           : black;
+	font-weight     : bold;
+	font-size       : 13px;
+	background-color: #efefef;
+}
+
+#BouttonCommandez {
+	height          : 50px !important;
+	width           : 210px !important;
+	border-style    : none !important;
+	color           : #ffe5bd;
+	font-weight     : bold;
+	font-size       : 20px;
+	background-color: #59301a;
+	right           : 10px;
+	position        : absolute;
+	top             : 60%;
+	opacity         : 1 !important;
+}
+
+.bouttonForm:hover {
+	background-color: white;
+	color           : black;
+	font-weight     : bold;
+	font-size       : 15px;
+}
+
+#QuiSommeNous {
+	padding         : 0px 0px 0px 0px !important;
+	z-index         : 0;
+	background-color: #f5f5f5;
+}
+
+
+#contenue {
+	padding: 0px !important;
+	background-color: white;
+}
+
+#LoginBlock {
+	margin-top      : 20px;
+	padding-bottom  : 20px;
+	height          : 100%;
+	margin-bottom   : 20px;
+}
+
+.formulaire {
+	margin-top      : 0px;
+	background-color: #f5f5f5;
+	height          : 100%
+}
+
+#logo {
+	position     : absolute;
+	width        : 100px;
+	height       : 100px;
+	margin       : 20px 0% 10% 10%;
+	right        : 0px;
+	border-radius: 0px 0px 0px 20px;
+}
+
+#carouselExampleIndicators {
+	margin          : 15px 0px 15px 0px;
+	background-color: #f5f5f5;
+	margin          : 15px 0px 0px 0px !important;
+}
+
+.carousel-inner {
+	padding: 0px 0px 0px 0px !important;
+}
+
+#descriptif{
+	color           : black;
+	background-color: #f5f5f5;
+	padding         : 5% 5% 0px 5%;
+}
+
+#nomBlg {
+	font-style : italic;
+	font-size  : 15px;
+	color      : black;
+	font-weight: bold;
+}
+
+.row {
+	margin : 0px !important;
+	padding: 0px !important;
+}
+
+.titreVid {
+	text-align: center;
+}
+
+.blocVideo {
+	padding: 0px !important;
+
+}
+
+.lesH2 {
+	text-align: center;
+	color     : black;
+	margin    :   15px 15px 15px 15px;
+}
+
+ul.social-network {
+	border        : 3px solid black;
+	padding-top   : 20px;
+	padding-bottom: 20px;
+	border-radius : 50px;
+	list-style    : none;
+	display       : inline;
+	margin-left   :0 !important;
+}
+ul.social-network li {
+	display: inline;
+	margin : 5% 7.35%;
+}
+
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+	background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+	background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+	background-color:#007bb7;
+}
+.social-network a.icoRss   :hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display              : inline-block;
+	position             : relative;
+	margin               : 0 auto 0 auto;
+	-moz-border-radius   : 50%;
+	-webkit-border-radius: 50%;
+	border-radius        : 50%;
+	text-align           : center;
+	width                : 50px;
+	height               : 50px;
+	font-size            : 20px;
+}
+.social-circle li i {
+	margin     :0;
+	line-height:50px;
+	text-align : center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform    : rotate(360deg);
+	-webkit-transform : rotate(360deg);
+	-ms--transform    : rotate(360deg);
+	transform         : rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition   : all 0.2s;
+	-o-transition     : all 0.2s;
+	-ms-transition    : all 0.2s;
+	transition        : all 0.2s;
+}
+.social-circle i {
+	color             : black;
+	-webkit-transition: all 0.8s;
+	-moz-transition   : all 0.8s;
+	-o-transition     : all 0.8s;
+	-ms-transition    : all 0.8s;
+	transition        : all 0.8s;
+}
+
+.articles {
+	margin      : 20px 0px 0px 15px;
+	height      : 250px;
+	color       : white;
+	border      : 3px solid none;
+	border-right: none;
+	opacity     : 0.4;
+	padding     : 0px !important;
+}
+
+#navUl {
+	width: 100%;
+}
+
+#login {
+	padding-top: 33.3%;
+	text-align : center;
+	height: 100%;
+}
+
+#register {
+	height        : 100%;
+	padding-bottom: 15%;
+	padding-top   : 15%;
+	margin        : 0px !important;
+}
+
+#BlogBlock {
+	margin-top: 15px;
+	padding   : 0px ;
+}
+
+#prixV {
+	border          : 1px solid #59301a;
+	background-color: #59301a;
+	color           : #ffe5bd;
+	font-weight     : bold;
+	font-size       : 15px;
+	z-index         : 1;
+	border-radius   : 50%;
+	display         : inline;
+	position        : absolute;
+	text-align      : center;
+	padding         : 10px;
+	right           : 60px;
+	top             : 20%;
+}
+
+@keyframes moving {
+    from {
+        right: -150px;
+    }
+    to {
+        right: 100px;
+    }
+}
+
+.Avis {
+	background-color: #fbfbfb;
+	display         : block;
+	margin-top      : 20px;
+	padding         : 0px 0px 0px 0px!important;
+	border          : 1px solid black;
+	border-radius   : 5px;
+}
+
+.Labell {
+	width  : 100%;
+	display: block !important;
+}
+
+.ChampAvis {
+	width  : 100%;
+	display: block !important;
+	padding: 0px 15px 0px 15px;
+}
+
+#date {
+	background-color: white;
+	display         : inline-block;
+	color           : white;
+}
+
+#entete>label{
+	color        : #59301a;
+	font-size    : 12px;
+	font-style   : italic;
+	margin-bottom: 0px !important;
+}
+
+#texte {
+	color      : #59301a;
+	margin-left: 25px;
+	margin-top : 16px;
+}
+
+.dateAvis {
+	color     : #59301a;
+	font-size : 12px;
+	font-style: italic;
+}
+
+#entete {
+	padding: 0px !important;
+}
+
+#footerAvis {
+	padding: 0px !important;
+}
+
+#titre>label {
+	margin   : 0px !important;
+	color    : #59301a;
+	font-size: 18px;
+}
+
+.response {
+	float : right;
+	margin:  15px;
+}
+
+#responseField {
+	visibility: hidden;
+	width     : 100%;
+}
+
+.repondre {
+	display: none;
+	margin : 0px 15px 0px 15px;
+}
+
+.comment {
+	display      : none;
+}
+
+#comment>label {
+	margin   : 0px !important;
+	color    : #59301a;
+	font-size: 18px;
+}
+
+#commentaire {
+	margin-left: 5%;
+}
+
+#test{
+	margin : 15px 15px 0px 15px !important;
+	padding: 15px 0px 15px 15px !important;
+	border : 1px solid black;
+}
+
+.sendButton {
+	margin : 15px;
+	display: none;
+}
+
+#block_social {
+	text-align      : center;
+	margin          : 0px 0px 0px 0px;
+	padding         : 20px 0px 20px 0px !important;
+	background-color: #f5f5f5;
+	bottom          : 0px;
+	display         : block;
+	position        : absolute;
+}
+
+.wpb_video_wrapper {
+	text-align: center;
+}
+
+#divBlocVideo  {
+	z-index: 999;
+}
+
+#divBlocVideo >h2 {
+	text-align: center;
+	display   : block
+}
+
+.colForm {
+	height      : 90vh;
+	padding     : 0px !important;
+	border-right: 1px solid  black;
+	border-left : 0px solid  black;
+}
+
+.imgProduit {
+	margin-left  : 30px;
+	height       : 700px;
+	border-radius: 100px 100px 0px 0px;
+	bottom       : 0px;
+}
