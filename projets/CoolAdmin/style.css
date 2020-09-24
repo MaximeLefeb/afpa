@@ -1,0 +1,161 @@
+/* GENERAL */
+body {
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+	color          : #8A8A8A;
+}
+
+i {
+	margin: 2%;
+	font-size: 25px;
+}
+
+li:hover, a:hover {
+	text-decoration: none;
+	color          : #007bff;
+}
+
+h4, button {
+	margin-top: 15px;
+}
+
+.bgColor{
+	background-color: #F5F5F5;
+	border-left     : 1px solid rgba(0,0,0,.1);
+}
+
+.icons {
+	max-width     : 33px;
+	max-height    : 33px;
+}
+
+/* HEADER */
+#logoArea {
+	border-right: 1px solid rgba(0,0,0,.1);
+}
+
+#logo {
+	max-height: 150px;
+	max-width : 150px;
+	margin    : 8% 5% 5% 5%;
+}
+
+#topBar {
+	border-bottom     : 1px solid rgba(0,0,0,.1);
+	box-shadow        : 0px 2px 5px -1px rgba(0,0,0,0.72);
+	-webkit-box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.72);
+	-moz-box-shadow   : 0px 2px 5px -1px rgba(0,0,0,0.72);
+	z-index           : 999;
+}
+
+#chartdiv {
+	width     : 100%;
+	max-height: 600px;
+	height    : 100vh;
+}
+
+#SearchBar {
+	padding: 2% 0% 2% 0%;
+}
+
+/* USERZONE */
+#userArea {
+	padding   : 1% 0% 1% 0%;
+	text-align: center;
+}
+
+#userImage{
+	max-width : 50px;
+	max-height: 50px;
+}
+
+.notify-bubble {
+	position        : absolute;
+	top             : 0%;
+	right           : 50%;
+	padding         : 2px 5px 2px 6px;
+	background-color: red;
+	color           : white;
+	font-size       : 0.65em;
+	border-radius   : 50%;
+	box-shadow      : 1px 1px 1px gray;
+}
+
+/* NAVBAR */
+.lienNav {
+	width         : 100%;
+	height        : 80px;
+	list-style    : none;
+	padding-top   : 10%;
+	padding-bottom: 5%;
+}
+
+/* OVERVIEW */
+#overview1 {
+	background: rgb(81,63,251);
+	background: linear-gradient(180deg, rgba(81,63,251,1) 12%, rgba(252,70,171,1) 100%);
+}
+
+#overview2{
+	background: rgb(34,151,195);
+	background: linear-gradient(0deg, rgba(34,151,195,1) 0%, rgba(45,253,170,1) 100%);
+}
+
+#overview3 {
+	background: rgb(180,58,58);
+	background: linear-gradient(180deg, rgba(180,58,58,1) 0%, rgba(253,29,82,1) 0%, rgba(252,176,69,1) 100%);
+}
+
+#overview4 {
+	background: rgb(108,180,58);
+	background: linear-gradient(180deg, rgba(108,180,58,1) 0%, rgba(217,252,69,1) 100%);
+}
+
+.overviewObject {
+	color        : white;
+	height       : 100%;
+	border-radius: 10px;
+	margin       : 10px 25px 10px 25px;
+}
+
+.ContentOverview {
+	padding       : 10px;
+	display       : inline-block;
+	vertical-align: sub;
+}
+
+.chartOverview {
+	width     : 100%;
+	min-height: 150px;
+	max-height: 150px;
+	object-fit: contain;
+	margin-bottom: 1%;
+}
+
+/* CHARTS */
+.BlocGraphique {
+	border-radius   : 10px;
+	background-color: white;
+	padding         : 1%;
+	border          : 1px solid rgba(0,0,0,.1);
+	margin          : 10px 25px 10px 25px;
+}
+
+#graphique1, #graphique2 {
+	width     : 100%;
+	max-height: 400px;
+	object-fit: contain;
+}
+
+/* TABLES */
+#MainTable {
+	border: 1px solid rgba(0,0,0,.1);
+}
+
+#SecondaryTable {
+	background-color: #008AFF;
+	color           : white;
+	border-radius   : 10px 0px 0px 0px;
+}
