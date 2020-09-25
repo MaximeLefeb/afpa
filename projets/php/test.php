@@ -1,5 +1,5 @@
 <?php 
-
+/*
 //* Exercices 2.3
 
 $prixHT      = readline("saisissez le prix hors taxe : ");
@@ -848,9 +848,65 @@ $decal = readline("Entrez le décalage souhaité : ");
 $str   = readline("Entrez votre phrase à crypter : ");
 echo crypte($str,$decal);
 
+//* Exercices 9.8
+
+	//TODO
+
+//* Exercices 9.9
+
+function position($alpha, $a){
+    $tabAlpha= str_split($alpha);
+    $n= count($tabAlpha);
+    for ($i=0; $i<$n; $i++) {
+       if ($alpha[$i]==$a) {
+           return $i;
+       } 
+   }return -1;
+}
+
+function chiffrer($phrase, $mot){
+    $alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $f     = strlen($phrase);
+    $g     = strlen($mot);
+    for ($i=0; $i<$f; $i++) {
+        $p = $i % $g;
+        $b = position ($alpha, $mot[$p]);
+        $c = position ($alpha, $phrase[$i]);
+		$h = $b + $c;
+		
+        if ($h>26){
+            $h=$h%26;
+            $phrase[$i]=$alpha[$h];
+		} else {
+			$phrase[$i]=$alpha[$h];
+		}
+    }
+    return $phrase;
+}
+$phrase = readline("Saisir une phrase : ");
+$mot    = readline("saisir un mot clé : ");
+echo chiffrer($phrase, $mot);*/
+
+//* Exercices 9.10
+
+function isPair($nb) {
+	if($nb % 2 != 0){
+		echo "Ce nomrbe est impair";
+	} else {
+		echo "Ce nombre est pair";
+	}
+}
+
+$nb = readline("Entrez un nombre : ");
+isPair($nb);
+
+//*Exercices 9.11
+
+	//TODO
+
 //* Le juste prix
 
-$prix = rand(1,100000);
+/* $prix = rand(1,100000);
 echo "Je génère un nombre aléatoire entre 1 et 100.000, tu as 29 essaies pour trouver le nombre exact. \n";
 
 for ($i=0;$i<=29;$i++){
@@ -874,6 +930,6 @@ for ($i=0;$i<=29;$i++){
     else {
         echo "Tente ta chance avec un nombre plus grand \n"; 
     }
-} 
+}  */
 
 ?>
