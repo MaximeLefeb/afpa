@@ -1,5 +1,5 @@
 <?php 
-/*
+
 //* Exercices 2.3
 
 $prixHT      = readline("saisissez le prix hors taxe : ");
@@ -850,7 +850,32 @@ echo crypte($str,$decal);
 
 //* Exercices 9.8
 
-	//TODO
+function trouveNeufHuit($alpha, $lettre) {
+    for($i = 0; $i <= sizeof($alpha); $i++) {
+        if ($alpha[$i] == $lettre){
+            return $i;
+        }
+    }
+    return -1;
+}
+
+function crypteNeufHuit($str) {
+	$alpha   = array_combine(range(0,25), range('a','z'));
+	$alphaDesordre   = "hylujpvreakbndofsqzcwmgitx";
+	$str     = strtolower($str);
+	$pos     = 0;
+	
+    for($i = 0; $i <= strlen($str) - 1; $i++) {
+		$pos = trouveNeufHuit($alpha, $str[$i]);
+		$str[$i] = $alphaDesordre[$pos];
+	}
+    return $str;
+}
+
+$str   = readline("Entrez votre phrase à crypter : ");
+echo crypteNeufHuit($str); 
+
+
 
 //* Exercices 9.9
 
@@ -885,7 +910,7 @@ function chiffrer($phrase, $mot){
 }
 $phrase = readline("Saisir une phrase : ");
 $mot    = readline("saisir un mot clé : ");
-echo chiffrer($phrase, $mot);*/
+echo chiffrer($phrase, $mot);
 
 //* Exercices 9.10
 
@@ -901,12 +926,23 @@ $nb = readline("Entrez un nombre : ");
 isPair($nb);
 
 //*Exercices 9.11
+ 
+echo $glup  = mt_rand(0, 2). "\n";
+echo $glup1 = mt_rand(-1, 1)."\n";
+echo $glup2 = mt_rand(1.35, 1.65)."\n";
+echo $glup3 = rand(1, 6)."\n";
+echo $glup4  = mt_rand(-10.5, 6.5)."\n";
 
-	//TODO
+function lancerDes() {
+	$de1 = rand(1,6);
+	$de2 = rand(1,6);
+	echo("Dé 1 : $de1 , Dé 2 : $de2");
+}
+lancerDes();
 
 //* Le juste prix
 
-/* $prix = rand(1,100000);
+$prix = rand(1,100000);
 echo "Je génère un nombre aléatoire entre 1 et 100.000, tu as 29 essaies pour trouver le nombre exact. \n";
 
 for ($i=0;$i<=29;$i++){
@@ -930,6 +966,6 @@ for ($i=0;$i<=29;$i++){
     else {
         echo "Tente ta chance avec un nombre plus grand \n"; 
     }
-}  */
+}  
 
 ?>
