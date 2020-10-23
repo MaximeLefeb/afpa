@@ -29,7 +29,7 @@
             }
             //*DELETE SERV
             if ($_GET && $_GET["action"]=="delete"){   
-                del($value["idService"]);
+                del($_GET["idService"]);
             }
             //*MODIFY SERV
             if (isset($_POST['modify'])){ 

@@ -5,7 +5,7 @@
         //* TRAITEMENT AJOUT
         if (isset($idServ) && isset($Service) && isset($ville))
         {      
-            $dbServ=conexionBDD();
+            $dbServ=connexionBDD();
             
             //*REQUETE SQL ADD
             $AddRequest = "INSERT INTO `serv` (`idService`, `Service`, `Ville`) VALUES ('$idServ', UPPER('$Service'), UPPER('$ville'))";
@@ -24,7 +24,7 @@
         if (!empty($_GET['idService'])) {
             $idServ = $_GET['idService'];
             
-            $dbServ=conexionBDD();
+            $dbServ=connexionBDD();
             
             //*REQUETE SQL DEL
             $DeleteRequest = "DELETE FROM `serv` WHERE idService = $idServ";
@@ -46,7 +46,7 @@
             $Service = $_POST['serv'];
             $ville   = $_POST['ville'];
             
-            $dbServ=conexionBDD();
+            $dbServ=connexionBDD();
             
             //*REQUETE SQL MODIFY
             $ModiFyRequest = "UPDATE `serv` SET idService='$idServ', service =UPPER('$Service'), ville=UPPER('$ville') WHERE idService = $idServ";
@@ -65,8 +65,18 @@
     function searchAll(){
         //* SEARCH BDD
         global $data;
-        $dbServ=conexionBDD();
+        $dbServ=connexionBDD();
         $requestSelectServ = mysqli_query($dbServ, 'SELECT * FROM serv');
         $data = mysqli_fetch_all($requestSelectServ, MYSQLI_ASSOC); 
+    }
+
+    function undeletable(){
+        $value['idService'];
+
+        if ($a < $b) {
+            echo "<td><a type='button' class='btn btn-primary' href='formServ.php?action=modify&idService= echo $value;'>Modifier</a></td>";
+        } else {
+            echo "";
+        }
     }
 ?>

@@ -42,9 +42,12 @@
                     $noServ = $_POST['noService'];
                     $noProj = $_POST['noProj'];
                     
+                    if($comm == '0')$comm = 'NULL';
+                    if($noProj == "Aucun")$noProj = 'NULL';
+
                     //*REQUETE SQL ADD
                     $AddRequest = "INSERT INTO employes(id, Nom, Prenom, Emploi, Sup, Embauche, Sal, Comm, NoService, NoProj) VALUES (NULL,UPPER('$nom'),UPPER('$prenom'),'$emp','$sup',$emb,$sal,$comm,$noServ,$noProj)";
-                    echo $AddRequest;
+
                     if(mysqli_query($db, $AddRequest)){
                         ?><script>alert("Add ok");</script><?php
                     }else{

@@ -63,7 +63,8 @@
                         
                         $idServ        = $_GET['idService'];
                         $selectRequest = "SELECT * FROM serv WHERE idService = $idServ";
-                        $r             = mysqli_query($db, $selectRequest);
+                        $dbServ=connexionBDD();
+                        $r             = mysqli_query($dbServ, $selectRequest);
                         $data          = mysqli_fetch_array($r, MYSQLI_ASSOC);
                         $idServ        = $data["idService"];
                         $Serv          = $data["Service"];

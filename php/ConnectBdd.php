@@ -1,5 +1,5 @@
 <?php
-function conexionBDD(){
+function connexionBDD(){
     $dbHost = 'localhost';
     $dbUser = 'root';
     $dbPwd  = '';
