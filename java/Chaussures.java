@@ -23,14 +23,10 @@ public class Chaussures {
 		setPrix(0f);
 		setType("");
 		setMatiere("");
-
 	}
 
 	public void describe() {
-		System.out.println("\nLa chaussure est de marque : " + getMarque() + "\nTaille/Prix: " + getTaille() + " / "
-				+ getPrix() + "€\nDescription : \nElle est de couleur " + getCouleur() + " en " + getMatiere()
-				+ ". Elle a été créée pour une utilisation de type : " + getType() + "\n");
-
+		System.out.println("\nLa chaussure est de marque : " + getMarque() + "\nTaille/Prix: " + getTaille() + " / " + getPrix() + "ï¿½\nDescription : \nElle est de couleur " + getCouleur() + " en " + getMatiere() + ". Elle a ï¿½tï¿½ crï¿½ï¿½e pour une utilisation de type : " + getType() + "\n");
 	}
 
 	public Chaussures(String marque, float taille, String couleur, float prix, String type, String matiere) {
@@ -45,7 +41,6 @@ public class Chaussures {
 	public String getMarque() {
 		return marque;
 	}
-
 	public void setMarque(String marque) {
 		this.marque = marque;
 	}
@@ -53,7 +48,6 @@ public class Chaussures {
 	public float getTaille() {
 		return taille;
 	}
-
 	public void setTaille(float taille) {
 		this.taille = taille;
 	}
@@ -61,7 +55,6 @@ public class Chaussures {
 	public String getCouleur() {
 		return couleur;
 	}
-
 	public void setCouleur(String couleur) {
 		this.couleur = couleur;
 	}
@@ -69,7 +62,6 @@ public class Chaussures {
 	public float getPrix() {
 		return prix;
 	}
-
 	public void setPrix(float prix) {
 		this.prix = prix;
 	}
@@ -77,7 +69,6 @@ public class Chaussures {
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -85,7 +76,6 @@ public class Chaussures {
 	public String getMatiere() {
 		return matiere;
 	}
-
 	public void setMatiere(String matiere) {
 		this.matiere = matiere;
 	}

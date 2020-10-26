@@ -3,16 +3,16 @@ package myFirstApp;
 public class TestFonction {
 	public static void main(String[] atgs) {
 		int nb = 0;
-
+		
 		nb = countChar("toto aime manger les pommes");
-		System.out.println("La chaine de mesure " + nb + " caractères.");
+		System.out.println("La chaine de mesure " + nb + " caractï¿½res.");
 		nb = myStrcmp("toto", "toto");
 	}
 
 	public static int countChar(String str1) {
 		int i;
 		for (i = 0; i < str1.length(); i++) {
-			System.out.println("Caractère " + str1.charAt(i));
+			System.out.println("Caractï¿½re " + str1.charAt(i));
 		}
 		return (i);
 	}

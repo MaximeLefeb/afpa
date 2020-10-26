@@ -8,6 +8,5 @@ public class MyFirstWindow {
 		ecr.addBtn();
 		test.addEcran(ecr);
 		test.showFenetre();
-
 	}
 }

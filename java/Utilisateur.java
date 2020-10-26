@@ -18,7 +18,7 @@ public class Utilisateur implements Serializable {
 	private List<Chaussures> armoire;
 
 	public Utilisateur() {
-		// System.out.println("Constructeur sans paramètres");
+		// System.out.println("Constructeur sans paramï¿½tres");
 		setNom("");
 		setPrenom("00000");
 		setAge(0);
@@ -32,7 +32,7 @@ public class Utilisateur implements Serializable {
 
 	public Utilisateur(String nom, String prenom, int age, String email, String addr, String ville, String codePostal,
 			String pwd) {
-		// System.out.println("Constructeur avec paramètres");
+		// System.out.println("Constructeur avec paramï¿½tres");
 		setNom(nom);
 		setPrenom(prenom);
 		setAge(age);
@@ -47,20 +47,17 @@ public class Utilisateur implements Serializable {
 	public String getNom() {
 		return nom;
 	}
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	public void presentation() {
-		System.out
-				.println("Bonjour, Je suis " + this.prenom + "\nJ'ai " + this.age + " ans et j'habite à " + this.ville);
+		System.out.println("Bonjour, Je suis " + this.prenom + "\nJ'ai " + this.age + " ans et j'habite ï¿½ " + this.ville);
 	}
 
 	public String getPrenom() {
 		return prenom;
 	}
-
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
@@ -68,7 +65,6 @@ public class Utilisateur implements Serializable {
 	public int getAge() {
 		return age;
 	}
-
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -76,7 +72,6 @@ public class Utilisateur implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -84,22 +79,19 @@ public class Utilisateur implements Serializable {
 	public String getPwd() {
 		return pwd;
 	}
-
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-
 	public void updatePwd() {
 		System.out.println("Entre le nouveau mot de passe");
 		Scanner sc = new Scanner(System.in);
 		this.setPwd(sc.nextLine());
-		System.out.println("Le mot de passe est modifié en : " + this.getPwd());
+		System.out.println("Le mot de passe est modifiï¿½ en : " + this.getPwd());
 	}
 
 	public String getAddr() {
 		return addr;
 	}
-
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
@@ -107,7 +99,6 @@ public class Utilisateur implements Serializable {
 	public String getCodePostal() {
 		return codePostal;
 	}
-
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
@@ -115,7 +106,6 @@ public class Utilisateur implements Serializable {
 	public String getVille() {
 		return ville;
 	}
-
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
@@ -123,7 +113,6 @@ public class Utilisateur implements Serializable {
 	public void addChaussure(Chaussures shoes) {
 		armoire.add(shoes);
 	}
-
 	public void addChaussure(Chaussures shoes, Chaussures shoes2) {
 		armoire.add(shoes);
 		armoire.add(shoes2);
@@ -132,7 +121,6 @@ public class Utilisateur implements Serializable {
 	public void removeChaussure(Chaussures shoes) {
 		armoire.remove(shoes);
 	}
-
 	public void removeChaussure(Chaussures shoes, Chaussures shoes2) {
 		armoire.remove(shoes);
 		armoire.remove(shoes2);

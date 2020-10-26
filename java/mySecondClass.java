@@ -16,18 +16,21 @@ public class mySecondClass {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Entrez votre prénom : ");
+		System.out.println("Entrez votre prï¿½nom : ");
 		Scanner prompteur = new Scanner(System.in);
-		String s1 = prompteur.nextLine();
+		String s1         = prompteur.nextLine();
+
 		System.out.println("Bonjour " + s1 + "\nSaisir le bon mot de passe");
-		String s2 = prompteur.nextLine();
+		String s2  = prompteur.nextLine();
 		String pwd = "azertyuiop";
-		int tpm = 0;
+		int tpm    = 0;
+
 		while ((s2.length() < 6 || compare(s2, pwd) == -1) && tpm != 3) {
 			System.out.println("Mot de passe trop petit ou incorrect");
 			s2 = prompteur.nextLine();
 			tpm++;
 		}
+
 		if (compare(pwd, s2) == 0)
 			System.out.println("Le mot de passe: " + s2 + " est correct");
 		else

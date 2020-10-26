@@ -1,11 +1,8 @@
 package exams;
 
 public class articles {
-
 	public void describe() {
-		System.out.println("\nCode EAN-13 de l'aticle : " + getCode() + getNom() + " description ;"
-				+ getDescription() + " De couleur ; " + getCouleur() + " ,made in " + getOrigine()
-			    + getPrix() + "€");
+		System.out.println("\nCode EAN-13 de l'aticle : " + getCode() + getNom() + " description ;" + getDescription() + " De couleur ; " + getCouleur() + " ,made in " + getOrigine() + getPrix() + "ï¿½");
 	}
 	
 	private String getCode() {

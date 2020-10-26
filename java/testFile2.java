@@ -19,9 +19,8 @@ public class testFile2 {
 		ObjectInputStream streamLire;
 		ObjectOutputStream streamEcrire;
 		try {
-			streamEcrire = new ObjectOutputStream(
-					new BufferedOutputStream(new FileOutputStream(new File("Ecrire.txt"))));
-			streamEcrire.writeObject(new Utilisateur("Milou", "Tintin", 33, "outlook", "123 rue de la république",
+			streamEcrire = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(new File("Ecrire.txt"))));
+			streamEcrire.writeObject(new Utilisateur("Milou", "Tintin", 33, "outlook", "123 rue de la rï¿½publique",
 					"Lille", "59100", "azertyuiop"));
 			streamEcrire.close();
 			streamLire = new ObjectInputStream(new BufferedInputStream(new FileInputStream(new File("Ecrire.txt"))));

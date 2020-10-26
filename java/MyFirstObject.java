@@ -17,7 +17,6 @@ public class MyFirstObject {
 	public static String getNom() {
 		return (nom);
 	}
-
 	public static void setNom(String name) {
 		nom = name;
 	}
@@ -25,7 +24,6 @@ public class MyFirstObject {
 	public static float getPoids() {
 		return poids;
 	}
-
 	public static void setPoids(float poids) {
 		MyFirstObject.poids = poids;
 	}
