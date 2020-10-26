@@ -165,16 +165,5 @@
         }else{
             echo "Erreur Isset";
         }
-    }
-
-/*     function undeletableEmp(){
-        $noSup = "SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup";
-        $value = $value['id'];
-
-        /* if ($a == $b) { */
-           /*  <td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&idService=<?php echo $value["id"];?>'>Modifier</a></td>
-            <td><a type='button' class='btn btn-danger' href='formAdd.php?action=delete&idService=<?php echo $value;?>'>Supprimer</a></td> */
-        /* } else {
-
-    } */
+    }   
 ?>

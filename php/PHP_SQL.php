@@ -16,6 +16,14 @@
             integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin ="anonymous">
         </script>
+        <style>
+            .isDisabled {
+                color: currentColor;
+                cursor: not-allowed;
+                opacity: 0.5;
+                text-decoration: none;
+            }
+        </style>
     </head>
 
     <body>
@@ -145,13 +153,21 @@
                         <tbody class="text-center">
                             <?php
                                 searchAllEmp();
-                                $i = 1;
-                                $noSup = "SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup";
                                 $dbServ = connexionBDD();
-                                if($WhoIsSup = mysqli_query($dbServ, $noSup)){
-                                    $y=1;
-                                }else{
-                                    echo "<script>alert('getSup Dead');</script>";
+                                $i = 1;
+
+                                function disabled($valueID){
+                                    $dbServ = connexionBDD();
+                                    $noSup = "SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup";
+                                    $SqlRequest=mysqli_query($dbServ, $noSup);
+                            
+                                    foreach ($SqlRequest as $sup) {
+                                        foreach ($sup as $nbSup) {
+                                            if ($valueID == $nbSup) {
+                                                echo 'isDisabled';
+                                            }
+                                        }
+                                    }
                                 }
 
                                 foreach ($dataEmp as $key => $value) {
@@ -159,15 +175,11 @@
                                     foreach ($value as $k => $v) {
                                         echo "<td>$v</td>";
                                     }
+                                    ?>
 
-                                    if ($value["Sup"] == $WhoIsSup) {
-                                        ?><td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>test</a></td>
-                                        <td><a type='button' class='btn btn-danger' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"];?>'>test</a></td><?php
-                                    } else {
-                                        ?><td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>
-                                        <td><a type='button' class='btn btn-danger' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></td><?php
-                                    }
-
+                                    <td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
+                                    <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='PHP_SQL.php?action=modify&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
+                                    <?php
                                     echo"</tr>";
                                     $i++;
                                 }                        
