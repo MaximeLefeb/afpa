@@ -61,7 +61,7 @@
                                             echo "<td>$v</td>";
                                         }?>
                                         <td><a type='button' class='btn btn-primary' href='formServ.php?action=modify&idService=<?php echo $value["idService"];?>'>Modifier</a></td>";
-                                        <td><a type='button' class='btn btn-danger' href='servTable.php?action=delete&idService=<?php echo $value["idService"]; ?>'>Supprimer</a></td>";
+                                        <td><a type='button' class='btn btn-danger' href='servTable.php?action=delete&idService=<?php echo $value["idService"];?>'>Supprimer</a></td>";
                                         </tr>;<?php 
                                         $i++;
                                     }                        

@@ -20,13 +20,25 @@
 
     <body>
         <?php 
-            $db = mysqli_init();
-            mysqli_real_connect($db, 'localhost','root','','societe');
-            $rs = mysqli_query($db, 'SELECT * FROM employes');
-            $data = mysqli_fetch_all($rs, MYSQLI_ASSOC);
+
+            include 'crud.php';
+                        
+            //*ADD SERV
+            if (isset($_POST['add'])){
+                addEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj']);
+            }
+            //*DELETE SERV
+            if ($_GET && $_GET["action"]=="delete"){   
+                delEmp($_GET["id"]);  
+            }
+            //*MODIFY SERV
+            if (isset($_POST['modify'])){ 
+                modifyEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj']);
+            }
 
             //* TRAITEMENT AJOUT
-            if (isset($_POST['add'])) 
+            //! WITHOUT FUNCTION
+            /*if (isset($_POST['add'])) 
 			{
                 if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['emploi']) && 
                     isset($_POST['sup']) && isset($_POST['embauche']) && isset($_POST['sal']) &&
@@ -54,9 +66,10 @@
                         ?><script>alert("Erreur lors de l'ajout en base de données");</script><?php
                     }
                 } 
-            }
+            } */
             //* TRAITEMENT SUPRESSION
-            else if ($_GET) 
+            //! WITHOUT FUNCTION
+            /*else if ($_GET) 
             {   
                 if ($_GET["action"]=="delete" ) {
                     if (!empty($_GET['id'])) {
@@ -72,9 +85,10 @@
                         }
                     }
                 }
-            }
+            } */
             //* TRAITEMENT MODIFICATION
-            else if (isset($_POST['modify'])) 
+            //! WITHOUT FUNCTION
+            /*else if (isset($_POST['modify'])) 
             { 
                 if (isset($_POST['id']) &&isset($_POST['nom']) && 
                     isset($_POST['prenom']) && isset($_POST['emploi']) && 
@@ -104,51 +118,66 @@
                 }else{
                     echo "Erreur Isset";
                 }
-            }
+
+            } */
         ?>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-1"></div>
-                    <div class="col-sm-10 mb-5">
-                        <table class="table table-striped table-dark">
-                            <thead class="text-center">
-                                <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Prénom</th>
-                                    <th scope="col">Emploi</th>
-                                    <th scope="col">Supérieur</th>
-                                    <th scope="col">Date d'embauche</th>
-                                    <th scope="col">Salaire</th>
-                                    <th scope="col">Commission</th>
-                                    <th scope="col">Numéro de service</th>
-                                    <th scope="col">Numéro de projet</th>
-                                    <th scope="col">Modifier</th>
-                                    <th scope="col">Supprimer</th>
-                                </tr>
-                            </thead>
-                        
-                            <tbody class="text-center">
-                                <?php
-                                    $i = 1;
-                                    foreach ($data as $key => $value) {
-                                        echo "<tr id=trNo-".$i.">";
-                                        foreach ($value as $k => $v) {
-                                            echo "<td>$v</td>";
-                                        }?>
-                                        <td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"]; ?>'>Modifier</a></td>";
-                                        <td><a type='button' class='btn btn-danger' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"]; ?>'>Supprimer</a></td>";
-                                        </tr>;<?php 
-                                        $i++;
-                                    }                        
-                                ?>
-                            </tbody>
-                        </table>
-                        <a href="formAdd.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
-                        <a href="servTable.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
-                    </div><?php
-                  
-                ?><div class="col-sm-1"></div>
+            <div class="row">    
+                <div class="col-sm-12 mb-3">
+                    <table class="table table-striped table-dark">
+                        <thead class="text-center">
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Emploi</th>
+                                <th scope="col">Supérieur</th>
+                                <th scope="col">Date d'embauche</th>
+                                <th scope="col">Salaire</th>
+                                <th scope="col">Commission</th>
+                                <th scope="col">Numéro de service</th>
+                                <th scope="col">Numéro de projet</th>
+                                <th scope="col">Modifier</th>
+                                <th scope="col">Supprimer</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody class="text-center">
+                            <?php
+                                searchAllEmp();
+                                $i = 1;
+                                $noSup = "SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup";
+                                $dbServ = connexionBDD();
+                                if($WhoIsSup = mysqli_query($dbServ, $noSup)){
+                                    $y=1;
+                                }else{
+                                    echo "<script>alert('getSup Dead');</script>";
+                                }
+
+                                foreach ($dataEmp as $key => $value) {
+                                    echo "<tr id=trNo-".$i.">";
+                                    foreach ($value as $k => $v) {
+                                        echo "<td>$v</td>";
+                                    }
+
+                                    if ($value["Sup"] == $WhoIsSup) {
+                                        ?><td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>test</a></td>
+                                        <td><a type='button' class='btn btn-danger' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"];?>'>test</a></td><?php
+                                    } else {
+                                        ?><td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>
+                                        <td><a type='button' class='btn btn-danger' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></td><?php
+                                    }
+
+                                    echo"</tr>";
+                                    $i++;
+                                }                        
+                            ?>
+                        </tbody>
+                    </table>
+                    <a href="formAdd.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
+                    <a href="servTable.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
+                </div><?php
+                ?>
             </div>
         </div>
     </body>
