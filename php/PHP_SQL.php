@@ -178,7 +178,7 @@
                                     ?>
 
                                     <td><a type='button' class='btn btn-primary' href='formAdd.php?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
-                                    <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='PHP_SQL.php?action=modify&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
+                                    <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='PHP_SQL.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
                                     <?php
                                     echo"</tr>";
                                     $i++;
