@@ -1,9 +1,9 @@
 <?php 
     class Batiment {
-        private $adresse;
+        protected $adresse;
         private $superficie;
 
-        public function __construct(String $newAdresse,Float $newSuperficie){
+        public function __construct(String $newAdresse) {
             $this->adresse=$newAdresse;
         }
         //* ------------------ADRESSE------------------
@@ -14,10 +14,17 @@
             $this->adresse = $newAdresse;
             return $this;
         }
+        //* ------------------SUPERFICIE------------------
+        public function getSuperficie() :Float{
+            return $this->superficie;
+        }   
+        public function setSuperdicie($newSuperficie) :self{
+            $this->superficie = $newSuperficie;
+            return $this;
+        }
 
         public function __toString() :string{
-            return " [Adresse]    : " . $this->adresse . 
-                    " [Superficie]: " . $this->superficie; 
+            return " [Adresse]    : " . $this->adresse . "<br>"; 
         }
     }
 ?>

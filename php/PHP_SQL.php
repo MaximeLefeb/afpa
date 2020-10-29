@@ -39,6 +39,7 @@
             if ($_GET && $_GET["action"]=="delete"){   
                 delEmp($_GET["id"]);  
             }
+            
             //*MODIFY SERV
             if (isset($_POST['modify'])){ 
                 modifyEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj']);
