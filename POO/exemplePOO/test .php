@@ -1,6 +1,6 @@
 <?php
 
-include_once('Voiture.php');
+/* include_once('Voiture.php');
 
 $voiture = new Voiture();
 $voiture->setMarque("Renault")->setModele("Clio")->setAnneeModele(2020);
@@ -12,6 +12,6 @@ if($voiture->getModele() == $voiture1->getModele()){
     echo "Voitures du même modèle \n";
 } else {
     echo "Voitures de modèles diférents \n";
-}
+} */
 
-echo $voiture;
+phpinfo();

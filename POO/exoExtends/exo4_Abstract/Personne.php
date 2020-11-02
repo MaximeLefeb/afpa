@@ -16,15 +16,11 @@
             $this->mail    = $mail;
             $this->tel     = $tel;
             $this->salaire =  $salaire;
-            self::$counter = self::$counter + 1;
+            self::$counter++;
         }
 
-        public function getSalaire() :Float {
-            return $this->salaire;
-        }
-        public function setSalaire($salaire) :Self {
-            $this->salaire = $salaire;
-            return $this;
+        public function affiche() : void {
+            echo $this;
         }
 
         abstract public function calculerSalaire() :Float;

@@ -2,11 +2,21 @@
 <html>
 	<head>
 		<title>Connexion</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+		<link 
+			rel="stylesheet" 
+			type="text/css" 
+			href="style.css">
+		<link 
+			rel="stylesheet" 
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+			crossorigin="anonymous">
+		<link 
+			href="https://fonts.googleapis.com/css?family=Cinzel" 
+			rel="stylesheet">
 		<meta charset="utf-8">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link 
+			href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" 
+			rel="stylesheet">
 		<script
 			src         ="https://code.jquery.com/jquery-3.3.1.min.js"
 			integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
