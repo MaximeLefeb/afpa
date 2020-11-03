@@ -1,14 +1,18 @@
 <?php 
 
     class Utilisateur {
-        private $id = NULL;
-        private $mail;
+        private $id;
         private $typeOfUser;
+        private $mail;
         private $pwd;
 
         //* ------------------GETTER SETTER---------------------
         public function getId() :?Int {
             return $this->id;
+        }
+
+        public function getTypeOfUser() :String {
+            return $this->typeOfUser;
         }
 
         public function getMail() :String {
@@ -19,19 +23,11 @@
             return $this;
         }
 
-        public function getTypeOfUser() :String {
-            return $this->typeOfUser;
-        }
-        public function setTypeOfUser(String $typeOfUser) :Self {
-            $this->typeOfUser = $typeOfUser;
-            return $this;
-        }
-
         public function getPwd() :String {
             return $this->pwd;
         }
         public function setPwd(String $pwd) :Self {
-            $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            $this->pwd = $pwd;
             return $this;
         }
         //* --------------------TO STRING-----------------------
@@ -39,4 +35,5 @@
             return $this->id . $this->mail . $this->typeOfUser . $this->pwd;
         }
     }
+
 ?>

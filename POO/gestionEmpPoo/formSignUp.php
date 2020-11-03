@@ -27,24 +27,18 @@
     <body>
         <div class="container">
             <div class="row">
+                <?php 
+                    session_abort();
+                ?>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 text-center">
                     <h1>Formulaire d'inscription</h1>
-                    <form action="PHP_SQL.php" method="post">
+                    <form action="PHP_SQL.php" method="POST">
 
-                        <!-- NOM -->
+                        <!-- Mail -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mail</label>
                             <input type="mail" class="form-control" name="mail" required>
-                        </div>
-
-                        <!-- EMPLOI -->
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Type de profil</label>
-                            <select class="form-control form-control-lg" name="typeOfUser" required>
-                                <option value="Administrateur">Administrateur</option>
-                                <option value="Utilisateur">Utilisateur</option>
-                            </select>
                         </div>
 
                         <!-- MOT DE PASSE  -->

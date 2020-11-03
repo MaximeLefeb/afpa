@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Formulaire ajout</title>
+        <title>Formulaire connexion</title>
          <!-- BOOTSTRAP -->
          <link 
             rel="stylesheet" 
@@ -26,7 +26,7 @@
     
     <body>   
         <div class="container">
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <h1 class="text-center">Formulaire connexion</h1>
@@ -35,18 +35,18 @@
                         <!-- NOM -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mail</label>
-                            <input type="mail" class="form-control" name="mail">
+                            <input type="mail" class="form-control" name="mailLogin">
                         </div>
 
                         <!-- MOT DE PASSE -->
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mot de passe :</label>
-                            <input type="password" class="form-control" name="pwd">
+                            <input type="password" class="form-control" name="pwdLogin">
                         </div>
 
-                        <input name="add" type="submit" class="btn btn-primary"></input>
+                        <input name="connect" type="submit" class="btn btn-primary"></input>
 
-                    </form> // TODO ID USERNAME(255) PWD(255) TypeOfProfil(15)
+                    </form>
                 </div>
                 <div class="col-sm-4"></div>
             </div>

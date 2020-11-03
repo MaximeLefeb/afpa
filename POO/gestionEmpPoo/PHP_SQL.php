@@ -1,70 +1,68 @@
-<?php 
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- BOOTSTRAP -->
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+            crossorigin="anonymous">
+        <!-- CSS -->
+        <style>
+            #Contant {
+                background-color   : #f2f2f2;
+                height             : 100vh;
+                -webkit-box-shadow : 0px 0px 19px 10px rgba(0,0,0,0.75);
+                -moz-box-shadow    : 0px 0px 19px 10px rgba(0,0,0,0.75);
+                box-shadow         : 0px 0px 19px 10px rgba(0,0,0,0.75);
+            }
+        </style>
+    </head>
 
-    include_once 'class/Utilisateur.php';
+    <body>
 
-    function insertInto() {
-        $user = new Utilisateur();
-        $user->setMail($_POST['mail'])->setTypeOfUser($_POST['typeOfUser'])->setPwd($_POST['pwd']);
-        //* create var
-        $id   = $user->getId();
-        $mail = $user->getMail();
-        $ToU  = $user->getTypeOfUser();
-        $pwd  = $user->getPwd();
+        <?php 
+            include_once 'crud.php';
+        ?>
 
-        //* db connexion
-        $mysqli = new mysqli('localhost', 'root', '', 'sqlipoo');
+        <div id="Contant" class="container pt-5">
+            <div class="row">
+                <div class="col-sm-12 text-center">
 
-        //* SQL request
-        $stmt = $mysqli->prepare("INSERT INTO user (`id`, `mail`, `typeOfUser`, `password`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $id, $mail, $ToU, $pwd);
+                    <?php 
+                        session_abort();
 
-        //* Verify request
-        if($stmt->execute()){
-            echo 'O.K';
-        } else {
-            echo 'K.O';
-        }
+                        if (isset($_POST['add'])) {
+                            if (isset($_POST['mail']) && !empty($_POST['mail']) &&
+                                isset($_POST['pwd']) && !empty($_POST['pwd'])) {
 
-        //* close connection 
-        $mysqli->close();
-    }
+                                AddUser($_POST['mail'], $_POST['pwd']);
 
-?>
+                            } else {
+                                echo 'Les champs sont vide';
+                            }
+                        } else if(isset($_POST['connect'])) {
+                            if (isset($_POST['mailLogin']) && !empty($_POST['mailLogin']) &&
+                                isset($_POST['pwdLogin']) && !empty($_POST['pwdLogin'])) {
+                                
+                                ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);
 
-<head>
-    <!-- BOOTSTRAP -->
-    <link 
-        rel="stylesheet" 
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
-        crossorigin="anonymous">
-    <!-- JQUERY -->
-    <script
-        src         ="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin ="anonymous">
-    </script>
-</head>
+                            }
+                        } else {
+                            ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12">
+                            <br>
+                            <a type='button' class='btn btn-primary' href='formSignUp.php'>S'inscrire</a>
+                            <a type='button' class='btn btn-primary' href='formLogin.php'>Se connecter</a>
+                            <br>
+                            
+                            <?php
+                        }
 
-            <?php 
+                    ?>
 
-                if (isset($_POST)) {
-                    if (isset($_POST['mail']) && !empty($_POST['mail']) &&
-                        isset($_POST['typeOfUser']) && !empty($_POST['typeOfUser']) &&
-                        isset($_POST['pwd']) && !empty($_POST['pwd'])) {
-
-                        insertInto();
-
-                    }
-                }
-
-            ?>
-
-            <br><br><a type='button' class='btn btn-primary' href='formSignUp.php'>Ajouter un nouvel utilisateur</a><br><br>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </body>
+</html>
