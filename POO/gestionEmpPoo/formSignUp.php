@@ -25,24 +25,23 @@
     </head>
     
     <body>
-        <?php include_once 'PHP_SQL.php'; ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 text-center">
-                    <h1>Formulaire connexion</h1>
-                    <form action="formSignUp.php" method="post">
+                    <h1>Formulaire d'inscription</h1>
+                    <form action="PHP_SQL.php" method="post">
 
                         <!-- NOM -->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mail</label>
-                            <input type="mail" class="form-control" name="mail">
+                            <input type="mail" class="form-control" name="mail" required>
                         </div>
 
                         <!-- EMPLOI -->
                         <div class="form-group">
                             <label for="exampleInputPassword1">Type de profil</label>
-                            <select class="form-control form-control-lg" name="typeOfUser">
+                            <select class="form-control form-control-lg" name="typeOfUser" required>
                                 <option value="Administrateur">Administrateur</option>
                                 <option value="Utilisateur">Utilisateur</option>
                             </select>
@@ -51,7 +50,7 @@
                         <!-- MOT DE PASSE  -->
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mot de passe</label>
-                            <input type="password" class="form-control" name="pwd">
+                            <input type="password" class="form-control" name="pwd" required>
                         </div>
 
                         <input name="add" type="submit" class="btn btn-primary"></input>

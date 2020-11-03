@@ -6,6 +6,11 @@
         private $typeOfUser;
         private $pwd;
 
+        //* ------------------GETTER SETTER---------------------
+        public function getId() :?Int {
+            return $this->id;
+        }
+
         public function getMail() :String {
             return $this->mail;
         }
@@ -26,16 +31,12 @@
             return $this->pwd;
         }
         public function setPwd(String $pwd) :Self {
-            $this->pwd = $pwd;
+            $this->pwd = password_hash($pwd, PASSWORD_DEFAULT);
             return $this;
         }
-
-        public function getId() :?Int {
-            return $this->id;
-        }
-
+        //* --------------------TO STRING-----------------------
         public function __toString() {
-            return $this->id . " " . $this->mail . " " . $this->typeOfUser . " " . $this->pwd;
+            return $this->id . $this->mail . $this->typeOfUser . $this->pwd;
         }
     }
 ?>
