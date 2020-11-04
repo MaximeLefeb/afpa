@@ -1,12 +1,12 @@
 <?php 
     session_start();
 
-    /* 
+    //! REDIRECTION SI PAS CONNECTER
+    /*
     if (!$_SESSION) {
         header('location: formLogin.php');
     }  
     */
-
     include_once 'crud.php';
 
 ?>
@@ -40,7 +40,7 @@
                     <?php
                         //* SI PAS CONNECTÉ
                         if (!$_SESSION) {
-                            echo " <h1>Bonjour connecter vous pour accedez à des documents classé top secret <br> 🤫 </h1> ";
+                            echo " <h1>Bonjour connecter vous pour accedez à des documents classé top secret <br> 🤫 </h1> <hr> ";
                             //* SI ON AJOUTE
                             if (isset($_POST['add'])) {
                                 //* SI LES CHAMPS SONT CORRECTS
@@ -48,6 +48,7 @@
                                     isset($_POST['pwd']) && !empty($_POST['pwd'])) {
 
                                     AddUser($_POST['mail'], $_POST['pwd']);
+                                    showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
 
                                 } else {
                                     echo 'Les champs sont vide';
@@ -57,28 +58,28 @@
                                 //* SI LES CHAMPS SONT CORRECTS
                                 if (isset($_POST['mailLogin']) && !empty($_POST['mailLogin']) &&
                                     isset($_POST['pwdLogin']) && !empty($_POST['pwdLogin'])) {
-                                    
-                                    ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);
+
+                                    ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);  
 
                                 }
                             //* AFFICHAGE PAR DEFAULT
                             } else {
-                                echo "
-                                    <br>
-                                        <a type='button' class='btn btn-primary' href='formSignUp.php'>S'inscrire</a>
-                                        <a type='button' class='btn btn-primary' href='formLogin.php'>Se connecter</a>
-                                    <br>";
+
+                                showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
+
                             }
                         //* SI CONNECTÉ
                         } else {
 
-                            echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'];
+                            if ($_SESSION['tou'] == 'Administrateur') {
+                                echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en administrateur <br> ';
+                            } else {
+                                echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en utilisateur <br> ';
+                            }
 
-                            echo "
-                                <br>
-                                    <a type='button' class='btn btn-primary' href='formSignUp.php'>Inscrire un nouveau utilisateur</a>
-                                    <a type='button' class='btn btn-primary' href='disconnect.php'>Se déconnecter</a>
-                                <br>";
+                            showButton('formSignUp.php','disconnect.php','Inscrire un nouveau utilisateur', 'Se déconnecter');
+                            ?><br><img src="img/DavidGoodEnough.gif" alt="GoodEnought"><?php
+
                         }
                     ?>
 
