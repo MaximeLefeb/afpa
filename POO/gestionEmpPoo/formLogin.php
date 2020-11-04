@@ -1,11 +1,16 @@
+<?php 
+
+    include_once 'crud.php';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulaire connexion</title>
-         <!-- BOOTSTRAP -->
-         <link 
+        <!-- BOOTSTRAP -->
+        <link 
             rel="stylesheet" 
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
@@ -30,7 +35,7 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <h1 class="text-center">Formulaire connexion</h1>
-                    <form action="PHP_SQL.php" method="post">
+                    <form action="Acceuil.php" method="POST">
 
                         <!-- NOM -->
                         <div class="form-group">
@@ -44,7 +49,7 @@
                             <input type="password" class="form-control" name="pwdLogin">
                         </div>
 
-                        <input name="connect" type="submit" class="btn btn-primary"></input>
+                        <input name="connect" type="submit" class="btn btn-primary">
 
                     </form>
                 </div>

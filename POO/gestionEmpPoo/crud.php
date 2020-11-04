@@ -20,11 +20,6 @@
         //* Verify request
         if($stmt->execute()) {
             echo "<script type='text/javascript'>alert('Ajout ok');</script>";
-            echo "
-                <br>
-                    <a type='button' class='btn btn-primary' href='formSignUp.php'>Inscrire un nouveau utilisateur</a>
-                    <a type='button' class='btn btn-primary' href='formLogin.php'>Se connecter</a>
-                <br>";
         } else {
             echo "<script type='text/javascript'>alert('Erreur lors de l insertion en base de donnée);</script>";;
         }
@@ -34,9 +29,6 @@
     }
 
     function ConnectUser(String $mail, String $pwd) {
-
-        session_start();
-        
         //* DB connexion
         $mysqli = new mysqli('localhost', 'root', '', 'sqlipoo');
 
@@ -50,23 +42,18 @@
         //* Verify password
         $isPasswordCorrect = password_verify($pwd, $data['password']);
         
+        //* Si identifiant pas trouvé
         if (!$data) {
-            echo "<script type='text/javascript'>alert('Mauvais identifiant ou mot de passe');</script>";
+            header('location: formLogin.php');
         } else {
+            //* si mot de passe correct
             if ($isPasswordCorrect) {
+                
                 $_SESSION['id'] = $data['id'];
                 $_SESSION['mail'] = $mail;
 
-                echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'];
-
-                echo "
-                    <br>
-                        <a type='button' class='btn btn-primary' href='formSignUp.php'>Inscrire un nouveau utilisateur</a>
-                        <a type='button' class='btn btn-primary' href='PHP_SQL.php'>Se déconnecter</a>
-                    <br>";
-
             } else {
-                echo "<script type='text/javascript'>alert('Mauvais identifiant ou mot de passe');</script>";
+                header('location: formLogin.php');
             }
         }
         

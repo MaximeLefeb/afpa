@@ -27,13 +27,10 @@
     <body>
         <div class="container">
             <div class="row">
-                <?php 
-                    session_abort();
-                ?>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 text-center">
                     <h1>Formulaire d'inscription</h1>
-                    <form action="PHP_SQL.php" method="POST">
+                    <form action="Acceuil.php" method="POST">
 
                         <!-- Mail -->
                         <div class="form-group">
@@ -47,7 +44,7 @@
                             <input type="password" class="form-control" name="pwd" required>
                         </div>
 
-                        <input name="add" type="submit" class="btn btn-primary"></input>
+                        <input name="add" type="submit" class="btn btn-primary">
 
                     </form>
                 </div>
