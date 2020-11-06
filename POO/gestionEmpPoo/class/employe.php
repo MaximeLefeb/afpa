@@ -4,12 +4,14 @@
         private $nom;
         private $prenom;
         private $emp;
-        private $sup;
         private $emb;
+        private $sup;
+        private $sal;
         private $comm;
         private $noServ;
         private $noProj;
 
+        /*     
         public function __construct(Int $newId, String $newNom, String $newPrenom, String $newEmp, ?Int $newSup, String $newEmb, ?Int $newComm, ?Int $newNoServ, ?Int $newNoProj){
             $this->id     = $newId;
             $this->nom    = $newNom;
@@ -20,7 +22,8 @@
             $this->comm   = $newComm;
             $this->noServ = $newNoServ;
             $this->noProj = $newNoProj;
-        }
+        } 
+        */
 
         //* ---------------------------ID-------------------------------
         public function getId() :int{
@@ -70,6 +73,14 @@
             $this->emb = $newEmb;
             return $this;
         }
+        //* ---------------------------SAL-------------------------------
+        public function getSal() :Float {
+            return $this->sal;
+        }
+        public function setSal($newSal) :self {
+            $this->sal = $newSal;
+            return $this;
+        }
         //* ---------------------------COMM------------------------------
         public function getComm() :int{
             return $this->comm;
@@ -105,10 +116,6 @@
                     " [comm]  : " . $this->comm . 
                     " [noServ]: " . $this->noServ .
                     " [noProj]: " . $this->noProj;
-        }
-
-        public function createRow(){
-
         }
     }
 

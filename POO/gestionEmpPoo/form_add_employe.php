@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if (!$_SESSION) {
+        header('location: formLogin.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -35,7 +44,7 @@
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
-                            <form action="PHP_SQL.php" method="post">
+                            <form action="tableau_employe.php" method="post">
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nom</label>
@@ -66,10 +75,11 @@
                                     <label for="exampleInputPassword1">Supérieur hiérarchique</label>
                                     <select class="form-control form-control-lg" name="sup">
                                         <option>1</option>
-                                        <option>7</option>
-                                        <option>10</option>
-                                        <option>13</option>
-                                        <option>17</option>
+                                        <option>3</option>
+                                        <option>6</option>
+                                        <option>8</option>
+                                        <option>14</option>
+                                        <option>29</option>
                                     </select>
                                 </div>
                                 <!-- EMBAUCHE -->
@@ -118,33 +128,16 @@
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify")
                     {
-                        //!WITHOUT FUNCTION
-                        /* $db = mysqli_init();
-                        mysqli_real_connect($db, 'localhost','root','','societe');
-                        $id = $_GET['id'];
-                        $selectRequest = "SELECT * FROM employes WHERE id = $id";
-                        $r = mysqli_query($db, $selectRequest);
-                        $data = mysqli_fetch_array($r, MYSQLI_ASSOC);
-
-                        $nom    = $data["Nom"];
-                        $prenom = $data["Prenom"];
-                        $emp    = $data["Emploi"];
-                        $sup    = $data["Sup"];
-                        $emb    = $data["Embauche"];
-                        $sal    = $data["Sal"];
-                        $comm   = $data["Comm"];
-                        $noServ = $data["NoService"];
-                        $noProj = $data["NoProj"]; */
-
-
-                        //?WITH FUNCTION
                         include 'ConnectBdd.php';
 
-                        $dbServ        = connexionBDD();
+                        $dbServ        = ConnectBdd();
                         $id            = $_GET['id'];
-                        $selectRequest = "SELECT * FROM employes WHERE id = $id";
-                        $r             = mysqli_query($dbServ, $selectRequest);
-                        $data          = mysqli_fetch_array($r, MYSQLI_ASSOC);
+                        $selectRequest = $dbServ->prepare("SELECT * FROM employes WHERE id = ?");
+                        $selectRequest->bind_param("i", $id);
+                        $selectRequest->execute();
+                        $rs   = $selectRequest->get_result();
+                        $data = $rs->fetch_array(MYSQLI_ASSOC);
+                
                         $nom           = $data["Nom"];
                         $prenom        = $data["Prenom"];
                         $emp           = $data["Emploi"];
@@ -154,7 +147,9 @@
                         $comm          = $data["Comm"];
                         $noServ        = $data["NoService"];
                         $noProj        = $data["NoProj"];
-
+                        
+                        //* Close connection
+                        $dbServ->close();
 
                         function select($verified, $verifier){
                             if ($verified == $verifier) {
@@ -164,7 +159,7 @@
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
-                            <form action="PHP_SQL.php" method="post">
+                            <form action="tableau_employe.php" method="post">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Numéro d'employes</label>
                                     <input type="text" class="form-control" name="id" value="<?php echo $id ?>" readonly>
@@ -199,10 +194,11 @@
                                     <label for="exampleInputPassword1">Supérieur hiérarchique</label>
                                     <select class="form-control form-control-lg" name="sup" value="<?php echo $sup ?>">
                                         <option <?php select($sup,"1");?>value="1">1</option>
-                                        <option <?php select($sup,"7");?>value="7">7</option>
-                                        <option <?php select($sup,"10");?>value="10">10</option>
-                                        <option <?php select($sup,"13");?>value="13">13</option>
-                                        <option <?php select($sup,"17");?>value="17">17</option>
+                                        <option <?php select($sup,"3");?>value="3">3</option>
+                                        <option <?php select($sup,"6");?>value="6">6</option>
+                                        <option <?php select($sup,"8");?>value="8">8</option>
+                                        <option <?php select($sup,"14");?>value="14">14</option>
+                                        <option <?php select($sup,"29");?>value="29">29</option>
                                     </select>
                                 </div>
                                 <!-- EMBAUCHE -->

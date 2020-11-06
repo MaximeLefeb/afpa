@@ -1,13 +1,9 @@
 <?php 
-    session_start();
 
-    //! REDIRECTION SI PAS CONNECTER
-    /*
-    if (!$_SESSION) {
-        header('location: formLogin.php');
-    }  
-    */
+    session_start();
     include_once 'crud.php';
+    include_once 'crud_service.php';
+    include_once 'crud_employe.php';
 
 ?>
 
@@ -40,20 +36,30 @@
                     <?php
                         //* SI PAS CONNECTÉ
                         if (!$_SESSION) {
-                            echo " <h1>Bonjour connecter vous pour accedez à des documents classé top secret <br> 🤫 </h1> <hr> ";
+                            echo " <h1>Bonjour connecter vous pour accedez aux gestions des employes <br> 🤫 </h1> <hr> ";
                             //* SI ON AJOUTE
                             if (isset($_POST['add'])) {
                                 //* SI LES CHAMPS SONT CORRECTS
                                 if (isset($_POST['mail']) && !empty($_POST['mail']) &&
                                     isset($_POST['pwd']) && !empty($_POST['pwd'])) {
 
-                                    AddUser($_POST['mail'], $_POST['pwd']);
-                                    showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
+                                    //* VERIF USER EXIST
+                                    $exist = userExist($_POST['mail']);
+
+                                    //* TRUE
+                                    if($exist) {
+                                        echo 'Cette adresse mail est déjà utilisé';
+                                        showButton('formSignUp.php', 'formSLogin.php', 'Réessayer', 'Se connecter');
+                                    //* FALSE
+                                    } else {
+                                        AddUser($_POST['mail'], $_POST['pwd']);
+                                        showButton('formSignUp.php','formLogin.php','Inscrire un nouvel utilisateur', 'Se connecter');
+                                    }
 
                                 } else {
                                     echo 'Les champs sont vide';
                                 }
-                            //* SI ON SE CONECTE
+                            //* SI ON SE CONNECTE
                             } else if(isset($_POST['connect'])) {
                                 //* SI LES CHAMPS SONT CORRECTS
                                 if (isset($_POST['mailLogin']) && !empty($_POST['mailLogin']) &&
@@ -62,7 +68,7 @@
                                     ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);  
 
                                 }
-                            //* AFFICHAGE PAR DEFAULT
+                            //* AFFICHAGE D'ACCEUIL
                             } else {
 
                                 showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
@@ -70,15 +76,22 @@
                             }
                         //* SI CONNECTÉ
                         } else {
-
+                            //* VERIF TYPE OF USER
                             if ($_SESSION['tou'] == 'Administrateur') {
                                 echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en administrateur <br> ';
                             } else {
                                 echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en utilisateur <br> ';
                             }
 
-                            showButton('formSignUp.php','disconnect.php','Inscrire un nouveau utilisateur', 'Se déconnecter');
-                            ?><br><img src="img/DavidGoodEnough.gif" alt="GoodEnought"><?php
+                            showButton('formSignUp.php','disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
+                            ?>
+                            <hr>
+                            <div>
+                                <h1>Accès tables</h1>
+                                <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
+                                <a href="tableau_service.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
+                            </div>
+                            <?php
 
                         }
                     ?>

@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if (!$_SESSION) {
+        header('location: formLogin.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -35,7 +44,7 @@
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
-                            <form action="servTable.php" method="POST">
+                            <form action="tableau_service.php" method="POST">
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Id de service</label>
@@ -54,26 +63,32 @@
 
                                 <input name="add" type="submit" class="btn btn-primary" value="Ajouter"></input>
                             </form>
-                        </div><?php 
+                        </div>
+                        <?php 
                     }
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify")
                     {
                         include 'ConnectBdd.php';
                         
+                        $dbServ        = ConnectBdd();
                         $idServ        = $_GET['idService'];
-                        $selectRequest = "SELECT * FROM serv WHERE idService = $idServ";
-                        $dbServ=connexionBDD();
-                        $r             = mysqli_query($dbServ, $selectRequest);
-                        $data          = mysqli_fetch_array($r, MYSQLI_ASSOC);
+                        $selectRequest = $dbServ->prepare("SELECT * FROM serv WHERE idService = ?");
+                        $selectRequest->bind_param("i", $idServ);
+                        $selectRequest->execute();
+                        $rs   = $selectRequest->get_result();
+                        $data = $rs->fetch_array(MYSQLI_ASSOC);
+
                         $idServ        = $data["idService"];
                         $Serv          = $data["Service"];
                         $ville         = $data["Ville"];
 
+                         //* Close connection
+                         $dbServ->close();
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
-                            <form action="servTable.php" method="POST">
+                            <form action="tableau_service.php" method="POST">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Numéro d'employes</label>
                                     <input type="text" class="form-control" name="idServ" value="<?php echo $idServ ?>" readonly>
@@ -91,7 +106,8 @@
 
                                 <input name="modify" type="submit" class="btn btn-primary" value="Modifier"/>
                             </form>
-                        </div><?php 
+                        </div>
+                        <?php 
                     }
                 ?> 
                 <div class="col-sm-4"></div>
