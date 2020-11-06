@@ -52,11 +52,12 @@
             return $this;
         }
         //* ---------------------------EMAUCHE---------------------------
-        public function getEmb() :string{
+        public function getEmb() :DateTime {
             return $this->emb;
         }
         public function setEmb($newEmb) :self{
-            $this->emb = $newEmb;
+            $dateEmb = new datetime($newEmb);
+            $this->emb = $dateEmb;
             return $this;
         }
         //* ---------------------------SAL-------------------------------

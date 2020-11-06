@@ -42,8 +42,7 @@
                 <div class="col-sm-4"></div>
                     <?php 
                     //* FORMULAIRE AJOUT 
-                    if($_GET["action"]=="ajouter")
-                    {   
+                    if($_GET["action"]=="ajouter") {   
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
@@ -129,8 +128,7 @@
                         </div><?php 
                     }
                     //* FORMULAIRE MODIF
-                    else if($_GET["action"]=="modify")
-                    {
+                    else if($_GET["action"]=="modify") {
                         $data   = searchEmp($_GET['id']);
                         $id     = $data["id"];
                         $nom    = $data["Nom"];
@@ -154,22 +152,22 @@
                             <h1 class="text-center">Formulaire Modif</h1>
                             <form action="tableau_employe.php" method="post">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Numéro d'employes</label>
+                                    <label for="idEmp">Numéro d'employes</label>
                                     <input type="text" class="form-control" name="id" value="<?php echo $id ?>" readonly>
                                 </div>
                                 <!-- NOM -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nom</label>
+                                    <label for="nom">Nom</label>
                                     <input type="text" class="form-control" name="nom" value="<?php echo $nom ?>">
                                 </div>
                                 <!-- PRENOM -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Prénom</label>
+                                    <label for="prenom">Prénom</label>
                                     <input type="text" class="form-control" name="prenom" value="<?php echo $prenom ?>">
                                 </div>
                                 <!-- EMPLOI -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Emploi</label>
+                                    <label for="Emp">Emploi</label>
                                     <select class="form-control form-control-lg" name="emploi">
                                         <option <?php select($emp,"SECRETAIRE");?>value="SECRETAIRE">SECRETAIRE</option>
                                         <option <?php select($emp,"VENDEUR"); ?>value="VENDEUR">VENDEUR</option>
@@ -184,7 +182,7 @@
                                 </div>
                                 <!-- //SUPERIEUR -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Supérieur hiérarchique</label>
+                                    <label for="">Supérieur hiérarchique</label>
                                     <select class="form-control form-control-lg" name="sup" value="<?php echo $sup ?>">
                                         <option <?php select($sup,"1");?>value="1">1</option>
                                         <option <?php select($sup,"3");?>value="3">3</option>
@@ -196,22 +194,22 @@
                                 </div>
                                 <!-- EMBAUCHE -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Embauche</label>
+                                    <label for="Emb">Embauche</label>
                                     <input type="date" class="form-control" name="embauche" value="<?php echo $emb ?>">
                                 </div>
                                 <!-- SALAIRE -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Salaire</label>
+                                    <label for="Sal">Salaire</label>
                                     <input type="text" class="form-control" name="sal" value="<?php echo $sal ?>">
                                 </div>
                                 <!-- COMMISION -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Commission</label>
+                                    <label for="Comm">Commission</label>
                                     <input type="text" class="form-control" name="comm" value="<?php echo $comm ?>">
                                 </div>
                                 <!-- NUMERO SERVICE -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Numéro de service</label>
+                                    <label for="NoServ">Numéro de service</label>
                                     <select class="form-control form-control-lg" name="noService" value="<?php echo $noServ ?>">
                                         <option <?php select($noServ,"1"); ?> value="1">1</option>
                                         <option <?php select($noServ,"2"); ?> value="2">2</option>
@@ -224,7 +222,7 @@
                                 </div>
                                 <!-- PROJET -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Numéro de projet</label>
+                                    <label for="noProj">Numéro de projet</label>
                                     <select class="form-control form-control-lg" name="noProj" value="$noProj">
                                         <option <?php select($noProj,NULL); ?> value="NULL">Aucun</option>
                                         <option <?php select($noProj,101); ?> value="101" >101</option>

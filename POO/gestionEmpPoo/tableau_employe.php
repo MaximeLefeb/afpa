@@ -29,9 +29,9 @@
         </script>
         <style>
             .isDisabled {
-                color: currentColor;
-                cursor: not-allowed;
-                opacity: 0.5;
+                color          : currentColor;
+                cursor         : not-allowed;
+                opacity        : 0.5;
                 text-decoration: none;
             }
         </style>
@@ -134,9 +134,9 @@
                                     }
                                 }
 
-                                foreach ($dataEmp as $key => $value) {
+                                foreach ($dataEmp as $value) {
                                     echo "<tr id=trNo-".$i.">";
-                                    foreach ($value as $k => $v) {
+                                    foreach ($value as $v) {
                                         echo "<td>$v</td>";
                                     }
                                     

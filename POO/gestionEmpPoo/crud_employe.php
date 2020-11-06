@@ -29,13 +29,14 @@
         $comm   = $EmployeAdd->getComm();
         $noServ = $EmployeAdd->getNoServ();
         $noProj = $EmployeAdd->getNoProj();
+        $embFormat = $emb->format('Y-m-d');
 
         //* TRAITEMENT AJOUT
         $dbServ = ConnectBdd();
 
         //*REQUETE SQL ADD
         $AddRequest = $dbServ->prepare("INSERT INTO employes(id, Nom, Prenom, Emploi, Sup, Embauche, Sal, Comm, NoService, NoProj) VALUES (NULL,UPPER(?),UPPER(?),?,?,?,?,?,?,?)");
-        $AddRequest->bind_param("sssisiiii", $nom, $prenom, $emp, $sup, $emb, $sal, $comm, $noServ, $noProj);
+        $AddRequest->bind_param("sssisiiii", $nom, $prenom, $emp, $sup, $embFormat, $sal, $comm, $noServ, $noProj);
         
         //*VERIF REQUETE SQL
         if($AddRequest->execute()){
@@ -76,13 +77,14 @@
         $comm   = $EmployeModif->getComm();
         $noServ = $EmployeModif->getNoServ();
         $noProj = $EmployeModif->getNoProj();
+        $embFormat = $emb->format('Y-m-d');
 
         //* TRAITEMENT MODIFICATION
         $dbServ=ConnectBdd();
         
         //*REQUETE SQL MODIFY
         $ModiFyRequest = $dbServ->prepare("UPDATE `employes` SET Nom=UPPER(?), Prenom=UPPER(?), Emploi=?, Sup=?, Embauche=?, Sal=?, Comm=?, NoService=?, NoProj=? WHERE id = ?");
-        $ModiFyRequest->bind_param("sssisiiiii", $nom, $prenom, $emp, $sup, $emb, $sal, $comm, $noServ, $noProj, $id);
+        $ModiFyRequest->bind_param("sssisiiiii", $nom, $prenom, $emp, $sup, $embFormat, $sal, $comm, $noServ, $noProj, $id);
 
         //*VERIF REQUETE SQL
         if ($ModiFyRequest->execute()) {
@@ -94,7 +96,7 @@
         $dbServ->close();
     }
 
-    function searchEmp($id) :?Array{
+    function searchEmp(Int $id) :?Array{
         //*CONNECT DB
         $dbServ = ConnectBdd();
 
@@ -111,4 +113,5 @@
 
         return $data;
     }
+    
 ?>
