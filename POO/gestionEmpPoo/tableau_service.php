@@ -5,6 +5,8 @@
         header('location: formLogin.php');
     }
 
+    include_once 'crud_service.php';
+
 ?> 
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,7 +42,7 @@
                     $Service = new Service();
                     $Service->setIdService($_POST['idServ'])->setService($_POST['serv'])->setVille($_POST['ville']);
 
-                    addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
+                    addServ($Service);
 
                 }
             }
@@ -98,8 +100,8 @@
                                         if ($_SESSION['tou'] == 'Administrateur') {
                                             ?>
                                         
-                                            <td><a type='button' class='btn btn-primary' href='form_add_employe.PHP?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
-                                            <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='mainGestion.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
+                                            <td><a type='button' class='btn btn-primary' href='form_add_service.php?action=modify&idService=<?php echo $value["idService"];?>'>Modifier</a></td>";
+                                            <td><a type='button' class='btn btn-danger ' href='tableau_service.php?action=delete&idService=<?php echo $value["idService"];?>'>Supprimer</a></button></td>
                                         
                                             <?php
                                         }

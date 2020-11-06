@@ -40,7 +40,7 @@
         $dbUser = ConnectBdd();
 
         //* SQL REQUEST
-        $selectRequest = $mysqli->prepare("SELECT * FROM user WHERE mail = ?");
+        $selectRequest = $dbUser->prepare("SELECT * FROM user WHERE mail = ?");
         $selectRequest->bind_param("s", $mail);
         $selectRequest->execute();
         $rs   = $selectRequest->get_result();
@@ -48,7 +48,7 @@
 
         //* Close connection
         $rs->free();
-        $mysqli->close();
+        $dbUser->close();
 
         return $data;
     }

@@ -5,6 +5,8 @@
         header('location: formLogin.php');
     }
 
+    include_once 'ConnectBdd.php';
+    include_once 'crud_service.php';
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +41,7 @@
                 <div class="col-sm-4"></div>
                     <?php 
                     //* FORMULAIRE AJOUT 
-                    if($_GET["action"]=="ajouter")
-                    {   
+                    if($_GET["action"]=="ajouter") {   
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
@@ -67,24 +68,11 @@
                         <?php 
                     }
                     //* FORMULAIRE MODIF
-                    else if($_GET["action"]=="modify")
-                    {
-                        include 'ConnectBdd.php';
-                        
-                        $dbServ        = ConnectBdd();
-                        $idServ        = $_GET['idService'];
-                        $selectRequest = $dbServ->prepare("SELECT * FROM serv WHERE idService = ?");
-                        $selectRequest->bind_param("i", $idServ);
-                        $selectRequest->execute();
-                        $rs   = $selectRequest->get_result();
-                        $data = $rs->fetch_array(MYSQLI_ASSOC);
-
-                        $idServ        = $data["idService"];
-                        $Serv          = $data["Service"];
-                        $ville         = $data["Ville"];
-
-                         //* Close connection
-                         $dbServ->close();
+                    else if($_GET["action"]=="modify") {   
+                        $data = searchServ($_GET['idService']);
+                        $idServ = $data["idService"];
+                        $Serv   = $data["Service"];
+                        $ville  = $data["Ville"];
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>

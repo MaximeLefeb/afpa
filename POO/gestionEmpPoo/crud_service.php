@@ -1,18 +1,22 @@
 <?php
 
-    include_once 'class/Utilisateur.php';
+    include_once 'class/Serv.php';
     include_once 'ConnectBdd.php';
 
     //! --------------------------------------------------------- TABLE SERVICES ----------------------------------------------------------------
     
-    //TODO 1 argument Type service
-    function addServ(Int $idServ, String $Service, String $ville) :Void {
+
+    function addServ(Service $ServiceAdd) :Void {
+        $idServ    = $ServiceAdd->getIdService();
+        $nomServ   = $ServiceAdd->getSerivce();
+        $villeServ = $ServiceAdd->getVille();
+
         //* TRAITEMENT AJOUT
         $dbServ=ConnectBdd();
         
         //*REQUETE SQL ADD
         $AddRequest = $dbServ->prepare("INSERT INTO serv(`idService`,`Service`, `Ville`) VALUES (?,UPPER(?),UPPER(?))");
-        $AddRequest->bind_param("iss", $idServ, $Service, $ville);
+        $AddRequest->bind_param("iss", $idServ, $nomServ, $villeServ);
         
         //*VERIF REQUETE SQL
         if($AddRequest->execute()){
@@ -42,17 +46,21 @@
         $dbServ->close();
     }
 
-    function modifyServ(Int $idServ, String $Service, String $ville) :Void {
+    function modifyServ(Service $ServiceModif) :Void {
         //* TRAITEMENT MODIFICATION
         $dbServ=ConnectBdd();
+
+        $idServ    = $ServiceModif->getIdService();
+        $nomServ   = $ServiceModif->getSerivce();
+        $villeServ = $ServiceModif->getVille();
         
         //*REQUETE SQL MODIFY
         $ModiFyRequest = $dbServ->prepare("UPDATE `serv` SET idService=?, service =UPPER(?), ville=UPPER(?) WHERE idService = ?");
-        $ModiFyRequest->bind_param("issi", $Service->getIdService(), $Service->getSerivce(), $Service->getVille(), $Service->getIdService());
+        $ModiFyRequest->bind_param("issi", $idServ, $nomServ, $villeServ, $idServ);
         
         //*VERIF REQUETE SQL
         if ($ModiFyRequest->execute()) {
-            ?><script>alert("Modif ok");</script><?php
+            ?><script>alert("Modif service ok");</script><?php
         }else{
             ?><script>alert("Echec de la modif");</script><?php
         }
@@ -61,17 +69,38 @@
     }
 
     function searchAllServ() :?Array {
-        //* SEARCH BDD
+        //* CONNECT DB
         $dbServ=ConnectBdd();
+
+        //* SEARCH BDD
         $requestSelectServ = $dbServ->prepare("SELECT * FROM serv");
         $requestSelectServ->execute(); 
         $rs   = $requestSelectServ->get_result();
         $dataServ = $rs->fetch_all(MYSQLI_ASSOC);
 
+        //* CLOSE DB
         $rs->free();
         $dbServ->close();
 
         return $dataServ;
+    }
+    
+    function searchServ($idServ) :?Array {
+        //* CONNECT DB
+        $dbServ = ConnectBdd();
+
+        //* SEARCH BDD
+        $selectRequest = $dbServ->prepare("SELECT * FROM serv WHERE idService = ?");
+        $selectRequest->bind_param("i", $idServ);
+        $selectRequest->execute();
+        $rs   = $selectRequest->get_result();
+        $data = $rs->fetch_array(MYSQLI_ASSOC);
+
+        //* CLOSE DB
+        $rs->free();
+        $dbServ->close();
+
+        return $data;
     }
 
 ?>

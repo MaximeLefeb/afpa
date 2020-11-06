@@ -1,6 +1,6 @@
 <?php 
 
-    include_once 'class/Utilisateur.php';
+    include_once 'class/Employe.php';
     include_once 'ConnectBdd.php';
 
     //! --------------------------------------------------------- TABLE EMPLOYES -----------------------------------------------------------------
@@ -19,12 +19,19 @@
         return $dataEmp;
     }
 
-    function addEmp(String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, Float $comm, Int $noServ, Int $noProj) :Void {
+    function addEmp(Employe $EmployeAdd) :Void {
+        $nom    = $EmployeAdd->getNom();
+        $prenom = $EmployeAdd->getPrenom();
+        $emp    = $EmployeAdd->getEmp();
+        $sup    = $EmployeAdd->getSup();
+        $emb    = $EmployeAdd->getEmb();
+        $sal    = $EmployeAdd->getSal();
+        $comm   = $EmployeAdd->getComm();
+        $noServ = $EmployeAdd->getNoServ();
+        $noProj = $EmployeAdd->getNoProj();
+
         //* TRAITEMENT AJOUT
         $dbServ = ConnectBdd();
-        
-        if($comm == '0')$comm = 'NULL';
-        if($noProj == "Aucun")$noProj = 'NULL';
 
         //*REQUETE SQL ADD
         $AddRequest = $dbServ->prepare("INSERT INTO employes(id, Nom, Prenom, Emploi, Sup, Embauche, Sal, Comm, NoService, NoProj) VALUES (NULL,UPPER(?),UPPER(?),?,?,?,?,?,?,?)");
@@ -58,7 +65,18 @@
         $dbServ->close();
     }
 
-    function modifyEmp(String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, Float $comm, Int $noServ, Int $noProj, Int $id) :Void {
+    function modifyEmp(Employe $EmployeModif) :Void {
+        $id     = $EmployeModif->getId();
+        $nom    = $EmployeModif->getNom();
+        $prenom = $EmployeModif->getPrenom();
+        $emp    = $EmployeModif->getEmp();
+        $sup    = $EmployeModif->getSup();
+        $emb    = $EmployeModif->getEmb();
+        $sal    = $EmployeModif->getSal();
+        $comm   = $EmployeModif->getComm();
+        $noServ = $EmployeModif->getNoServ();
+        $noProj = $EmployeModif->getNoProj();
+
         //* TRAITEMENT MODIFICATION
         $dbServ=ConnectBdd();
         
@@ -74,5 +92,23 @@
         }
 
         $dbServ->close();
+    }
+
+    function searchEmp($id) :?Array{
+        //*CONNECT DB
+        $dbServ = ConnectBdd();
+
+        //*SEARCH REQUEST
+        $selectRequest = $dbServ->prepare("SELECT * FROM employes WHERE id = ?");
+        $selectRequest->bind_param("i", $id);
+        $selectRequest->execute();
+        $rs   = $selectRequest->get_result();
+        $data = $rs->fetch_array(MYSQLI_ASSOC);
+
+        //* Close connection
+        $rs->free();
+        $dbServ->close();
+
+        return $data;
     }
 ?>

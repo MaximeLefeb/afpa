@@ -1,14 +1,8 @@
 <?php 
-    class Employes {
+    class Service {
         private $idService;
         private $service;
         private $ville;
-
-        public function __construct(Int $newIdService, String $newService, String $newVille){
-            $this->id     = $newIdService;
-            $this->nom    = $newService;
-            $this->prenom = $newVille;
-        }
 
         //* ---------------------------IDSERVICE-------------------------------
         public function getIdService() :int{

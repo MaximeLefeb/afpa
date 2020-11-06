@@ -11,20 +11,6 @@
         private $noServ;
         private $noProj;
 
-        /*     
-        public function __construct(Int $newId, String $newNom, String $newPrenom, String $newEmp, ?Int $newSup, String $newEmb, ?Int $newComm, ?Int $newNoServ, ?Int $newNoProj){
-            $this->id     = $newId;
-            $this->nom    = $newNom;
-            $this->prenom = $newPrenom;
-            $this->emp    = $newEmp;
-            $this->sup    = $newSup;
-            $this->emb    = $newEmb;
-            $this->comm   = $newComm;
-            $this->noServ = $newNoServ;
-            $this->noProj = $newNoProj;
-        } 
-        */
-
         //* ---------------------------ID-------------------------------
         public function getId() :int{
             return $this->id;

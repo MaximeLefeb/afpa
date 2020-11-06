@@ -5,6 +5,9 @@
         header('location: formLogin.php');
     }
 
+    include_once 'ConnectBdd.php';
+    include_once 'crud_Employe.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -128,28 +131,17 @@
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify")
                     {
-                        include 'ConnectBdd.php';
-
-                        $dbServ        = ConnectBdd();
-                        $id            = $_GET['id'];
-                        $selectRequest = $dbServ->prepare("SELECT * FROM employes WHERE id = ?");
-                        $selectRequest->bind_param("i", $id);
-                        $selectRequest->execute();
-                        $rs   = $selectRequest->get_result();
-                        $data = $rs->fetch_array(MYSQLI_ASSOC);
-                
-                        $nom           = $data["Nom"];
-                        $prenom        = $data["Prenom"];
-                        $emp           = $data["Emploi"];
-                        $sup           = $data["Sup"];
-                        $emb           = $data["Embauche"];
-                        $sal           = $data["Sal"];
-                        $comm          = $data["Comm"];
-                        $noServ        = $data["NoService"];
-                        $noProj        = $data["NoProj"];
-                        
-                        //* Close connection
-                        $dbServ->close();
+                        $data   = searchEmp($_GET['id']);
+                        $id     = $data["id"];
+                        $nom    = $data["Nom"];
+                        $prenom = $data["Prenom"];
+                        $emp    = $data["Emploi"];
+                        $sup    = $data["Sup"];
+                        $emb    = $data["Embauche"];
+                        $sal    = $data["Sal"];
+                        $comm   = $data["Comm"];
+                        $noServ = $data["NoService"];
+                        $noProj = $data["NoProj"];
 
                         function select($verified, $verifier){
                             if ($verified == $verifier) {
@@ -157,6 +149,7 @@
                             }
                         }
                         ?>
+
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
                             <form action="tableau_employe.php" method="post">

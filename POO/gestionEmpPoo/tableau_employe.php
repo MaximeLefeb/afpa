@@ -5,6 +5,8 @@
         header('location: formLogin.php');
     }
 
+    include_once 'crud_employe.php';
+    include_once 'class/Employe.php';
 ?>
 
 <!DOCTYPE html>
@@ -37,19 +39,17 @@
 
     <body>
         <?php 
-
-            include 'crud.php';
                         
             //*ADD SERV
             if (isset($_POST['add'])) {
-                if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && 
-                    !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
-                    isset($_POST['sup']) && !empty($_POST['sup']) && isset($_POST['embauche']) && 
-                    !empty($_POST['embauche']) && isset($_POST['sal']) && !empty($_POST['sal']) &&
-                    isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && 
-                    isset($_POST['noProj']) && !empty($_POST['noProj'])) {
+                if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
+                    isset($_POST['sup']) && !empty($_POST['sup']) && isset($_POST['embauche']) && !empty($_POST['embauche']) && isset($_POST['sal']) && !empty($_POST['sal']) &&
+                    isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
-                    addEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj']);
+                    $employeAdd = new Employe();
+                    $employeAdd->setNom($_POST['nom'])->setPrenom($_POST['prenom'])->setEmp($_POST['emploi'])->setSup($_POST['sup'])->setEmb($_POST['embauche'])->setSal($_POST['sal'])->setComm($_POST['comm'])->setNoServ($_POST['noService'])->setNoProj($_POST['noProj']);
+
+                    addEmp($employeAdd);
 
                 }
             }
@@ -63,14 +63,14 @@
             }
             //*MODIFY SERV
             if (isset($_POST['modify'])) { 
-                if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && 
-                    !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
-                    isset($_POST['sup']) && !empty($_POST['sup']) && isset($_POST['embauche']) && 
-                    !empty($_POST['embauche']) && isset($_POST['sal']) && !empty($_POST['sal']) &&
-                    isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) &&
-                    isset($_POST['noProj']) && !empty($_POST['noProj'])) {
+                if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
+                    isset($_POST['sup']) && !empty($_POST['sup']) && isset($_POST['embauche']) && !empty($_POST['embauche']) && isset($_POST['sal']) && !empty($_POST['sal']) &&
+                    isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
-                    modifyEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj'], $_POST['id']);
+                    $employeModif = new Employe();
+                    $employeModif->setId($_POST['id'])->setNom($_POST['nom'])->setPrenom($_POST['prenom'])->setEmp($_POST['emploi'])->setSup($_POST['sup'])->setEmb($_POST['embauche'])->setSal($_POST['sal'])->setComm($_POST['comm'])->setNoServ($_POST['noService'])->setNoProj($_POST['noProj']);
+
+                    modifyEmp($employeModif);
                 
                 }
             }
@@ -144,7 +144,7 @@
                                         ?>
                                     
                                         <td><a type='button' class='btn btn-primary' href='form_add_employe.PHP?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
-                                        <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='mainGestion.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
+                                        <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='tableau_employe.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
                                     
                                         <?php
                                     }
