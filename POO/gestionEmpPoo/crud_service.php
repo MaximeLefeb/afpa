@@ -85,7 +85,7 @@
         return $dataServ;
     }
     
-    function searchServ($idServ) :?Array {
+    function searchServ(Int $idServ) :?Array {
         //* CONNECT DB
         $dbServ = ConnectBdd();
 
