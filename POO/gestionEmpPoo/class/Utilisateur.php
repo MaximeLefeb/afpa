@@ -1,5 +1,4 @@
 <?php 
-
     class Utilisateur {
         private $id;
         private $typeOfUser;

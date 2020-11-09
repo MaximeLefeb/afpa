@@ -1,7 +1,7 @@
 <?php 
 
     include_once '../class/Employe.php';
-    include_once '../ConnectBdd.php';
+    include_once '../Divers/ConnectBdd.php';
 
     class Employe_mysqli_DAO {
 

@@ -30,7 +30,7 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4 text-center">
                     <h1>Formulaire d'inscription</h1>
-                    <form action="Acceuil.php" method="POST">
+                    <form action="../Divers/Acceuil.php" method="POST">
 
                         <!-- MAIL SIGN UP -->
                         <div class="form-group">

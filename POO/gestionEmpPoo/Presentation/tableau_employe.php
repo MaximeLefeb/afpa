@@ -6,7 +6,6 @@
         header('location: formLogin.php');
     }
 
-
 ?>
 
 <!DOCTYPE html>

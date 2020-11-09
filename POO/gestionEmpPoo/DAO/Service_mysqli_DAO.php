@@ -1,6 +1,6 @@
 <?php
     include_once '../class/Serv.php';
-    include_once '../ConnectBdd.php';
+    include_once '../Divers/ConnectBdd.php';
 
     class Service_mysqli_DAO {
 

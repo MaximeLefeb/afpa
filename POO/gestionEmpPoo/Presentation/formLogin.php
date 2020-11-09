@@ -1,6 +1,5 @@
 <?php 
-
-    include_once 'Utilisateur_mysqli_DAO.php';
+    include_once '../DAO/Utilisateur_mysqli_DAO.php';
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +34,7 @@
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
                     <h1 class="text-center">Formulaire connexion</h1>
-                    <form action="Acceuil.php" method="POST">
+                    <form action="../Divers/Acceuil.php" method="POST">
 
                         <!-- MAIL LOGIN -->
                         <div class="form-group">

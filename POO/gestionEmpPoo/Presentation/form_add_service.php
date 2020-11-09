@@ -5,8 +5,8 @@
         header('location: formLogin.php');
     }
 
-    include_once 'ConnectBdd.php';
-    include_once 'Service_mysqli_DAO.php';
+    include_once '../Divers/ConnectBdd.php';
+    include_once '../Service/service_Service.php';
 ?>
 
 <!DOCTYPE html>

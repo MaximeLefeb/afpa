@@ -1,17 +1,12 @@
 <?php 
-
-    include_once 'class/Utilisateur.php';
-    include_once 'ConnectBdd.php';
+    include_once '../class/Utilisateur.php';
+    include_once '../Divers/ConnectBdd.php';
+    
 
     Class Utilisateur_mysqli_DAO {
 
-        public static function hashPwd(String $pwd) :String {
-            $beHashed = password_hash($pwd, PASSWORD_DEFAULT);
-            return $beHashed;
-        }
-
         public static function AddUser(String $mail, String $pwd) :Void {
-            $pwdHash = hashPwd($pwd);
+            $pwdHash = service_Utilisateur::hashPwd($pwd);
             $ToU = 'Utilisateur';
             
             $user = new Utilisateur;
@@ -52,55 +47,7 @@
 
             return $data;
         }
-
-        public static function ConnectUser(String $mail, String $pwd) :Void {
-            $data = Utilisateur_mysqli_DAO::searchUser($mail);
-
-            //* Verify password
-            $isPasswordCorrect = password_verify($pwd, $data['password']);
-            
-            //* Si identifiant pas trouvé
-            if (!$data) {
-                echo '<h2>Mauvais mot de passe ou identifiant</h2>';
-                showButton('formLogin.php', 'formSignUp.php', 'Réessayer', 'S\'inscrire');
-            } else {
-                //* si mot de passe correct
-                if ($isPasswordCorrect) {
-                    
-                    $_SESSION['id'] = $data['id'];
-                    $_SESSION['tou'] = $data['typeOfUser'];
-                    $_SESSION['mail'] = $data['mail'];
-
-                    echo 'CTRL + F5';
-
-                } else {
-                    echo '<h2>Mot de passe incorrect</h2>';
-                }
-            }
-        }
-
-        public static function showButton(String $url1, String $url2, String $nameButton1, String $nameButton2) :Void {
-            echo "
-                <br>
-                    <a type='button' class='btn btn-primary' href='$url1'>$nameButton1</a>
-                    <a type='button' class='btn btn-primary' href='$url2'>$nameButton2</a>
-                <br>";
-        }
-
-        public static function userExist(String $verifMail) :Bool {
-            //* DB connexion{
-            $dbUser = ConnectBdd();
-
-            //* SQL REQUEST
-            $exist = searchUser();
-
-            if ($exist > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
+        
     }
 
 ?>
