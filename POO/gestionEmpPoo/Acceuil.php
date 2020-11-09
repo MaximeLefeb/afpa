@@ -1,9 +1,6 @@
 <?php 
-
     session_start();
-    include_once 'crud.php';
-    include_once 'crud_service.php';
-    include_once 'crud_employe.php';
+    include_once 'DAO/Utilisateur_mysqli_DAO.php';
 
 ?>
 
@@ -44,16 +41,16 @@
                                     isset($_POST['pwd']) && !empty($_POST['pwd'])) {
 
                                     //* VERIF USER EXIST
-                                    $exist = userExist($_POST['mail']);
+                                    $exist = Utilisateur_mysqli_DAO::userExist($_POST['mail']);
 
                                     //* TRUE
                                     if($exist) {
                                         echo 'Cette adresse mail est déjà utilisé';
-                                        showButton('formSignUp.php', 'formSLogin.php', 'Réessayer', 'Se connecter');
+                                        Utilisateur_mysqli_DAO::showButton('formSignUp.php', 'formSLogin.php', 'Réessayer', 'Se connecter');
                                     //* FALSE
                                     } else {
-                                        AddUser($_POST['mail'], $_POST['pwd']);
-                                        showButton('formSignUp.php','formLogin.php','Inscrire un nouvel utilisateur', 'Se connecter');
+                                        Utilisateur_mysqli_DAO::AddUser($_POST['mail'], $_POST['pwd']);
+                                        Utilisateur_mysqli_DAO::showButton('formSignUp.php','formLogin.php','Inscrire un nouvel utilisateur', 'Se connecter');
                                     }
 
                                 } else {
@@ -65,13 +62,13 @@
                                 if (isset($_POST['mailLogin']) && !empty($_POST['mailLogin']) &&
                                     isset($_POST['pwdLogin']) && !empty($_POST['pwdLogin'])) {
 
-                                    ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);  
+                                        Utilisateur_mysqli_DAO::ConnectUser($_POST['mailLogin'], $_POST['pwdLogin']);  
 
                                 }
                             //* AFFICHAGE D'ACCEUIL
                             } else {
 
-                                showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
+                                Utilisateur_mysqli_DAO::showButton('formSignUp.php','formLogin.php','S\'inscrire', 'Se connecter');
 
                             }
                         //* SI CONNECTÉ
@@ -83,13 +80,13 @@
                                 echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en utilisateur <br> ';
                             }
 
-                            showButton('formSignUp.php','disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
+                            Utilisateur_mysqli_DAO::showButton('formSignUp.php','disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
                             ?>
                             <hr>
                             <div>
                                 <h1>Accès tables</h1>
-                                <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
-                                <a href="tableau_service.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
+                                <a href="Presentation/tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
+                                <a href="Presentation/tableau_service.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
                             </div>
                             <?php
 

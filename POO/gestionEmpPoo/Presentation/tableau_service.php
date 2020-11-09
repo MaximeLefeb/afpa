@@ -1,0 +1,87 @@
+<?php
+    session_start();
+
+    if (!$_SESSION) {
+        header('location: formLogin.php');
+    }
+
+    include_once '../Controleur/controleur_Service.php';
+
+?> 
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Php et les bdd</title>
+         <!-- BOOTSTRAP -->
+         <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+            crossorigin="anonymous">
+        <!-- JQUERY -->
+        <script
+            src         ="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin ="anonymous">
+        </script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                    <div class="col-sm-12 mb-5">
+                        <table class="table table-striped table-dark">
+                            <thead class="text-center">
+                                <tr>
+                                    <th scope="col">idService</th>
+                                    <th scope="col">Service</th>
+                                    <th scope="col">Ville</th>
+                                    <?php 
+                                    if ($_SESSION['tou'] == 'Administrateur') {
+                                        ?>
+                                        <th scope="col">Modification</th>
+                                        <th scope="col">Suppression</th>
+                                        <?php
+                                    }
+                                    ?>
+                                </tr>
+                            </thead>
+                        
+                            <tbody class="text-center">
+                                <?php
+                                    $dataServ = Service_mysqli_DAO::searchAllServ();
+                                    $i = 1;
+                                    foreach ($dataServ as $key => $value) {
+                                        echo "<tr id=trNo-".$i.">";
+                                        foreach ($value as $k => $v) {
+                                            echo "<td>$v</td>";
+                                        }
+                                        
+                                        if ($_SESSION['tou'] == 'Administrateur') {
+                                            ?>
+                                        
+                                            <td><a type='button' class='btn btn-primary' href='form_add_service.php?action=modify&idService=<?php echo $value["idService"];?>'>Modifier</a></td>";
+                                            <td><a type='button' class='btn btn-danger ' href='tableau_service.php?action=delete&idService=<?php echo $value["idService"];?>'>Supprimer</a></button></td>
+                                        
+                                            <?php
+                                        }
+                                    
+                                        echo"</tr>";
+                                        $i++;
+                                    }                        
+                                ?>
+                            </tbody>
+                        </table>
+                        <a href="form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un service</button></a>
+                        <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
+                    </div><?php
+                  
+                ?><div class="col-sm-1"></div>
+            </div>
+        </div>
+    </body>
+</html>
