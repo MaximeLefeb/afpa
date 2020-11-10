@@ -1,7 +1,3 @@
-<?php 
-    include_once '../DAO/Utilisateur_mysqli_DAO.php';
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>

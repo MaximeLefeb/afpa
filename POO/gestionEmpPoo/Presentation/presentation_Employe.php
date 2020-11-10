@@ -2,7 +2,6 @@
     function printEmployeArray() :Void{
         $dataEmp = searchAllEmp();
         $i = 1;
-
         foreach ($dataEmp as $value) {
             echo "<tr id=trNo-".$i.">";
             foreach ($value as $v) {

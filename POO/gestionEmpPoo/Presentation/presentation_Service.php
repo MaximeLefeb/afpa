@@ -10,10 +10,8 @@
 
             if ($_SESSION['tou'] == 'Administrateur') {
                 ?>
-
                 <td><a type='button' class='btn btn-primary' href='form_add_service.php?action=modify&idService=<?php echo $value["idService"];?>'>Modifier</a></td>";
                 <td><a type='button' class='btn btn-danger ' href='tableau_service.php?action=delete&idService=<?php echo $value["idService"];?>'>Supprimer</a></button></td>
-            
                 <?php
             }
 
