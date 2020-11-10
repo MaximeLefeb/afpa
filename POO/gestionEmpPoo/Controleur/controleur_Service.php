@@ -1,5 +1,6 @@
 <?php 
     include_once '../Service/service_Service.php';
+    include_once '../Presentation/presentation_Service.php';
 
     //*ADD SERV
     if (isset($_POST['add'])){
@@ -28,6 +29,12 @@
             service_Service::service_modifyServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
 
         }
+    }
+
+    //*SEARCH ALL SERVICE
+    function searchAllServ() :Array {
+        $dataServ = service_Service::service_searchAllServ();
+        return $dataServ;
     }
 
 ?>

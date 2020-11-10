@@ -12,7 +12,7 @@
             echo 'Cette adresse mail est déjà utilisé';
             showButton('../Presentation/formSignUp.php', '../Presentation/formLogin.php', 'Réessayer', 'Se connecter');
         } else {
-            Utilisateur_mysqli_DAO::AddUser($_POST['mail'], $_POST['pwd']);
+            service_Utilisateur::service_addUser($_POST['mail'], $_POST['pwd']);
             showButton('../Presentation/formSignUp.php','../Presentation/formLogin.php','Inscrire un nouvel utilisateur', 'Se connecter');
         }
     }
@@ -49,18 +49,17 @@
     }
 
     function checktypeOfUse() :Void {
+        //* VERIF ADMIN
         if ($_SESSION['tou'] == 'Administrateur') {
             echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en administrateur <br> ';
         } else {
             echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en utilisateur <br> ';
         }
+        //* AFFICHAGE BOUTTON
         showButton('../Presentation/formSignUp.php','../Divers/disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
+        echo " <hr> ";
+        showButton('../Presentation/tableau_employe.php','../Presentation/tableau_service.php','Voir la table employes', 'Voir la table service');
 
-        echo " <hr>
-            <div>
-                <h1>Accès tables</h1>".
-                showButton('../Presentation/tableau_employe.php','../Presentation/tableau_service.php','Voir la table employes', 'Voir la table service'); ."
-            </div>";
     }
 
     function checkAction() :Void {
@@ -90,7 +89,7 @@
         }
     }
 
-    function CheckParam() :void{
+    function CheckParam() :Void{
         if (!$_SESSION) {
             echo " <h1>Bonjour connecter vous pour accedez aux gestions des employes <br> 🤫 </h1> <hr> ";
             checkAction();

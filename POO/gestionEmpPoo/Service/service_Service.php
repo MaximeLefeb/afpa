@@ -18,5 +18,10 @@
             $ServiceModified->setIdService($idServ)->setService($serv)->setVille($ville);
             Service_mysqli_DAO::modifyServ($ServiceModified);
         }
+
+        public static function service_searchAllServ() :Array {
+            $dataServ = Service_mysqli_DAO::searchAllServ();
+            return $dataServ;
+        }
     }
 ?>

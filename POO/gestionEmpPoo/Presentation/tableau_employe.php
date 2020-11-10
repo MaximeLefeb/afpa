@@ -1,6 +1,6 @@
 <?php 
-    include_once '../Controleur/controleur_Employe.php';
     session_start();
+    include_once '../Controleur/controleur_Employe.php';
 
     if (!$_SESSION) {
         header('location: formLogin.php');
@@ -24,7 +24,7 @@
         <style>
             .isDisabled {
                 color          : currentColor;
-                cursor         : not-allowed;
+                cursor         : not-allowed !important;
                 opacity        : 0.5;
                 text-decoration: none;
             }
@@ -48,43 +48,12 @@
                                 <th scope="col">Commission</th>
                                 <th scope="col">Numéro de service</th>
                                 <th scope="col">Numéro de projet</th>
-                                <?php
-                                if ($_SESSION['tou'] == 'Administrateur') {
-                                    ?>
-
-                                    <th scope='col'>Modifier</th>
-                                    <th scope='col'>Supprimer</th>
-
-                                    <?php
-                                }
-                                ?>
+                                <?php ifAdmin("<th scope='col'>Modifier</th>", "<th scope='col'>Supprimer</th>"); ?>
                             </tr>
                         </thead>
                     
                         <tbody class="text-center">
-                            <?php
-                                $dbServ  = ConnectBdd();
-                                $dataEmp = Employe_mysqli_DAO::searchAllEmp();
-                                $i = 1;
-
-                                foreach ($dataEmp as $value) {
-                                    echo "<tr id=trNo-".$i.">";
-                                    foreach ($value as $v) {
-                                        echo "<td>$v</td>";
-                                    }
-                                    
-                                    if ($_SESSION['tou'] == 'Administrateur') {
-                                        ?>
-                                    
-                                        <td><a type='button' class='btn btn-primary' href='form_add_employe.PHP?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
-                                        <td><a type='button' class='btn btn-danger <?php disabled($value["id"]);?>' href='tableau_employe.php?action=delete&id=<?php echo $value["id"];?>'>Supprimer</a></button></td>
-                                    
-                                        <?php
-                                    }
-                                    echo"</tr>";
-                                    $i++;
-                                }                        
-                            ?>
+                            <?php printEmployeArray(); ?>
                         </tbody>
                     </table>
 

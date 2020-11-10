@@ -5,7 +5,7 @@
 
     class Employe_mysqli_DAO {
 
-        public static function searchAllEmp() :?Array {
+        public static function searchAllEmp() :Array {
             //* TRAITEMENT AJOUT
             $dbServ=ConnectBdd();
             $requestSelectEmp = $dbServ->prepare("SELECT * FROM  employes");
@@ -106,6 +106,23 @@
             $selectRequest->execute();
             $rs   = $selectRequest->get_result();
             $data = $rs->fetch_array(MYSQLI_ASSOC);
+
+            //* Close connection
+            $rs->free();
+            $dbServ->close();
+
+            return $data;
+        }
+
+        public static function selectSup() :Array {
+            //*CONNECT DB
+            $dbServ = ConnectBdd(); 
+
+            //*SEARCH REQUEST
+            $selectSupRequest = $dbServ->prepare("SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup");
+            $selectSupRequest->execute();
+            $rs   = $selectSupRequest->get_result();
+            $data = $rs->fetch_all(MYSQLI_ASSOC);
 
             //* Close connection
             $rs->free();

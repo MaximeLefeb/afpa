@@ -1,7 +1,8 @@
 <?php
     include_once '../Service/service_Employe.php';
+    include_once '../Presentation/presentation_Employe.php';
 
-    //*ADD SERV
+    //*ADD EMP
     if (isset($_POST['add'])) {
         if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
             isset($_POST['sup']) && !empty($_POST['sup']) && isset($_POST['embauche']) && !empty($_POST['embauche']) && isset($_POST['sal']) && !empty($_POST['sal']) &&
@@ -12,7 +13,7 @@
         }
     }
 
-    //*DELETE SERV
+    //*DELETE EMP
     if ($_GET && $_GET["action"]=="delete") {   
         if (!empty($_GET['id'])) {
             
@@ -21,7 +22,7 @@
         }
     }
 
-    //*MODIFY SERV
+    //*MODIFY EMP
     if (isset($_POST['modify'])) { 
         if (isset($_POST['id']) && !empty($_POST['id'])) {
             if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['prenom']) && !empty($_POST['prenom']) && isset($_POST['emploi']) && !empty($_POST['emploi']) && 
@@ -35,19 +36,25 @@
     }
 
     //*DISABLED DELETE BUTTON
-    function disabled($valueID) :Void {
-        //TODO TRANSFORM REQUEST IN POO
-        $dbServ = ConnectBdd();
-        $noSup = "SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup";
-        $SqlRequest=mysqli_query($dbServ, $noSup);
+    function disabled($valueID) :?Bool{
+        $data = service_Employe::service_selectSup();
 
-        foreach ($SqlRequest as $sup) {
+        foreach ($data as $sup) {
             foreach ($sup as $nbSup) {
                 if ($valueID == $nbSup) {
-                    echo 'isDisabled';
+                    return true;
                 }
-            }
-        }
+            } 
+        } 
+
+        return null;
+
+    }
+
+    //*SEARCH ALL EMPLOYE
+    function searchAllEMp() :Array {
+        $data = service_Employe::service_searchAllEmp();
+        return $data;
     }
 
 ?>

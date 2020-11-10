@@ -19,6 +19,10 @@
             $data = Utilisateur_mysqli_DAO::searchUser($mail);
             return $data;
         }
+
+        public static function service_addUser(String $mail, String $pwd) :Void {
+            Utilisateur_mysqli_DAO::AddUser($mail, $pwd);
+        }
         
     }
 

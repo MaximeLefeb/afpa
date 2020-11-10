@@ -6,7 +6,7 @@
     }
 
     include_once '../Controleur/controleur_Service.php';
-    
+    include_once '../Controleur/controleur_Employe.php';
 ?> 
 
 <!DOCTYPE html>
@@ -40,47 +40,20 @@
                                     <th scope="col">idService</th>
                                     <th scope="col">Service</th>
                                     <th scope="col">Ville</th>
-                                    <?php 
-                                    if ($_SESSION['tou'] == 'Administrateur') {
-                                        ?>
-                                        <th scope="col">Modification</th>
-                                        <th scope="col">Suppression</th>
-                                        <?php
-                                    }
-                                    ?>
+                                    <?php ifAdmin("<th scope='col'>Modification</th>", "<th scope='col'>Suppression</th>"); ?>
                                 </tr>
                             </thead>
                         
                             <tbody class="text-center">
-                                <?php
-                                    $dataServ = Service_mysqli_DAO::searchAllServ();
-                                    $i = 1;
-                                    foreach ($dataServ as $key => $value) {
-                                        echo "<tr id=trNo-".$i.">";
-                                        foreach ($value as $k => $v) {
-                                            echo "<td>$v</td>";
-                                        }
-                                        
-                                        if ($_SESSION['tou'] == 'Administrateur') {
-                                            ?>
-                                        
-                                            <td><a type='button' class='btn btn-primary' href='form_add_service.php?action=modify&idService=<?php echo $value["idService"];?>'>Modifier</a></td>";
-                                            <td><a type='button' class='btn btn-danger ' href='tableau_service.php?action=delete&idService=<?php echo $value["idService"];?>'>Supprimer</a></button></td>
-                                        
-                                            <?php
-                                        }
-                                    
-                                        echo"</tr>";
-                                        $i++;
-                                    }                        
-                                ?>
+                                <?php printServiceArray(); ?>
                             </tbody>
                         </table>
+
                         <a href="form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un service</button></a>
                         <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
-                    </div><?php
-                  
-                ?><div class="col-sm-1"></div>
+
+                    </div>
+                <div class="col-sm-1"></div>
             </div>
         </div>
     </body>

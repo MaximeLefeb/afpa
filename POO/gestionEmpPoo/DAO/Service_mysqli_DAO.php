@@ -66,7 +66,7 @@
             $dbServ->close();
         }
 
-        public static function searchAllServ() :?Array {
+        public static function searchAllServ() :Array {
             //* CONNECT DB
             $dbServ=ConnectBdd();
 
