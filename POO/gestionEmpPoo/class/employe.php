@@ -44,7 +44,7 @@
             return $this;
         }
         //* ---------------------------SUPERIEUR------------------------
-        public function getSup() :int{
+        public function getSup() :?int{
             return $this->sup;
         }
         public function setSup($newSup) :self{
@@ -52,8 +52,8 @@
             return $this;
         }
         //* ---------------------------EMAUCHE---------------------------
-        public function getEmb() :DateTime {
-            return $this->emb;
+        public function getEmb() :String {
+            return $this->emp;
         }
         public function setEmb($newEmb) :self{
             $dateEmb = new datetime($newEmb);
@@ -69,7 +69,7 @@
             return $this;
         }
         //* ---------------------------COMM------------------------------
-        public function getComm() :int{
+        public function getComm() :?int{
             return $this->comm;
         }   
         public function setComm($newComm) :self{

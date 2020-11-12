@@ -45,7 +45,7 @@
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
-                            <form action="tableau_service.php" method="POST">
+                            <form action="../Controleur/controleur_Service.php" method="POST">
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Id de service</label>
@@ -69,7 +69,7 @@
                     }
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify") {   
-                        $data = Service_mysqli_DAO::searchServ($_GET['idService']);
+                        $data = service_Service::service_searchServ($_GET['idService']);
                         $idServ = $data["idService"];
                         $Serv   = $data["Service"];
                         $ville  = $data["Ville"];

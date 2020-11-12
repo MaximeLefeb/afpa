@@ -6,7 +6,7 @@
     }
 
     include_once '../Divers/ConnectBdd.php';
-    include_once '../DAO/Employe_mysqli_DAO.php';
+    include_once '../Service/service_Employe.php';
 
 ?>
 
@@ -46,7 +46,7 @@
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
-                            <form action="tableau_employe.php" method="post">
+                            <form action="../Controleur/controleur_Employe.php" method="post">
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nom</label>
@@ -129,7 +129,7 @@
                     }
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify") {
-                        $data   = Employe_mysqli_DAO::searchEmp($_GET['id']);
+                        $data   = service_Employe::service_searchEmp($_GET['id']);
                         $id     = $data["id"];
                         $nom    = $data["Nom"];
                         $prenom = $data["Prenom"];
@@ -150,7 +150,7 @@
 
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
-                            <form action="tableau_employe.php" method="post">
+                            <form action="../Controleur/controleur_Employe.php" method="post">
                                 <div class="form-group">
                                     <label for="idEmp">Numéro d'employes</label>
                                     <input type="text" class="form-control" name="id" value="<?php echo $id ?>" readonly>

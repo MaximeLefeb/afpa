@@ -1,6 +1,5 @@
 <?php
     include_once '../Service/service_Employe.php';
-    include_once '../Presentation/presentation_Employe.php';
 
     //*ADD EMP
     if (isset($_POST['add'])) {
@@ -9,7 +8,7 @@
             isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
             service_Employe::service_addEmp($_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-
+            require_once '../Presentation/presentation_Employe.php';
         }
     }
 
@@ -18,7 +17,7 @@
         if (!empty($_GET['id'])) {
             
             service_Employe::service_delEmp(); 
-        
+            require_once '../Presentation/presentation_Employe.php';
         }
     }
 
@@ -30,7 +29,7 @@
                 isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
                 service_Employe::service_modifyEmp($_POST['id'],$_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-            
+                require_once '../Presentation/presentation_Employe.php';
             }
         }   
     }
@@ -65,21 +64,21 @@
     }
 
     //*PRINT ARRAY
-    function printEmployeArray() :Void{
+    function printEmployeArray() :Void {
         $dataEmp = searchAllEmp();
         $i = 1;
-        foreach ($dataEmp as $value) {
-            printTableRow($i);
-            foreach ($value as $v) {
-                printTableContent($v);
-            }
-
-            if (ifAdmin()) {
-                printArrayButton($value["id"]);
-            }
-            echo"</tr>";
+        foreach ($dataEmp as $key => $value) {
+            echo "<tr>";
+                printTd($value);
+                printArrayButton($value->getId());
+            echo "</tr>";
             $i++;
         }
+    }
+
+    //*ARRAY EMPLOYE
+    if ($_GET && $_GET["action"]=="showEmp") {
+        require_once '../Presentation/presentation_Employe.php';
     }
 
 ?>

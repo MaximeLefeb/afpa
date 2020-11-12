@@ -50,9 +50,10 @@
         }
         //* AFFICHAGE BOUTTON
         showButton('../Presentation/formSignUp.php','../Divers/disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
-        echo " <hr> ";
-        showButton('../Presentation/tableau_employe.php','../Presentation/tableau_service.php','Voir la table employes', 'Voir la table service');
-
+        echo " 
+            <hr> 
+            <a type='button' class='btn btn-primary' href='../Controleur/controleur_Employe.php?action=showEmp'>Voir table employés</a>   
+            <a type='button' class='btn btn-primary' href='../Controleur/controleur_Service.php?action=showEmp'>Voir table employés</a>";
     }
 
     function checkAction() :Void {

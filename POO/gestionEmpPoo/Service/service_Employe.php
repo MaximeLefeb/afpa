@@ -23,9 +23,22 @@
             return $data;
         }
 
+        public static function service_searchEmp(String $id) :?Array {
+            $data = Employe_mysqli_DAO::searchEmp($id);
+            return $data;
+        }
+
         public static function service_searchAllEmp() :Array {
             $data = Employe_mysqli_DAO::searchAllEmp();
-            return $data;
+            $dataObject = array();
+
+            foreach ($data as $value) {
+                $employe = new Employe();
+                $employe->setId($value["id"])->setNom($value["Nom"])->setPrenom($value["Prenom"])->setEmp($value["Emploi"])->setSup($value["Sup"])->setEmb($value["Embauche"])->setSal($value["Sal"])->setComm($value["Comm"])->setNoServ($value["NoService"])->setNoProj($value["NoProj"]);
+                array_push($dataObject, $employe);
+            }
+
+            return $dataObject;
         }
     }
 ?>

@@ -23,5 +23,10 @@
             $dataServ = Service_mysqli_DAO::searchAllServ();
             return $dataServ;
         }
+
+        public static function service_searchServ(Int $idServ) :?Array {
+            $data = Service_mysqli_DAO::searchServ($idServ);
+
+        }
     }
 ?>

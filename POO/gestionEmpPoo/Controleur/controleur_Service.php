@@ -1,6 +1,11 @@
 <?php 
+    session_start();
     include_once '../Service/service_Service.php';
-    include_once '../Presentation/presentation_Service.php';
+    
+    //*SI NON CONNECTÉ
+    if (!$_SESSION) {
+        header('location: formLogin.php');
+    }
 
     //*ADD SERV
     if (isset($_POST['add'])){
@@ -49,18 +54,15 @@
         $dataServ = searchAllServ();
         $i = 1;
         foreach ($dataServ as $key => $value) {
-            printServTableRow($i);
-            foreach ($value as $k => $v) {
-                printServTableContent($v);
-            }
-
-            if (ifAdmin()) {
-                printServArrayButton($value["idService"]);
-            }
-
-            echo"</tr>";
+            printServTableRow($i, $value);
             $i++;
         }
     }
+
+    //*ARRAY SERVICE
+    if ($_GET && $_GET["action"]=="showServ") {
+        require_once '../Presentation/presentation_Service.php';
+    }
+
 
 ?>
