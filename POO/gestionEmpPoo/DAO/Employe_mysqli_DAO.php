@@ -1,5 +1,4 @@
 <?php 
-
     include_once '../class/Employe.php';
     include_once '../Divers/ConnectBdd.php';
 
@@ -96,7 +95,7 @@
             $dbServ->close();
         }
 
-        public static function searchEmp(Int $id) :?Array{
+        public static function searchEmp(String $id) :?Array{
             //*CONNECT DB
             $dbServ = ConnectBdd();
 

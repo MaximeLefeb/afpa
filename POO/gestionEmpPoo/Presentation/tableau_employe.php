@@ -38,17 +38,7 @@
                     <table class="table table-striped table-dark">
                         <thead class="text-center">
                             <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prénom</th>
-                                <th scope="col">Emploi</th>
-                                <th scope="col">Supérieur</th>
-                                <th scope="col">Date d'embauche</th>
-                                <th scope="col">Salaire</th>
-                                <th scope="col">Commission</th>
-                                <th scope="col">Numéro de service</th>
-                                <th scope="col">Numéro de projet</th>
-                                <?php ifAdmin("<th scope='col'>Modifier</th>", "<th scope='col'>Supprimer</th>"); ?>
+                                <?php printTableHeader(); ?>
                             </tr>
                         </thead>
                     

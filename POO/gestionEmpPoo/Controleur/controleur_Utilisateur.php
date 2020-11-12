@@ -1,5 +1,6 @@
 <?php 
     include_once '../Service/service_Utilisateur.php';
+    include_once '../Presentation/presentation_Utilisateur.php';
 
     function userExist(String $verifMail) :Void {
         //* DB connexion{
@@ -38,14 +39,6 @@
                 echo '<h2> Mot de passe incorrect </h2>';
             }
         }
-    }
-
-    function showButton(String $url1, String $url2, String $nameButton1, String $nameButton2) :Void {
-        echo "
-            <br>
-                <a type='button' class='btn btn-primary' href='$url1'>$nameButton1</a>
-                <a type='button' class='btn btn-primary' href='$url2'>$nameButton2</a>
-            <br>";
     }
 
     function checktypeOfUse() :Void {

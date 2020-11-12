@@ -57,4 +57,29 @@
         return $data;
     }
 
+    //*VERIF SI ADMIN
+    function ifAdmin() :Bool {
+        if ($_SESSION['tou'] == 'Administrateur') {
+            return true;
+        }
+    }
+
+    //*PRINT ARRAY
+    function printEmployeArray() :Void{
+        $dataEmp = searchAllEmp();
+        $i = 1;
+        foreach ($dataEmp as $value) {
+            printTableRow($i);
+            foreach ($value as $v) {
+                printTableContent($v);
+            }
+
+            if (ifAdmin()) {
+                printArrayButton($value["id"]);
+            }
+            echo"</tr>";
+            $i++;
+        }
+    }
+
 ?>

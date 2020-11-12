@@ -6,7 +6,6 @@
     }
 
     include_once '../Controleur/controleur_Service.php';
-    include_once '../Controleur/controleur_Employe.php';
 ?> 
 
 <!DOCTYPE html>
@@ -32,28 +31,24 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-1"></div>
-                    <div class="col-sm-12 mb-5">
-                        <table class="table table-striped table-dark">
-                            <thead class="text-center">
-                                <tr>
-                                    <th scope="col">idService</th>
-                                    <th scope="col">Service</th>
-                                    <th scope="col">Ville</th>
-                                    <?php ifAdmin("<th scope='col'>Modification</th>", "<th scope='col'>Suppression</th>"); ?>
-                                </tr>
-                            </thead>
-                        
-                            <tbody class="text-center">
-                                <?php printServiceArray(); ?>
-                            </tbody>
-                        </table>
+                <div class="col-sm-12">
 
-                        <a href="form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un service</button></a>
-                        <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
+                    <table class="table table-striped table-dark">
+                        <thead class="text-center">
+                            <tr>
+                                <?php printServTableHeader(); ?>
+                            </tr>
+                        </thead>
+                    
+                        <tbody class="text-center">
+                            <?php printServiceArray(); ?>
+                        </tbody>
+                    </table>
 
-                    </div>
-                <div class="col-sm-1"></div>
+                    <a href="form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un service</button></a>
+                    <a href="tableau_employe.php"><button type="submit" class="btn btn-primary">Voir la table employes</button></a>
+
+                </div>
             </div>
         </div>
     </body>

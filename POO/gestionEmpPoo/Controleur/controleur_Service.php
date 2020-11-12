@@ -37,4 +37,30 @@
         return $dataServ;
     }
 
+    //*VERIF SI ADMIN
+    function ifAdmin() :Bool {
+        if ($_SESSION['tou'] == 'Administrateur') {
+            return true;
+        }
+    }
+
+    //*PRINT SERVICE ARRAY
+    function printServiceArray() :Void {
+        $dataServ = searchAllServ();
+        $i = 1;
+        foreach ($dataServ as $key => $value) {
+            printServTableRow($i);
+            foreach ($value as $k => $v) {
+                printServTableContent($v);
+            }
+
+            if (ifAdmin()) {
+                printServArrayButton($value["idService"]);
+            }
+
+            echo"</tr>";
+            $i++;
+        }
+    }
+
 ?>

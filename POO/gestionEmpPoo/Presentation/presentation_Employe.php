@@ -1,28 +1,33 @@
 <?php 
-    function printEmployeArray() :Void{
-        $dataEmp = searchAllEmp();
-        $i = 1;
-        foreach ($dataEmp as $value) {
-            echo "<tr id=trNo-".$i.">";
-            foreach ($value as $v) {
-                echo "<td>$v</td>";
-            }
-
-            if ($_SESSION['tou'] == 'Administrateur') {
-                ?>
-                <td><a type='button' class='btn btn-primary' href='form_add_employe.PHP?action=modify&id=<?php echo $value["id"];?>'>Modifier</a></td>";
-                <td><a type='button' class='btn btn-danger <?php if(disabled($value["id"])){ echo "isDisabled'";} if(!disabled($value["id"])){ ?>href='tableau_employe.php?action=delete&id=<?php echo $value["id"];}?>'>Supprimer</a></button></td>
-                <?php
-            }
-            echo"</tr>";
-            $i++;
-        }
+    //*PRINT ARRAYBUTTON
+    function printArrayButton(Int $id) :Void {
+        echo "<td><a type='button' class='btn btn-primary' href='form_add_employe.PHP?action=modify&id=$id;'>Modifier</a></td>";
+        echo "<td>"; if(!disabled($id)) {  echo "<a type='button' class='btn btn-danger' href='tableau_employe.php?action=delete&id=$id'>Supprimer</a></button>"; } echo "<td>";
     }
 
-    function ifAdmin(String $printContant1, String $printContant2) :Void {
-        if ($_SESSION['tou'] == 'Administrateur') {
-            echo $printContant1;
-            echo $printContant2;
-        }
+    //*PRINT ROWCONTENT
+    function printTableContent($v) :Void {
+        echo "<td>$v</td>";
+    }
+
+    //*PRINT ARRAY ROW
+    function printTableRow(Int $i) :Void {
+        echo "<tr id=trNo-$i>";
+    }
+
+    //*PRINT TH
+    function printTableHeader() : Void { 
+        ?>
+        <th scope="col">id</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Emploi</th>
+        <th scope="col">Supérieur</th>
+        <th scope="col">Date d'embauche</th>
+        <th scope="col">Salaire</th>
+        <th scope="col">Commission</th>
+        <th scope="col">Numéro de service</th>
+        <th scope="col">Numéro de projet</th>
+        <?php if(ifAdmin()) { echo "<th scope='col'>Modifier</th> <th scope='col'>Supprimer</th>"; }
     }
 ?>
