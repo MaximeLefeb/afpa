@@ -1,8 +1,18 @@
 <?php 
-    session_start();
+    //*DISABLED DELETE BUTTON
+    function disabled($valueID) :?Bool{
+        $data = service_Employe::service_selectSup();
 
-    if (!$_SESSION) {
-        header('location: formLogin.php');
+        foreach ($data as $sup) {
+            foreach ($sup as $nbSup) {
+                if ($valueID == $nbSup) {
+                    return true;
+                }
+            } 
+        } 
+
+        return null;
+
     }
 
     //*PRINT TD 
@@ -12,7 +22,7 @@
             <td>' . $value->getPrenom() . '</td>
             <td>' . $value->getEmp() . '</td>
             <td>' . $value->getSup() . '</td>
-            <td>' . $value->getEmb() . '</td>
+            <td>' . $value->datetimeToString($value->getEmb()) . '</td>
             <td>' . $value->getSal() . '</td>
             <td>' . $value->getComm() . '</td>
             <td>' . $value->getNoServ() . '</td>
@@ -39,6 +49,33 @@
         <th scope="col">Numéro de service</th>
         <th scope="col">Numéro de projet</th>
         <?php if(ifAdmin()) { echo "<th scope='col'>Modifier</th> <th scope='col'>Supprimer</th>"; }
+    }
+
+    //*SELECTED 
+    function select($verified, $verifier) :Void {
+        if ($verified == $verifier) {
+            echo 'selected ';
+        }
+    }
+
+    //*PRINT ARRAY
+    function printEmployeArray() :Void {
+        $dataEmp = searchAllEmp();
+        $i = 1;
+        foreach ($dataEmp as $key => $value) {
+            echo "<tr id='trNo$i'>";
+                printTd($value);
+                printArrayButton($value->getId());
+            echo "</tr>";
+            $i++;
+        }
+    }
+
+    //*VERIF SI ADMIN
+    function ifAdmin() :Bool {
+        if ($_SESSION['tou'] == 'Administrateur') {
+            return true;
+        }
     }
 
 ?>

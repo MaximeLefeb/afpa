@@ -37,7 +37,7 @@
     </head>
 
     <body>
-        <div class="container"></div>
+        <div class="container">
             <div class="row">
                 <div class="col-sm-4"></div>
                     <?php 
@@ -129,17 +129,17 @@
                     }
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify") {
-                        $data   = service_Employe::service_searchEmp($_GET['id']);
-                        $id     = $data["id"];
-                        $nom    = $data["Nom"];
-                        $prenom = $data["Prenom"];
-                        $emp    = $data["Emploi"];
-                        $sup    = $data["Sup"];
-                        $emb    = $data["Embauche"];
-                        $sal    = $data["Sal"];
-                        $comm   = $data["Comm"];
-                        $noServ = $data["NoService"];
-                        $noProj = $data["NoProj"];
+                        $Employe   = service_Employe::service_searchEmp($_GET['id']);
+                        $id     = $Employe->getId();
+                        $nom    = $Employe->getNom();
+                        $prenom = $Employe->getPrenom();
+                        $emp    = $Employe->getEmp();
+                        $sup    = $Employe->getSup();
+                        $emb    = $Employe->datetimeToString($Employe->getEmb());
+                        $sal    = $Employe->getSal();
+                        $comm   = $Employe->getComm();
+                        $noServ = $Employe->getNoServ();
+                        $noProj = $Employe->getNoProj();
 
                         function select($verified, $verifier){
                             if ($verified == $verifier) {

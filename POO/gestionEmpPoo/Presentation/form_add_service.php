@@ -69,14 +69,14 @@
                     }
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify") {   
-                        $data = service_Service::service_searchServ($_GET['idService']);
-                        $idServ = $data["idService"];
-                        $Serv   = $data["Service"];
-                        $ville  = $data["Ville"];
+                        $Service = service_Service::service_searchServ($_GET['idService']);
+                        $idServ = $Service->getIdService();
+                        $Serv   = $Service->getService();
+                        $ville  = $Service->getVille();
                         ?>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
-                            <form action="tableau_service.php" method="POST">
+                            <form action="../Controleur/controleur_Service.php" method="POST">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Numéro d'employes</label>
                                     <input type="text" class="form-control" name="idServ" value="<?php echo $idServ ?>" readonly>

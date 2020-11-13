@@ -13,7 +13,7 @@
             return $this;
         }
         //* ---------------------------SERVICE---------------------------------
-        public function getSerivce() :string{
+        public function getService() :string{
             return $this->service;
         }
         public function setService($newService) :self{

@@ -8,27 +8,37 @@
         <?php if(ifAdmin()) { echo "<th scope='col'>Modifier</th> <th scope='col'>Supprimer</th>"; }
     }
 
-    //*PRINT ARRAY ROW
-    function printServTableRow(Int $i, Array $value) :Void {
-        echo "<tr id=trNo-$i>";
-        foreach ($value as $k => $v) {
-            printServTableContent($v);
+    //*PRINT SERVICE ARRAY
+    function printServiceArray() :Void {
+        $dataServ = searchAllServ();
+        $i = 1;
+        foreach ($dataServ as $key => $value) {
+            echo "<tr id='trNo$i'>";
+                printTd($value);
+                printServArrayButton($value->getIdService());
+            echo "</tr>";
+            $i++;
         }
-        if (ifAdmin()) {
-            printServArrayButton($value["idService"]);
-        }
-        echo"</tr>";
     }
 
-    //*PRINT ROWCONTENT
-    function printServTableContent($v) :Void {
-        echo "<td>$v</td>";
+    //*PRINT TD
+    function printTd(Service $value) :Void {
+       echo '<td>' . $value->getIdService() . '</td>
+            <td>' . $value->getService() . '</td>
+            <td>' . $value->getVille() . '</td>';
+    }
+
+    //*VERIF SI ADMIN
+    function ifAdmin() :Bool {
+        if ($_SESSION['tou'] == 'Administrateur') {
+            return true;
+        }
     }
 
     //*PRINT BUTTONS
     function printServArrayButton(Int $idServ) :Void {
-        echo "<td><a type='button' class='btn btn-primary' href='form_add_service.PHP?action=modify&idService=$idServ;'>Modifier</a></td>";
-        echo "<td><a type='button' class='btn btn-danger' href='tableau_service.php?action=delete&idService=$idServ'>Supprimer</a></button><td>";
+        echo "<td><a type='button' class='btn btn-primary' href='../Presentation/form_add_service.PHP?action=modify&idService=$idServ;'>Modifier</a></td>";
+        echo "<td><a type='button' class='btn btn-danger' href='../Controleur/controleur_Service.php?action=delete&idService=$idServ'>Supprimer</a></button><td>";
     }
 ?>
 
@@ -69,8 +79,8 @@
                         </tbody>
                     </table>
 
-                    <a href="form_add_employe.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
-                    <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
+                    <a href="../Presentation/form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
+                    <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table Employes</button></a>
 
                 </div>
             </div>

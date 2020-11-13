@@ -52,8 +52,8 @@
             return $this;
         }
         //* ---------------------------EMAUCHE---------------------------
-        public function getEmb() :String {
-            return $this->emp;
+        public function getEmb() :?DateTime {
+            return $this->emb;
         }
         public function setEmb($newEmb) :self{
             $dateEmb = new datetime($newEmb);
@@ -85,12 +85,17 @@
             return $this;
         }
         //* ---------------------------NoPROJ----------------------------
-        public function getNoProj() :int{
+        public function getNoProj() :?int{
             return $this->noProj;
         }   
         public function setNoProj($newNoProj) :self{
             $this->noProj = $newNoProj;
             return $this;
+        }
+
+        //*Convert datetime -> String
+        public function datetimeToString($datetime) :?String {
+            return $dateToString = $datetime->format('Y-m-d');
         }
 
         public function __toString() :string{

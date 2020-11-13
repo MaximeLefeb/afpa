@@ -1,5 +1,4 @@
 <?php 
-    include_once '../Controleur/controleur_Service.php';
     include_once '../DAO/Service_mysqli_DAO.php';
 
     class service_Service {
@@ -21,11 +20,23 @@
 
         public static function service_searchAllServ() :Array {
             $dataServ = Service_mysqli_DAO::searchAllServ();
-            return $dataServ;
+            $dataObject = array();
+
+            foreach ($dataServ as $value) {
+                $Serv = new Service();
+                $Serv->setIdService($value["idService"])->setService($value["Service"])->setVille($value["Ville"]);
+                array_push($dataObject, $Serv);
+            }
+
+            return $dataObject;
         }
 
-        public static function service_searchServ(Int $idServ) :?Array {
+        public static function service_searchServ(String $idServ) :?Service {
             $data = Service_mysqli_DAO::searchServ($idServ);
+            $Serv = new Service();
+            $Serv->setIdService($data["idService"])->setService($data["Service"])->setVille($data["Ville"]);
+
+            return $Serv;
 
         }
     }

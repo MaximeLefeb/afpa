@@ -42,7 +42,7 @@
             $prenom = $EmployeModif->getPrenom();
             $emp    = $EmployeModif->getEmp();
             $sup    = $EmployeModif->getSup();
-            $emb    = $EmployeModif->getEmb();
+            $emb    = $EmployeModif->datetimeToString($EmployeModif->getEmb());
             $sal    = $EmployeModif->getSal();
             $comm   = $EmployeModif->getComm();
             $noServ = $EmployeModif->getNoServ();
@@ -53,7 +53,7 @@
             
             //*REQUETE SQL MODIFY
             $ModiFyRequest = $dbServ->prepare("UPDATE `employes` SET Nom=UPPER(?), Prenom=UPPER(?), Emploi=?, Sup=?, Embauche=?, Sal=?, Comm=?, NoService=?, NoProj=? WHERE id = ?");
-            $ModiFyRequest->bind_param("sssisiiiii", $nom, $prenom, $emp, $sup, $embFormat, $sal, $comm, $noServ, $noProj, $id);
+            $ModiFyRequest->bind_param("sssisiiiii", $nom, $prenom, $emp, $sup, $emb, $sal, $comm, $noServ, $noProj, $id);
 
             //*VERIF REQUETE SQL
             if ($ModiFyRequest->execute()) {
@@ -70,7 +70,7 @@
             $prenom = $EmployeAdd->getPrenom();
             $emp    = $EmployeAdd->getEmp();
             $sup    = $EmployeAdd->getSup();
-            $emb    = $EmployeAdd->getEmb();
+            $emb    = $EmployeAdd->datetimeToString($EmployeAdd->getEmb());
             $sal    = $EmployeAdd->getSal();
             $comm   = $EmployeAdd->getComm();
             $noServ = $EmployeAdd->getNoServ();

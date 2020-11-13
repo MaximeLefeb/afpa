@@ -6,7 +6,7 @@
 
         public static function addServ(Service $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();
-            $nomServ   = $ServiceAdd->getSerivce();
+            $nomServ   = $ServiceAdd->getService();
             $villeServ = $ServiceAdd->getVille();
 
             //* TRAITEMENT AJOUT
@@ -49,7 +49,7 @@
             $dbServ=ConnectBdd();
 
             $idServ    = $ServiceModif->getIdService();
-            $nomServ   = $ServiceModif->getSerivce();
+            $nomServ   = $ServiceModif->getService();
             $villeServ = $ServiceModif->getVille();
             
             //*REQUETE SQL MODIFY
@@ -83,7 +83,7 @@
             return $dataServ;
         }
         
-        public static function searchServ(Int $idServ) :?Array {
+        public static function searchServ(String $idServ) :?Array {
             //* CONNECT DB
             $dbServ = ConnectBdd();
 

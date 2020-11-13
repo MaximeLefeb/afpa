@@ -1,5 +1,11 @@
 <?php
     include_once '../Service/service_Employe.php';
+    session_start();
+
+    //*SI NON CONNECTÉ
+    if (!$_SESSION) {
+        header('location: ../Presentation/formLogin.php');
+    }
 
     //*ADD EMP
     if (isset($_POST['add'])) {
@@ -34,51 +40,20 @@
         }   
     }
 
-    //*DISABLED DELETE BUTTON
-    function disabled($valueID) :?Bool{
-        $data = service_Employe::service_selectSup();
-
-        foreach ($data as $sup) {
-            foreach ($sup as $nbSup) {
-                if ($valueID == $nbSup) {
-                    return true;
-                }
-            } 
-        } 
-
-        return null;
-
-    }
-
     //*SEARCH ALL EMPLOYE
     function searchAllEMp() :Array {
         $data = service_Employe::service_searchAllEmp();
         return $data;
     }
 
-    //*VERIF SI ADMIN
-    function ifAdmin() :Bool {
-        if ($_SESSION['tou'] == 'Administrateur') {
-            return true;
-        }
-    }
-
-    //*PRINT ARRAY
-    function printEmployeArray() :Void {
-        $dataEmp = searchAllEmp();
-        $i = 1;
-        foreach ($dataEmp as $key => $value) {
-            echo "<tr>";
-                printTd($value);
-                printArrayButton($value->getId());
-            echo "</tr>";
-            $i++;
-        }
+    //*SEARCH ONE EMPLOYE
+    function searchOneEmp(String $id) :Employe {
+        $Employe = service_Employe::service_searchEmp($id);
+        return $Employe;
     }
 
     //*ARRAY EMPLOYE
     if ($_GET && $_GET["action"]=="showEmp") {
         require_once '../Presentation/presentation_Employe.php';
     }
-
 ?>

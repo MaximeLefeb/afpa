@@ -22,26 +22,55 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4 text-center">
-                    <h1>Formulaire d'inscription</h1>
-                    <form action="../Divers/Acceuil.php" method="POST">
+                <?php 
+                if ($_GET['action'] == "register") {
+                    ?>
+                    <div class="col-sm-4 text-center">
+                        <h1>Formulaire d'inscription</h1>
+                        <form action="../Divers/Acceuil.php" method="POST">
 
-                        <!-- MAIL SIGN UP -->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Mail</label>
-                            <input type="mail" class="form-control" name="mail" required>
-                        </div>
+                            <!-- MAIL SIGN UP -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mail</label>
+                                <input type="mail" class="form-control" name="mail" required>
+                            </div>
 
-                        <!-- MOT DE PASSE SIGN UP -->
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Mot de passe</label>
-                            <input type="password" class="form-control" name="pwd" required>
-                        </div>
+                            <!-- MOT DE PASSE SIGN UP -->
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mot de passe</label>
+                                <input type="password" class="form-control" name="pwd" required>
+                            </div>
 
-                        <input name="add" type="submit" class="btn btn-primary">
+                            <input name="add" type="submit" class="btn btn-primary">
 
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                    <?php
+                } else if (isset($_GET) && $_GET['action'] == "login") {
+                    ?>
+                    <div class="col-sm-4">
+                        <h1 class="text-center">Formulaire connexion</h1>
+                        <form action="../Divers/Acceuil.php" method="POST">
+
+                            <!-- MAIL LOGIN -->
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mail</label>
+                                <input type="mail" class="form-control" name="mailLogin">
+                            </div>
+
+                            <!-- MOT DE PASSE LOGIN -->
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mot de passe :</label>
+                                <input type="password" class="form-control" name="pwdLogin">
+                            </div>
+
+                            <input name="connect" type="submit" class="btn btn-primary">
+
+                        </form>
+                    </div>
+                <?php
+                }
+                ?>
                 <div class="col-sm-4"></div>
             </div>
         </div>

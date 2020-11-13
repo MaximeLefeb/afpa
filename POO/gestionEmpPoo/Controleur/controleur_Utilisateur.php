@@ -11,10 +11,10 @@
 
         if ($exist) {
             echo 'Cette adresse mail est déjà utilisé';
-            showButton('../Presentation/formSignUp.php', '../Presentation/formLogin.php', 'Réessayer', 'Se connecter');
+            showButton('../Presentation/formSignUp.php?action=register', '../Presentation/formSignUp.php?action=login', 'Réessayer', 'Se connecter');
         } else {
             service_Utilisateur::service_addUser($_POST['mail'], $_POST['pwd']);
-            showButton('../Presentation/formSignUp.php','../Presentation/formLogin.php','Inscrire un nouvel utilisateur', 'Se connecter');
+            showButton('../Presentation/formSignUp.php?action=register','../Presentation/formSignUp.php?action=login','Inscrire un nouvel utilisateur', 'Se connecter');
         }
     }
 
@@ -25,7 +25,7 @@
         //* Si identifiant pas trouvé
         if (!$data) {
             echo '<h2> Mot de passe ou identifiant incorrect </h2>';
-            showButton('../Presentation/formLogin.php', '../Presentation/formSignUp.php', 'Réessayer', 'S\'inscrire');
+            showButton('../Presentation/formSignUp.php?action=login', '../Presentation/formSignUp.php?action=register', 'Réessayer', 'S\'inscrire');
         } else {
             //* si mot de passe correct
             if ($isPasswordCorrect) {
@@ -49,11 +49,11 @@
             echo 'Bienvenue, Vous êtes connecté via ' . $_SESSION['mail'] . ' en utilisateur <br> ';
         }
         //* AFFICHAGE BOUTTON
-        showButton('../Presentation/formSignUp.php','../Divers/disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
+        showButton('../Presentation/formSignUp.php?action=register','../Divers/disconnect.php','Inscrire un nouvel utilisateur', 'Se déconnecter');
         echo " 
             <hr> 
             <a type='button' class='btn btn-primary' href='../Controleur/controleur_Employe.php?action=showEmp'>Voir table employés</a>   
-            <a type='button' class='btn btn-primary' href='../Controleur/controleur_Service.php?action=showEmp'>Voir table employés</a>";
+            <a type='button' class='btn btn-primary' href='../Controleur/controleur_Service.php?action=showServ'>Voir table service</a>";
     }
 
     function checkAction() :Void {
@@ -78,7 +78,7 @@
         //* AFFICHAGE D'ACCEUIL
         } else {
 
-            showButton('../Presentation/formSignUp.php','../Presentation/formLogin.php','S\'inscrire', 'Se connecter');
+            showButton('../Presentation/formSignUp.php?action=register','../Presentation/formSignUp.php?action=login','S\'inscrire', 'Se connecter');
 
         }
     }
