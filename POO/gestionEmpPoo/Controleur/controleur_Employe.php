@@ -1,5 +1,6 @@
 <?php
     include_once '../Service/service_Employe.php';
+    include_once '../Presentation/presentation_Employe.php';
     session_start();
 
     //*SI NON CONNECTÉ
@@ -40,6 +41,11 @@
         }   
     }
 
+    //*ARRAY EMPLOYE
+    if ($_GET && $_GET["action"]=="showEmp") {
+        afficherPageEmploye(searchAllEMp());
+    }
+
     //*SEARCH ALL EMPLOYE
     function searchAllEMp() :Array {
         $data = service_Employe::service_searchAllEmp();
@@ -52,8 +58,11 @@
         return $Employe;
     }
 
-    //*ARRAY EMPLOYE
-    if ($_GET && $_GET["action"]=="showEmp") {
-        require_once '../Presentation/presentation_Employe.php';
+    //*SELECTED PREREMPLIR FORMULAIRE 
+    function select($verified, $verifier) :Void {
+        if ($verified == $verifier) {
+            echo 'selected ';
+        }
     }
+    
 ?>

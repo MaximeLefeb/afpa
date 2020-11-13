@@ -1,5 +1,6 @@
 <?php 
     include_once '../Service/service_Service.php';
+    include_once '../Presentation/presentation_Service.php';
     session_start();
     
     //*SI NON CONNECTÉ
@@ -39,6 +40,11 @@
         }
     }
 
+    //*ARRAY SERVICE
+    if ($_GET && $_GET["action"]=="showServ") {
+        afficherPageService(searchAllServ());
+    }
+
     //*SEARCH ALL SERVICE
     function searchAllServ() :Array {
         $dataServ = service_Service::service_searchAllServ();
@@ -49,10 +55,5 @@
     function searchOneEmp(String $idServ) :Service {
         $Serv = service_Service::service_searchServ($idServ);
         return $Serv;
-    }
-
-    //*ARRAY SERVICE
-    if ($_GET && $_GET["action"]=="showServ") {
-        require_once '../Presentation/presentation_Service.php';
     }
 ?>
