@@ -31,7 +31,7 @@
 
     //*PRINT ARRAYBUTONS
     function printArrayButton(Int $id) :Void {
-        echo "<td><a type='button' class='btn btn-primary' href='../Presentation/form_add_employe.PHP?action=modify&id=$id;'>Modifier</a></td>";
+        echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Employe.php?action=modify&id=$id;'>Modifier</a></td>";
         echo "<td>"; if(!disabled($id)) {  echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Employe.php?action=delete&id=$id'>Supprimer</a></button>"; } echo "<td>";
     }
 
@@ -57,7 +57,9 @@
         foreach ($dataEmp as $key => $value) {
             echo "<tr id='trNo$i'>";
                 printTd($value);
-                printArrayButton($value->getId());
+                if(ifAdmin()) {
+                    printArrayButton($value->getId());
+                }
             echo "</tr>";
             $i++;
         }
@@ -110,7 +112,7 @@
                                 </tbody>
                             </table>
 
-                            <a href="../Presentation/form_add_employe.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
+                            <a href="../Controleur/controleur_form_Employe.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
                             <a href="../Controleur/controleur_Service.php?action=showServ"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
 
                         </div>

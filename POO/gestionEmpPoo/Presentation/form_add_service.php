@@ -1,14 +1,3 @@
-<?php 
-    session_start();
-
-    if (!$_SESSION) {
-        header('location: formLogin.php');
-    }
-
-    include_once '../Divers/ConnectBdd.php';
-    include_once '../Service/service_Service.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -21,12 +10,6 @@
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
             crossorigin="anonymous">
-        <!-- JQUERY -->
-        <script
-            src         ="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin ="anonymous">
-        </script>
         <!-- CSS -->
         <style>
             body{
@@ -36,13 +19,13 @@
     </head>
 
     <body>
-        <div class="container"></div>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                    <?php 
-                    //* FORMULAIRE AJOUT 
-                    if($_GET["action"]=="ajouter") {   
-                        ?>
+        <?php 
+            //* FORMULAIRE AJOUT 
+            function afficherPageAjout() :Void {
+                ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
                             <form action="../Controleur/controleur_Service.php" method="POST">
@@ -65,15 +48,17 @@
                                 <input name="add" type="submit" class="btn btn-primary" value="Ajouter"></input>
                             </form>
                         </div>
-                        <?php 
-                    }
-                    //* FORMULAIRE MODIF
-                    else if($_GET["action"]=="modify") {   
-                        $Service = service_Service::service_searchServ($_GET['idService']);
-                        $idServ = $Service->getIdService();
-                        $Serv   = $Service->getService();
-                        $ville  = $Service->getVille();
-                        ?>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+                <?php 
+            }
+            //* FORMULAIRE MODIF
+            function afficherPageModif(String $idServ, String $Serv, String $ville) :Void {
+                ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
                             <form action="../Controleur/controleur_Service.php" method="POST">
@@ -95,11 +80,11 @@
                                 <input name="modify" type="submit" class="btn btn-primary" value="Modifier"/>
                             </form>
                         </div>
-                        <?php 
-                    }
-                ?> 
-                <div class="col-sm-4"></div>
-            </div>
-        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+                <?php 
+            }
+        ?> 
     </body>
 </html>

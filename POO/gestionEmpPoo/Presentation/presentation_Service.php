@@ -14,7 +14,9 @@
         foreach ($dataServ as $key => $value) {
             echo "<tr id='trNo$i'>";
                 printTd($value);
-                printServArrayButton($value->getIdService());
+                if(ifAdmin()) {
+                    printServArrayButton($value->getIdService());
+                }
             echo "</tr>";
             $i++;
         }
@@ -36,7 +38,7 @@
 
     //*PRINT ARRAYBUTONS
     function printServArrayButton(Int $idServ) :Void {
-        echo "<td><a type='button' class='btn btn-primary' href='../Presentation/form_add_service.PHP?action=modify&idService=$idServ;'>Modifier</a></td>";
+        echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Service.php?action=modify&idService=$idServ;'>Modifier</a></td>";
         echo "<td><a type='button' class='btn btn-danger' href='../Controleur/controleur_Service.php?action=delete&idService=$idServ'>Supprimer</a></button><td>";
     }
 
@@ -80,7 +82,7 @@
                                 </tbody>
                             </table>
 
-                            <a href="../Presentation/form_add_service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
+                            <a href="../Controleur/controleur_form_Service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
                             <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table Employes</button></a>
 
                         </div>

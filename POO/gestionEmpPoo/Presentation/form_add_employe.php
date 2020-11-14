@@ -1,13 +1,9 @@
 <?php 
-    session_start();
-
-    if (!$_SESSION) {
-        header('location: formLogin.php');
+    function select($verified, $verifier){
+        if ($verified == $verifier) {
+            echo 'selected ';
+        }
     }
-
-    include_once '../Divers/ConnectBdd.php';
-    include_once '../Service/service_Employe.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +18,6 @@
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
             crossorigin="anonymous">
-        <!-- JQUERY -->
-        <script
-            src         ="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity   ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin ="anonymous">
-        </script>
         <!-- CSS -->
         <style>
             body {
@@ -37,13 +27,13 @@
     </head>
 
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4"></div>
-                    <?php 
-                    //* FORMULAIRE AJOUT 
-                    if($_GET["action"]=="ajouter") {   
-                        ?>
+        <?php
+            //* FORMULAIRE AJOUT 
+            function afficherPageAjout() :Void {
+                ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Ajout</h1>
                             <form action="../Controleur/controleur_Employe.php" method="post">
@@ -125,29 +115,18 @@
 
                                 <input name="add" type="submit" class="btn btn-primary"></input>
                             </form>
-                        </div><?php 
-                    }
-                    //* FORMULAIRE MODIF
-                    else if($_GET["action"]=="modify") {
-                        $Employe   = service_Employe::service_searchEmp($_GET['id']);
-                        $id     = $Employe->getId();
-                        $nom    = $Employe->getNom();
-                        $prenom = $Employe->getPrenom();
-                        $emp    = $Employe->getEmp();
-                        $sup    = $Employe->getSup();
-                        $emb    = $Employe->datetimeToString($Employe->getEmb());
-                        $sal    = $Employe->getSal();
-                        $comm   = $Employe->getComm();
-                        $noServ = $Employe->getNoServ();
-                        $noProj = $Employe->getNoProj();
-
-                        function select($verified, $verifier){
-                            if ($verified == $verifier) {
-                                echo 'selected ';
-                            }
-                        }
-                        ?>
-
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+                <?php 
+            }
+            //* FORMULAIRE MODIF
+            function afficherPageModif(String $id, String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, Int $comm, Int $noServ, Int $noProj) :Void {
+                ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4"></div>
                         <div class="col-sm-4">
                             <h1 class="text-center">Formulaire Modif</h1>
                             <form action="../Controleur/controleur_Employe.php" method="post">
@@ -231,13 +210,14 @@
                                     </select>
                                 </div>
 
-                                <input name="modify" type="submit" class="btn btn-primary" value="Modifier"/>
+                                <input name="modify" type="submit" class="btn btn-primary mb-3" value="Modifier"/>
                             </form>
-                        </div><?php 
-                    }
-                ?> 
-                <div class="col-sm-4"></div>
-            </div>
-        </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </div>
+                <?php 
+            }
+        ?> 
     </body>
 </html>

@@ -15,7 +15,7 @@
             isset($_POST['ville'])&& !empty($_POST['ville'])) {  
 
             service_Service::service_addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            require_once '../Presentation/presentation_Service.php';
+            afficherPageService(searchAllServ());
             
         }
     }
@@ -25,7 +25,7 @@
         if (!empty($_GET['idService'])) { 
 
             service_Service::service_delServ();
-            require_once '../Presentation/presentation_Service.php';
+            afficherPageService(searchAllServ());
 
         }
     }
@@ -35,7 +35,7 @@
         if (isset($_POST['idServ']) && isset($_POST['serv']) && isset($_POST['ville'])) {
 
             service_Service::service_modifyServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            require_once '../Presentation/presentation_Service.php';
+            afficherPageService(searchAllServ());
 
         }
     }

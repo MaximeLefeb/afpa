@@ -2,7 +2,6 @@
     include_once '../class/Utilisateur.php';
     include_once '../Divers/ConnectBdd.php';
     
-
     Class Utilisateur_mysqli_DAO {
 
         public static function AddUser(String $mail, String $pwd) :Void {

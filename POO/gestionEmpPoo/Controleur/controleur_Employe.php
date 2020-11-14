@@ -15,7 +15,7 @@
             isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
             service_Employe::service_addEmp($_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-            require_once '../Presentation/presentation_Employe.php';
+            afficherPageEmploye(searchAllEMp());
         }
     }
 
@@ -24,7 +24,7 @@
         if (!empty($_GET['id'])) {
             
             service_Employe::service_delEmp(); 
-            require_once '../Presentation/presentation_Employe.php';
+            afficherPageEmploye(searchAllEMp());
         }
     }
 
@@ -36,7 +36,7 @@
                 isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
                 service_Employe::service_modifyEmp($_POST['id'],$_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-                require_once '../Presentation/presentation_Employe.php';
+                afficherPageEmploye(searchAllEMp());
             }
         }   
     }
@@ -50,19 +50,6 @@
     function searchAllEMp() :Array {
         $data = service_Employe::service_searchAllEmp();
         return $data;
-    }
-
-    //*SEARCH ONE EMPLOYE
-    function searchOneEmp(String $id) :Employe {
-        $Employe = service_Employe::service_searchEmp($id);
-        return $Employe;
-    }
-
-    //*SELECTED PREREMPLIR FORMULAIRE 
-    function select($verified, $verifier) :Void {
-        if ($verified == $verifier) {
-            echo 'selected ';
-        }
     }
     
 ?>
