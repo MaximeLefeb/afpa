@@ -15,7 +15,7 @@
             isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
             service_Employe::service_addEmp($_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-            afficherPageEmploye(searchAllEMp());
+            afficherPageEmploye(searchAllEMp(), selectSup());
         }
     }
 
@@ -24,7 +24,7 @@
         if (!empty($_GET['id'])) {
             
             service_Employe::service_delEmp(); 
-            afficherPageEmploye(searchAllEMp());
+            afficherPageEmploye(searchAllEMp(), selectSup());
         }
     }
 
@@ -36,20 +36,25 @@
                 isset($_POST['comm']) && isset($_POST['noService']) && !empty($_POST['noService']) && isset($_POST['noProj']) && !empty($_POST['noProj'])) {
 
                 service_Employe::service_modifyEmp($_POST['id'],$_POST['nom'],$_POST['prenom'],$_POST['emploi'],$_POST['sup'],$_POST['embauche'],$_POST['sal'],$_POST['comm'],$_POST['noService'],$_POST['noProj']);
-                afficherPageEmploye(searchAllEMp());
+                afficherPageEmploye(searchAllEMp(), selectSup());
             }
         }   
     }
 
     //*ARRAY EMPLOYE
     if ($_GET && $_GET["action"]=="showEmp") {
-        afficherPageEmploye(searchAllEMp());
+        afficherPageEmploye(searchAllEMp(), selectSup());
     }
 
     //*SEARCH ALL EMPLOYE
     function searchAllEMp() :Array {
         $data = service_Employe::service_searchAllEmp();
         return $data;
+    }
+
+    function selectSup() :Array {
+        $ListSup = service_Employe::service_selectSup();
+        return $ListSup;
     }
     
 ?>

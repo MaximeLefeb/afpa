@@ -1,18 +1,15 @@
 <?php 
-    //*DISABLED DELETE BUTTON SI NON ADMIN
-    function disabled(Int $valueID) :?Bool{
-        $data = service_Employe::service_selectSup();
-
-        foreach ($data as $sup) {
+    //*SI SUP D'AU MOINS 1 EMPLOYE DESACTIVER DELETE BUTTON
+    function disabled(Array $ListSup, Int $idEmp) :?Bool{
+        foreach ($ListSup as $sup) {
             foreach ($sup as $nbSup) {
-                if ($valueID == $nbSup) {
+                if ($idEmp == $nbSup) {
                     return true;
                 }
             } 
         } 
 
         return null;
-
     }
 
     //*PRINT TD TABLEAU
@@ -30,9 +27,9 @@
     }
 
     //*PRINT ARRAYBUTONS
-    function printArrayButton(Int $id) :Void {
-        echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Employe.php?action=modify&id=$id;'>Modifier</a></td>";
-        echo "<td>"; if(!disabled($id)) {  echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Employe.php?action=delete&id=$id'>Supprimer</a></button>"; } echo "<td>";
+    function printArrayButton(Array $ListSup, Int $idEmp) :Void {
+        echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Employe.php?action=modify&id=$idEmp;'>Modifier</a></td>";
+        echo "<td>"; if(!disabled($ListSup, $idEmp)) {  echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Employe.php?action=delete&id=$idEmp'>Supprimer</a></button>"; } echo "<td>";
     }
 
     //*PRINT TH TABLEAU
@@ -52,13 +49,13 @@
     }
 
     //*PRINT TABLEAU D'EMPLOYES
-    function printEmployeArray(Array $dataEmp) :Void {
+    function printEmployeArray(Array $dataEmp, Array $ListSup) :Void {
         $i = 1;
         foreach ($dataEmp as $key => $value) {
             echo "<tr id='trNo$i'>";
                 printTd($value);
                 if(ifAdmin()) {
-                    printArrayButton($value->getId());
+                    printArrayButton($ListSup, $value->getId());
                 }
             echo "</tr>";
             $i++;
@@ -73,7 +70,7 @@
     }
 
     //*AFFICHER LA PAGE 
-    function afficherPageEmploye(Array $dataEmp) :Void {
+    function afficherPageEmploye(Array $dataEmp, Array $ListSup) :Void {
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -108,7 +105,7 @@
                                 </thead>
                             
                                 <tbody class="text-center">
-                                    <?php printEmployeArray($dataEmp); ?>
+                                    <?php printEmployeArray($dataEmp, $ListSup); ?>
                                 </tbody>
                             </table>
 
