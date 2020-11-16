@@ -50,7 +50,7 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Php et les bdd</title>
+                <title>Tableau service</title>
                 <!-- BOOTSTRAP -->
                 <link 
                     rel="stylesheet" 
@@ -84,6 +84,7 @@
 
                             <a href="../Controleur/controleur_form_Service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
                             <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table Employes</button></a>
+                            <a href="../Divers/Acceuil.php"><button type="submit" class="btn btn-primary">Retour à l'acceuil</button></a>
 
                         </div>
                     </div>

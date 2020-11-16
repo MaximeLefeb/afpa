@@ -122,7 +122,7 @@
                 <?php 
             }
             //* FORMULAIRE MODIF
-            function afficherPageModif(String $id, String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, Int $comm, Int $noServ, Int $noProj) :Void {
+            function afficherPageModif(String $id, String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, ?Int $comm, Int $noServ, ?Int $noProj) :Void {
                 ?>
                 <div class="container">
                     <div class="row">
