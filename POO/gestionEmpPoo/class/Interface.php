@@ -1,10 +1,15 @@
 <?php 
 
-    interface Test {
+    interface test {
+        public function add();
 
-        public function getid();
+        public function modif();
+
+        public function delete();
+
+        public function searchById();
+
+        public function searchAll();
         
     }
-
-    //TODO IMPLEMENTS LES FONCTIONS DANS LE CLASS DAO
 ?>

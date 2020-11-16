@@ -3,7 +3,7 @@
     include_once '../Divers/ConnectBdd.php';
 
     class Service_mysqli_DAO {
-
+        
         public static function addServ(Service $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();
             $nomServ   = $ServiceAdd->getService();

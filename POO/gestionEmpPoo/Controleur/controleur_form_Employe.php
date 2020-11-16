@@ -4,7 +4,7 @@
     session_start();
 
     if (!$_SESSION) {
-        header('location: ../Presentation/formSignUp.php');
+        header('location: ../Controleur/controleur_formSignUp.php');
     }
 
     if (isset($_GET)) {

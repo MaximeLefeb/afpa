@@ -5,7 +5,7 @@
     
     //*SI NON CONNECTÉ
     if (!$_SESSION) {
-        header('location: ../Presentation/formLogin.php');
+        header('location: ../Controleur/controleur_formSignUp.php');
     }
 
     //*ADD SERV

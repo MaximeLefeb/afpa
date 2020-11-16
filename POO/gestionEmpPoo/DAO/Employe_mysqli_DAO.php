@@ -1,10 +1,11 @@
 <?php 
     include_once '../class/Employe.php';
     include_once '../Divers/ConnectBdd.php';
+    include_once '../class/Interface.php';
 
     class Employe_mysqli_DAO {
 
-        public static function searchAllEmp() :Array {
+        public static function searchAll() :Array {
             //* TRAITEMENT AJOUT
             $dbServ=ConnectBdd();
             $requestSelectEmp = $dbServ->prepare("SELECT * FROM  employes");
@@ -18,7 +19,7 @@
             return $dataEmp;
         }
 
-        public static function delEmp(Int $id) :Void {
+        public static function delete(Int $id) :Void {
             //* TRAITEMENT SUPRESSION
             $dbServ=ConnectBdd();
             
@@ -36,7 +37,7 @@
             $dbServ->close();
         }
 
-        public static function modifyEmp(Employe $EmployeModif) :Void {
+        public static function modif(Employe $EmployeModif) :Void {
             $id     = $EmployeModif->getId();
             $nom    = $EmployeModif->getNom();
             $prenom = $EmployeModif->getPrenom();
@@ -65,7 +66,7 @@
             $dbServ->close();
         }
 
-        public static function addEmp(Employe $EmployeAdd) :Void {
+        public static function add(Employe $EmployeAdd) :Void {
             $nom    = $EmployeAdd->getNom();
             $prenom = $EmployeAdd->getPrenom();
             $emp    = $EmployeAdd->getEmp();
@@ -93,7 +94,7 @@
             $dbServ->close();
         }
 
-        public static function searchEmp(String $id) :?Array{
+        public static function searchById(String $id) :?Array{
             //*CONNECT DB
             $dbServ = ConnectBdd();
 
