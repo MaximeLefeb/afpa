@@ -1,10 +1,11 @@
 <?php
     include_once '../class/Serv.php';
+    include_once '../class/Interface.php';
     include_once '../Divers/ConnectBdd.php';
 
-    class Service_mysqli_DAO {
+    class Service_mysqli_DAO implements commonFunction{
         
-        public static function addServ(Service $ServiceAdd) :Void {
+        public function add(Object $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();
             $nomServ   = $ServiceAdd->getService();
             $villeServ = $ServiceAdd->getVille();
@@ -26,7 +27,7 @@
             $dbServ->close();
         }
 
-        public static function delServ(Int $idServ) :Void {
+        public function delete(Int $idServ) :Void {
             //* TRAITEMENT SUPRESSION
             $dbServ=ConnectBdd();
             
@@ -44,7 +45,7 @@
             $dbServ->close();
         }
 
-        public static function modifyServ(Service $ServiceModif) :Void {
+        public function modif(Object $ServiceModif) :Void {
             //* TRAITEMENT MODIFICATION
             $dbServ=ConnectBdd();
 
@@ -66,7 +67,7 @@
             $dbServ->close();
         }
 
-        public static function searchAllServ() :Array {
+        public function searchAll() :Array {
             //* CONNECT DB
             $dbServ=ConnectBdd();
 
@@ -83,7 +84,7 @@
             return $dataServ;
         }
         
-        public static function searchServ(String $idServ) :?Array {
+        public function searchById(String $idServ) :?Array {
             //* CONNECT DB
             $dbServ = ConnectBdd();
 

@@ -3,9 +3,9 @@
     include_once '../Divers/ConnectBdd.php';
     include_once '../class/Interface.php';
 
-    class Employe_mysqli_DAO {
+    class Employe_mysqli_DAO implements commonFunction{
 
-        public static function searchAll() :Array {
+        public function searchAll() :Array {
             //* TRAITEMENT AJOUT
             $dbServ=ConnectBdd();
             $requestSelectEmp = $dbServ->prepare("SELECT * FROM  employes");
@@ -19,7 +19,7 @@
             return $dataEmp;
         }
 
-        public static function delete(Int $id) :Void {
+        public function delete(Int $id) :Void {
             //* TRAITEMENT SUPRESSION
             $dbServ=ConnectBdd();
             
@@ -37,7 +37,7 @@
             $dbServ->close();
         }
 
-        public static function modif(Employe $EmployeModif) :Void {
+        public function modif(Object $EmployeModif) :Void {
             $id     = $EmployeModif->getId();
             $nom    = $EmployeModif->getNom();
             $prenom = $EmployeModif->getPrenom();
@@ -66,7 +66,7 @@
             $dbServ->close();
         }
 
-        public static function add(Employe $EmployeAdd) :Void {
+        public function add(Object $EmployeAdd) :Void {
             $nom    = $EmployeAdd->getNom();
             $prenom = $EmployeAdd->getPrenom();
             $emp    = $EmployeAdd->getEmp();
@@ -94,7 +94,7 @@
             $dbServ->close();
         }
 
-        public static function searchById(String $id) :?Array{
+        public function searchById(String $id) :?Array{
             //*CONNECT DB
             $dbServ = ConnectBdd();
 
@@ -112,7 +112,7 @@
             return $data;
         }
 
-        public static function selectSup() :Array {
+        public function selectSup() :Array {
             //*CONNECT DB
             $dbServ = ConnectBdd(); 
 

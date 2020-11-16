@@ -1,15 +1,14 @@
 <?php 
+    interface commonFunction {
+        public function add(Object $AddItem) :Void;
 
-    interface test {
-        public function add();
+        public function modif(Object $ModifiedItem) :Void;
 
-        public function modif();
+        public function delete(Int $id) :Void;
 
-        public function delete();
+        public function searchById(String $id) :?Array;
 
-        public function searchById();
-
-        public function searchAll();
+        public function searchAll() :Array;
         
     }
 ?>
