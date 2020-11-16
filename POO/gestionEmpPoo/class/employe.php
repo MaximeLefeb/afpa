@@ -15,7 +15,7 @@
         public function getId() :int{
             return $this->id;
         }
-        public function setId($newId) :self{
+        public function setId(Int $newId) :self{
             $this->id = $newId;
             return $this;
         }
@@ -23,7 +23,7 @@
         public function getNom() :string{
             return $this->nom;
         }
-        public function setNom($newNom) :self{
+        public function setNom(String $newNom) :self{
             $this->nom = $newNom;
             return $this;
         }
@@ -31,7 +31,7 @@
         public function getPrenom() :string{
             return $this->prenom;
         }
-        public function setPrenom($newPrenom) :self{
+        public function setPrenom(String $newPrenom) :self{
             $this->prenom = $newPrenom;
             return $this;
         }
@@ -39,7 +39,7 @@
         public function getEmp() :string{
             return $this->emp;
         }
-        public function setEmp($newEmp) :self{
+        public function setEmp(String $newEmp) :self{
             $this->emp = $newEmp;
             return $this;
         }
@@ -47,7 +47,7 @@
         public function getSup() :?int{
             return $this->sup;
         }
-        public function setSup($newSup) :self{
+        public function setSup(?Int $newSup) :self{
             $this->sup = $newSup;
             return $this;
         }
@@ -55,7 +55,7 @@
         public function getEmb() :?DateTime {
             return $this->emb;
         }
-        public function setEmb($newEmb) :self{
+        public function setEmb(String $newEmb) :self{
             $dateEmb = new datetime($newEmb);
             $this->emb = $dateEmb;
             return $this;
@@ -64,7 +64,7 @@
         public function getSal() :Float {
             return $this->sal;
         }
-        public function setSal($newSal) :self {
+        public function setSal(?Float $newSal) :self {
             $this->sal = $newSal;
             return $this;
         }
@@ -72,7 +72,7 @@
         public function getComm() :?int{
             return $this->comm;
         }   
-        public function setComm($newComm) :self{
+        public function setComm(?Float $newComm) :self{
             $this->comm = $newComm;
             return $this;
         }
@@ -80,7 +80,7 @@
         public function getNoServ() :int{
             return $this->noServ;
         }
-        public function setNoServ($newNoServ) :self{
+        public function setNoServ(Int $newNoServ) :self{
             $this->noServ = $newNoServ;
             return $this;
         }
@@ -88,7 +88,7 @@
         public function getNoProj() :?int{
             return $this->noProj;
         }   
-        public function setNoProj($newNoProj) :self{
+        public function setNoProj(?Int $newNoProj) :self{
             $this->noProj = $newNoProj;
             return $this;
         }

@@ -8,7 +8,7 @@
         public function getIdService() :int{
             return $this->idService;
         }
-        public function setIdService($newIdService) :self{
+        public function setIdService(Int $newIdService) :self{
             $this->idService = $newIdService;
             return $this;
         }
@@ -16,7 +16,7 @@
         public function getService() :string{
             return $this->service;
         }
-        public function setService($newService) :self{
+        public function setService(String $newService) :self{
             $this->service = $newService;
             return $this;
         }
@@ -24,7 +24,7 @@
         public function getVille() :string{
             return $this->ville;
         }
-        public function setVille($newVille) :self{
+        public function setVille(String $newVille) :self{
             $this->ville = $newVille;
             return $this;
         }

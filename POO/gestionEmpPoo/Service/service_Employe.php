@@ -20,7 +20,15 @@
 
         public static function service_selectSup() :Array  {
             $data = Employe_mysqli_DAO::selectSup();
-            return $data;
+            $dataObjectSup = array();
+
+            foreach ($data as $value) {
+                $Superieur = new Employe();
+                $Superieur->setId($value["id"]);
+                array_push($dataObjectSup, $Superieur);
+            }
+
+            return $dataObjectSup;
         }
 
         public static function service_searchEmp(String $id) :?Employe {

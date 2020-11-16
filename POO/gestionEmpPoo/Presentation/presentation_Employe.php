@@ -2,11 +2,9 @@
     //*SI SUP D'AU MOINS 1 EMPLOYE DESACTIVER DELETE BUTTON
     function disabled(Array $ListSup, Int $idEmp) :?Bool{
         foreach ($ListSup as $sup) {
-            foreach ($sup as $nbSup) {
-                if ($idEmp == $nbSup) {
-                    return true;
-                }
-            } 
+            if ($idEmp == $sup->getId()) {
+                return true;
+            }
         } 
 
         return null;
