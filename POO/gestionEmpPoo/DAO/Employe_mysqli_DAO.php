@@ -1,9 +1,9 @@
 <?php 
     include_once '../class/Employe.php';
     include_once '../Divers/ConnectBdd.php';
-    include_once '../class/Interface.php';
+    include_once '../class/InterfaceDAO.php';
 
-    class Employe_mysqli_DAO implements commonFunction{
+    class Employe_mysqli_DAO implements commonFunctionDAO{
 
         public function searchAll() :Array {
             //* TRAITEMENT AJOUT

@@ -1,5 +1,5 @@
 <?php 
-    interface commonFunction {
+    interface commonFunctionDAO {
         public function add(Object $AddItem) :Void;
 
         public function modif(Object $ModifiedItem) :Void;

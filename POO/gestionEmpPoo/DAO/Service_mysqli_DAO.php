@@ -1,9 +1,9 @@
 <?php
     include_once '../class/Serv.php';
-    include_once '../class/Interface.php';
+    include_once '../class/InterfaceDAO.php';
     include_once '../Divers/ConnectBdd.php';
 
-    class Service_mysqli_DAO implements commonFunction{
+    class Service_mysqli_DAO implements commonFunctionDAO{
         
         public function add(Object $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();
