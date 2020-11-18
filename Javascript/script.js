@@ -45,69 +45,105 @@ function factorielleRecursive(nombre) {
 //console.log(factorielleRecursive(9));
 
 //* DOM JQUERY ----------------------------------------------------------
-$("body").append("<div></div>");
+    /*
+    $("body").append("<div></div>");
+    
+    $("div").attr("id", "divTP1").append("Le ");
+    createStrong('World World Web Consuprtion', '#divTP1');
+    
+    $("#divTP1").append(", abrégé par le sigle ");
+    createStrong('W3C', '#divTP1');
+    
+    $("#divTP1").append(", est un ");
+    createALink('organisme de strandardisation ','http://fr.wikipedia.org/Organisme_de_normalisation','organisme de strandardisation','#divTP1');
+    
+    $("#divTP1").append("à but non-lucratif chargé de promouboir la compatibilité des technologies du ");
+    createALink('World_Wide_Web.','http://fr.wikipedia.org/World_Wide_Web','World_Wide_Web','#divTP1');
+    
+    function createStrong(contenue,appendItem) {
+        return $("<strong>"+contenue+"</strong>" ).appendTo(appendItem);
+    }
+    function createALink(contenue,lien,titre,appendItem) {
+        return $("<a>"+contenue+"</a>").attr({href:lien,title:titre}).appendTo(appendItem);
+    }
+    */
 
-$("div").attr("id", "divTP1").append("Le ");
-createStrong('World World Web Consuprtion', '#divTP1');
+    //? document.getQuerySelector("#afficher").addEventListener('click', function(e){
+    //?     document.getElementById('divTP1').toggle("fast");
+    //?});
 
-$("#divTP1").append(", abrégé par le sigle ");
-createStrong('W3C', '#divTP1');
+    //?$("#Afficher").click(function(e) {
+    //?    $("#divTP1").toggle("fast");
+    //?});
 
-$("#divTP1").append(", est un ");
-createALink('organisme de strandardisation ','http://fr.wikipedia.org/Organisme_de_normalisation','organisme de strandardisation','#divTP1');
+    
+//* DOM exo  JS ---------------------------------------------------------
+/*
+var FormAttributes = {
+    action  = 'upload.php',
+    method  = 'post.php',
+    enctype = 'multipart/form-data'
+};
 
-$("#divTP1").append("à but non-lucratif chargé de promouboir la compatibilité des technologies du ");
-createALink('World_Wide_Web.','http://fr.wikipedia.org/World_Wide_Web','World_Wide_Web','#divTP1');
+var InputAttributes = {
+    type = 'file',
+    name = 'upload',
+    id   = 'inputUpload'
+};
 
+var submitAttributes = {
+    type  = 'submit',
+    value = 'Envoyer'
+};
 
-function createStrong(contenue,appendItem) {
-    return $("<strong>"+contenue+"</strong>" ).appendTo(appendItem);
-}
-function createALink(contenue,lien,titre,appendItem) {
-    return $("<a>"+contenue+"</a>").attr({href:lien,title:titre}).appendTo(appendItem);
-}
-
-//* DOM exo 4 JS --------------------------------------------------------
-//Var
+var mainDiv2   = document.createElement('div'); mainDiv2.id = 'divTP2';
+var legendText = document.createTextNode('Uploader une image');
 var fieldset   = document.createElement('fieldset');
 var legend     = document.createElement('legend');
-var legendText = document.createTextNode('Uploader une image');
-var center     = document.createElement('center');
-var labelText = document.createTextNode('Image a uploader');
+var center     = document.createElement('center'); center.setAttribute('style', 'text-align: center');
+var br         = document.createElement('br');
+var label      = document.createElement('label'); label.for = 'inputUpload';
+var body       = document.getElementsByTagName('body');
 var enfantBody = document.body.firstChild;
 
-var mainDiv2 = document.createElement('div');
-    mainDiv2.id = 'divTP2';
-
-var form = document.createElement('form');
-    form.enctype = 'multipart/form-data';
-    form.method  = 'post';
-    form.action  = 'upload.php';
-
-var label = document.createElement('label');
-    label.for = 'inputUpload';
-
-var input      = document.createElement('input');
-    input.type = 'file';
-    input.name = 'inputUpload';
-    input.id   = 'inputUpload';
-
-var br = document.createElement('br');
-var submit = document.createElement('input');
-    submit.type = 'submit';
-    submit.value = 'Envoyez';
-
-center.appendChild(label);
-center.appendChild(input);
-center.appendChild(br);
-center.appendChild(br.cloneNode(false));
-center.appendChild(submit);
-center.setAttribute('style', 'text-align: center');
 legend.appendChild(legendText);
-fieldset.appendChild(legend);
+legend.appendChild(legendText);
 fieldset.appendChild(center);
 form.appendChild(fieldset);
-mainDiv2.appendChild(form);
-
-body = document.getElementsByTagName('body');
+center.appendChild(label);
+//TODO createAndAppendElement(); INPUT ATTRIBUTES
+center.appendChild(br);
+center.appendChild(br.cloneNode(false));
+//TODO createAndAppendElement(); SUBMIT ATTRIBUTES
+//TODO createAndAppendElement(); FORM ATTRIBUTES 
 document.body.insertBefore(mainDiv2,enfantBody);
+
+function createAndAppendElement(parent, tagName, attributes) {
+    var Element = document.createElement(tagName);
+    var entries = Object.entries(attributes);
+
+    for(var [key, value] of entries) {
+        Element[key] = value;
+    }
+
+    parent.appendChild(Element);
+    return Element;
+}
+*/
+
+//* EXO SHOW/HIDE CONTENT W/ EVENT -----------------------------------------
+//? document.getQuerySelector("#afficher").addEventListener('click', function(e){
+//?     document.getElementById('divTP1').toggle("fast");
+//?});
+
+$("#Afficher").click(function(e) {
+    $("#divTP1").toggle("fast");
+});
+
+//* EXO CHECKBOX
+$("#checkAll").click(function(e) {
+    $(".checkButton").attr("checked", "checked");
+});
+$("#uncheckAll").click(function(e) {
+    $(".checkButton").removeAttr("checked");
+});
