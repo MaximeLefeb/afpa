@@ -41,6 +41,44 @@
             <button id="checkAll" class="btn btn-primary">Check All</button>
             <button id="uncheckAll" class="btn btn-primary">Uncheck All</button>
         </div>
+        
+        <div>
+            <span>Ceci est une phrase de test.</span> 
+            <br>
+            <label>Label pour button ; </label>
+            <br>
+            <input type="text">
+
+            <button id="deleteBRElement" class="btn btn-primary m-5">Supprimer les balise < br ></button>
+        </div>
+
+        <table class="table table-striped table-dark">
+            <thead class="text-center">
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Age</th>
+            </thead>
+
+            <tbody class="text-center">
+                <tr>
+                    <td>Maxime</td>
+                    <td>Lefebvre</td>
+                    <td>20</td>
+                </tr>
+
+                <tr>
+                    <td>Albert</td>
+                    <td>Deterre</td>
+                    <td>32</td>
+                </tr>
+
+                <tr>
+                    <td>Jean</td>
+                    <td>Pique</td>
+                    <td>51</td>
+                </tr>
+            </tbody>
+        </table>
 
         <script
 			src         ="https://code.jquery.com/jquery-3.3.1.min.js"

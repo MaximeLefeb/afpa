@@ -141,9 +141,22 @@ $("#Afficher").click(function(e) {
 });
 
 //* EXO CHECKBOX
+//TODO TRANSFORM TO JS
 $("#checkAll").click(function(e) {
     $(".checkButton").attr("checked", "checked");
 });
 $("#uncheckAll").click(function(e) {
     $(".checkButton").removeAttr("checked");
+});
+
+//*EXO REMOVE BR
+$("#deleteBRElement").click(function(e) {
+    $("br").remove();
+});
+
+//* EXO TD TO INPUT TEXT
+//TODO TRANSFORM TO JS
+$("td").click(function(e) {
+    tdContent = $(this).val();
+    console.log(tdContent);
 });
