@@ -45,7 +45,7 @@ function factorielleRecursive(nombre) {
 //console.log(factorielleRecursive(9));
 
 //* DOM JQUERY ----------------------------------------------------------
-    /*
+
     $("body").append("<div></div>");
     
     $("div").attr("id", "divTP1").append("Le ");
@@ -66,19 +66,19 @@ function factorielleRecursive(nombre) {
     function createALink(contenue,lien,titre,appendItem) {
         return $("<a>"+contenue+"</a>").attr({href:lien,title:titre}).appendTo(appendItem);
     }
-    */
-
-    //? document.getQuerySelector("#afficher").addEventListener('click', function(e){
-    //?     document.getElementById('divTP1').toggle("fast");
-    //?});
-
-    //?$("#Afficher").click(function(e) {
-    //?    $("#divTP1").toggle("fast");
-    //?});
+    
+    //JS
+    document.getElementById("afficher").addEventListener('click', function(e){
+        document.getElementById('divTP1').toggle("fast");
+    });
+    //JQUERY
+    $("#Afficher").click(function(e) {
+        $("#divTP1").toggle("fast");
+    })
 
     
-//* DOM exo  JS ---------------------------------------------------------
-/*
+//* DOM exo 2 JS ---------------------------------------------------------
+
 var FormAttributes = {
     action  = 'upload.php',
     method  = 'post.php',
@@ -129,19 +129,19 @@ function createAndAppendElement(parent, tagName, attributes) {
     parent.appendChild(Element);
     return Element;
 }
-*/
+
 
 //* EXO SHOW/HIDE CONTENT W/ EVENT -----------------------------------------
-//? document.getQuerySelector("#afficher").addEventListener('click', function(e){
-//?     document.getElementById('divTP1').toggle("fast");
-//?});
+
+document.getElementById("afficher").addEventListener('click', function(e){
+    document.getElementById('divTP1').toggle("fast");
+});
 
 $("#Afficher").click(function(e) {
     $("#divTP1").toggle("fast");
 });
 
-//* EXO CHECKBOX
-//TODO TRANSFORM TO JS
+//* EXO CHECKBOX ----------------------------------------------------------
 $("#checkAll").click(function(e) {
     $(".checkButton").attr("checked", "checked");
 });
@@ -149,14 +149,53 @@ $("#uncheckAll").click(function(e) {
     $(".checkButton").removeAttr("checked");
 });
 
-//*EXO REMOVE BR
-$("#deleteBRElement").click(function(e) {
-    $("br").remove();
+document.QuerySelector("#checkAll").addEventListener('click', function(e){
+    document.getElementsByClassName("checkbutton").setAttribute("checked", "checked");
+});
+document.QuerySelector("#checkAll").addEventListener('click', function(e){
+    document.getElementsByClassName("checkbutton").removeAttribute("checked");
 });
 
-//* EXO TD TO INPUT TEXT
-//TODO TRANSFORM TO JS
+
+//*EXO REMOVE BR ---------------------------------------------------------
+$("#deleteBRElement").click(function(e) {
+    $("br").remove();
+}); 
+
+document.querySelector("#deleteBRElement").addEventListener('click', function(e){
+    var br = document.querySelectorAll("br");
+    for(i=0; i < br.length; i++) {
+        br[i].remove();
+    }
+}); 
+
+
+//* EXO TD TO INPUT TEXT --------------------------------------------------
+
 $("td").click(function(e) {
-    tdContent = $(this).val();
-    console.log(tdContent);
-});
+    var tdContent = $(this).text();
+    $(this).replaceWith("<input id='modifTable' type='text'/>");
+    $("#modifTable").val(tdContent);
+
+    $("#modifTable").keypress(function(e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            $(this).replaceWith("<td>" + $("#modifTable").val() + "</td>");
+        }
+    });
+}); 
+
+var tdList = document.querySelectorAll('td');
+
+for (i = 0; i < tdList.length; i++) {
+    tdList[i].addEventListener('click', function(e){
+        td = e.target();
+        td.replaceWith("<input id='modifTable' type='text'/>");
+        document.getElementById("modifTable").value = tdContent;
+
+        document.getElementById("modifTable").addEventListener('abord', function(e){
+            e.preventDefault();
+            this.replaceWith("<td>" + this.value + "</td>");
+        });
+    });
+}

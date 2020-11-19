@@ -15,6 +15,13 @@
             #divTP1 {
                 display:none;
             }
+            #modifTable {
+                background   : transparent;
+                color        : white;
+                border       : 1px solid white;
+                border-radius: 5%;
+                text-align   : center;
+            }
         </style>
     </head>
 
