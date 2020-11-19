@@ -61,8 +61,8 @@
 
         <table class="table table-striped table-dark">
             <thead class="text-center">
-                <th>Nom</th>
                 <th>Prenom</th>
+                <th>Nom</th>
                 <th>Age</th>
             </thead>
 

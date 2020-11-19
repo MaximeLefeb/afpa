@@ -45,7 +45,7 @@ function factorielleRecursive(nombre) {
 //console.log(factorielleRecursive(9));
 
 //* DOM JQUERY ----------------------------------------------------------
-
+/*
     $("body").append("<div></div>");
     
     $("div").attr("id", "divTP1").append("Le ");
@@ -75,10 +75,10 @@ function factorielleRecursive(nombre) {
     $("#Afficher").click(function(e) {
         $("#divTP1").toggle("fast");
     })
-
+*/
     
 //* DOM exo 2 JS ---------------------------------------------------------
-
+/*
 var FormAttributes = {
     action  = 'upload.php',
     method  = 'post.php',
@@ -129,14 +129,14 @@ function createAndAppendElement(parent, tagName, attributes) {
     parent.appendChild(Element);
     return Element;
 }
-
+*/
 
 //* EXO SHOW/HIDE CONTENT W/ EVENT -----------------------------------------
-
+/*
 document.getElementById("afficher").addEventListener('click', function(e){
     document.getElementById('divTP1').toggle("fast");
 });
-
+*/
 $("#Afficher").click(function(e) {
     $("#divTP1").toggle("fast");
 });
@@ -148,30 +148,30 @@ $("#checkAll").click(function(e) {
 $("#uncheckAll").click(function(e) {
     $(".checkButton").removeAttr("checked");
 });
-
+/*
 document.QuerySelector("#checkAll").addEventListener('click', function(e){
     document.getElementsByClassName("checkbutton").setAttribute("checked", "checked");
 });
 document.QuerySelector("#checkAll").addEventListener('click', function(e){
     document.getElementsByClassName("checkbutton").removeAttribute("checked");
 });
-
+*/
 
 //*EXO REMOVE BR ---------------------------------------------------------
 $("#deleteBRElement").click(function(e) {
     $("br").remove();
 }); 
-
+/* 
 document.querySelector("#deleteBRElement").addEventListener('click', function(e){
     var br = document.querySelectorAll("br");
     for(i=0; i < br.length; i++) {
         br[i].remove();
     }
 }); 
-
+*/
 
 //* EXO TD TO INPUT TEXT --------------------------------------------------
-
+/*
 $("td").click(function(e) {
     var tdContent = $(this).text();
     $(this).replaceWith("<input id='modifTable' type='text'/>");
@@ -184,18 +184,26 @@ $("td").click(function(e) {
         }
     });
 }); 
+*/
 
-var tdList = document.querySelectorAll('td');
+let tdList = document.querySelectorAll('td');
+let input = document.createElement('input'); input.id = 'modifTable';
 
-for (i = 0; i < tdList.length; i++) {
-    tdList[i].addEventListener('click', function(e){
-        td = e.target();
-        td.replaceWith("<input id='modifTable' type='text'/>");
-        document.getElementById("modifTable").value = tdContent;
+window.addEventListener('load', function() {
+    for (i = 0; i < tdList.length; i++) {
+        tdList[i].addEventListener('click', function change(e){
+            var test = e.target;
+            var tdContent = test.innerText;
+            this.replaceWith(input);
+            document.getElementById("modifTable").value = tdContent;
 
-        document.getElementById("modifTable").addEventListener('abord', function(e){
-            e.preventDefault();
-            this.replaceWith("<td>" + this.value + "</td>");
+            document.getElementById("modifTable").addEventListener('focusout', function(e){
+                e.preventDefault();
+                var td = document.createElement('td');
+                this.replaceWith(td);
+                td.innerText = this.value;
+                td.addEventListener('click', change);
+            });
         });
-    });
-}
+    }
+});
