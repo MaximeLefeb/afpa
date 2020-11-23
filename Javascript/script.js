@@ -43,42 +43,8 @@ function factorielleRecursive(nombre) {
   return nombre * factorielleRecursive(nombre-1);
 }
 //console.log(factorielleRecursive(9));
-
-//* DOM JQUERY ----------------------------------------------------------
-/*
-    $("body").append("<div></div>");
-    
-    $("div").attr("id", "divTP1").append("Le ");
-    createStrong('World World Web Consuprtion', '#divTP1');
-    
-    $("#divTP1").append(", abrégé par le sigle ");
-    createStrong('W3C', '#divTP1');
-    
-    $("#divTP1").append(", est un ");
-    createALink('organisme de strandardisation ','http://fr.wikipedia.org/Organisme_de_normalisation','organisme de strandardisation','#divTP1');
-    
-    $("#divTP1").append("à but non-lucratif chargé de promouboir la compatibilité des technologies du ");
-    createALink('World_Wide_Web.','http://fr.wikipedia.org/World_Wide_Web','World_Wide_Web','#divTP1');
-    
-    function createStrong(contenue,appendItem) {
-        return $("<strong>"+contenue+"</strong>" ).appendTo(appendItem);
-    }
-    function createALink(contenue,lien,titre,appendItem) {
-        return $("<a>"+contenue+"</a>").attr({href:lien,title:titre}).appendTo(appendItem);
-    }
-    
-    //JS
-    document.getElementById("afficher").addEventListener('click', function(e){
-        document.getElementById('divTP1').toggle("fast");
-    });
-    //JQUERY
-    $("#Afficher").click(function(e) {
-        $("#divTP1").toggle("fast");
-    })
-*/
     
 //* DOM exo 2 JS ---------------------------------------------------------
-/*
 var FormAttributes = {
     action  = 'upload.php',
     method  = 'post.php',
@@ -129,63 +95,31 @@ function createAndAppendElement(parent, tagName, attributes) {
     parent.appendChild(Element);
     return Element;
 }
-*/
+
 
 //* EXO SHOW/HIDE CONTENT W/ EVENT -----------------------------------------
-/*
 document.getElementById("afficher").addEventListener('click', function(e){
     document.getElementById('divTP1').toggle("fast");
 });
-*/
-$("#Afficher").click(function(e) {
-    $("#divTP1").toggle("fast");
-});
 
 //* EXO CHECKBOX ----------------------------------------------------------
-$("#checkAll").click(function(e) {
-    $(".checkButton").attr("checked", "checked");
-});
-$("#uncheckAll").click(function(e) {
-    $(".checkButton").removeAttr("checked");
-});
-/*
 document.QuerySelector("#checkAll").addEventListener('click', function(e){
     document.getElementsByClassName("checkbutton").setAttribute("checked", "checked");
 });
 document.QuerySelector("#checkAll").addEventListener('click', function(e){
     document.getElementsByClassName("checkbutton").removeAttribute("checked");
 });
-*/
 
 //*EXO REMOVE BR ---------------------------------------------------------
-$("#deleteBRElement").click(function(e) {
-    $("br").remove();
-}); 
-/* 
 document.querySelector("#deleteBRElement").addEventListener('click', function(e){
     var br = document.querySelectorAll("br");
     for(i=0; i < br.length; i++) {
         br[i].remove();
     }
 }); 
-*/
+
 
 //* EXO TD TO INPUT TEXT --------------------------------------------------
-/*
-$("td").click(function(e) {
-    var tdContent = $(this).text();
-    $(this).replaceWith("<input id='modifTable' type='text'/>");
-    $("#modifTable").val(tdContent);
-
-    $("#modifTable").keypress(function(e) {
-        if (e.which == 13) {
-            e.preventDefault();
-            $(this).replaceWith("<td>" + $("#modifTable").val() + "</td>");
-        }
-    });
-}); 
-*/
-
 let tdList = document.querySelectorAll('td');
 let input = document.createElement('input'); input.id = 'modifTable';
 
