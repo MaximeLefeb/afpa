@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="app.css">
+        <!-- BOOTSTRAP -->
+        <link 
+            rel="stylesheet" 
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+            crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section id="chat" class="m-5 pr-5 pt-5 pb-5 pl-2">
+                        <div class="messages"></div>
+                    </section>
+
+                    <div class="user-inputs text-center">
+                        <form action="handler.php?task=write" method="POST">
+                            <input type="text" name="author" id="author" placeholder="Pseudo">
+                            <input type="text" name="content" id="content" placeholder="Votre message...">
+
+                            <button type="submit" class="btn btn-primary"> Envoyer </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script
+			type="text/javascript" 
+			src="script.js">
+		</script>
+    </body>
+</html>
