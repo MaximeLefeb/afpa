@@ -44,91 +44,6 @@
             if (isset($_POST['modify'])){ 
                 modifyEmp($_POST['nom'], $_POST['prenom'], $_POST['emploi'], $_POST['sup'], $_POST['embauche'], $_POST['sal'], $_POST['comm'], $_POST['noService'], $_POST['noProj']);
             }
-
-            //* TRAITEMENT AJOUT
-            //! WITHOUT FUNCTION
-            /*if (isset($_POST['add'])) 
-			{
-                if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['emploi']) && 
-                    isset($_POST['sup']) && isset($_POST['embauche']) && isset($_POST['sal']) &&
-                    isset($_POST['comm']) && isset($_POST['noService'])&& isset($_POST['noProj']))
-				{
-                    $nom    = $_POST['nom'];
-                    $prenom = $_POST['prenom'];
-                    $emp    = $_POST['emploi'];
-                    $sup    = $_POST['sup'];
-                    $emb    = $_POST['embauche'];
-                    $sal    = $_POST['sal'];
-                    $comm   = $_POST['comm'];
-                    $noServ = $_POST['noService'];
-                    $noProj = $_POST['noProj'];
-                    
-                    if($comm == '0')$comm = 'NULL';
-                    if($noProj == "Aucun")$noProj = 'NULL';
-
-                    //*REQUETE SQL ADD
-                    $AddRequest = "INSERT INTO employes(id, Nom, Prenom, Emploi, Sup, Embauche, Sal, Comm, NoService, NoProj) VALUES (NULL,UPPER('$nom'),UPPER('$prenom'),'$emp','$sup',$emb,$sal,$comm,$noServ,$noProj)";
-
-                    if(mysqli_query($db, $AddRequest)){
-                        ?><script>alert("Add ok");</script><?php
-                    }else{
-                        ?><script>alert("Erreur lors de l'ajout en base de données");</script><?php
-                    }
-                } 
-            } */
-            //* TRAITEMENT SUPRESSION
-            //! WITHOUT FUNCTION
-            /*else if ($_GET) 
-            {   
-                if ($_GET["action"]=="delete" ) {
-                    if (!empty($_GET['id'])) {
-                        $id = $_GET['id'];
-
-                        //*REQUETE SQL DEL
-                        $DeleteRequest = "DELETE FROM employes WHERE id = $id";
-
-                        if (mysqli_query($db, $DeleteRequest)) {
-                            ?><script>alert("Delete ok");</script><?php
-                        }else{
-                            ?><script>alert("Erreur lors de la suppression");</script><?php
-                        }
-                    }
-                }
-            } */
-            //* TRAITEMENT MODIFICATION
-            //! WITHOUT FUNCTION
-            /*else if (isset($_POST['modify'])) 
-            { 
-                if (isset($_POST['id']) &&isset($_POST['nom']) && 
-                    isset($_POST['prenom']) && isset($_POST['emploi']) && 
-                    isset($_POST['sup']) && isset($_POST['embauche']) && 
-                    isset($_POST['sal']) && isset($_POST['comm']) && 
-                    isset($_POST['noService'])&& isset($_POST['noProj']))
-				{
-                    $id     = $_POST['id'];
-                    $nom    = $_POST['nom'];
-                    $prenom = $_POST['prenom'];
-                    $emp    = $_POST['emploi'];
-                    $sup    = $_POST['sup'];
-                    $emb    = $_POST['embauche'];
-                    $sal    = $_POST['sal'];
-                    $comm   = $_POST['comm'];
-                    $noServ = $_POST['noService'];
-                    $noProj = $_POST['noProj'];
-
-                    //*REQUETE SQL MODIFY
-                    $ModiFyRequest = "UPDATE `employes` SET Nom=UPPER('$nom'), Prenom=UPPER('$prenom'), Emploi='$emp', Sup='$sup', Embauche='$emb', Sal='$sal', Comm='$comm', NoService='$noServ', NoProj='$noProj' WHERE id = $id";
-
-                    if (mysqli_query($db, $ModiFyRequest)) {
-                        ?><script>alert("Modif ok");</script><?php
-                    }else{
-                        ?><script>alert("Echec de la modif");</script><?php
-                    }
-                }else{
-                    echo "Erreur Isset";
-                }
-
-            } */
         ?>
         <div class="container-fluid">
             <div class="row">    
@@ -189,8 +104,7 @@
                     </table>
                     <a href="formAdd.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
                     <a href="servTable.php"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
-                </div><?php
-                ?>
+                </div>
             </div>
         </div>
     </body>

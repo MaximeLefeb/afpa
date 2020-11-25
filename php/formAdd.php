@@ -25,10 +25,6 @@
     </head>
 
     <body>
-        <?php
-
-        ?>
-
         <div class="container"></div>
             <div class="row">
                 <div class="col-sm-4"></div>
@@ -122,26 +118,6 @@
                     //* FORMULAIRE MODIF
                     else if($_GET["action"]=="modify")
                     {
-                        //!WITHOUT FUNCTION
-                        /* $db = mysqli_init();
-                        mysqli_real_connect($db, 'localhost','root','','societe');
-                        $id = $_GET['id'];
-                        $selectRequest = "SELECT * FROM employes WHERE id = $id";
-                        $r = mysqli_query($db, $selectRequest);
-                        $data = mysqli_fetch_array($r, MYSQLI_ASSOC);
-
-                        $nom    = $data["Nom"];
-                        $prenom = $data["Prenom"];
-                        $emp    = $data["Emploi"];
-                        $sup    = $data["Sup"];
-                        $emb    = $data["Embauche"];
-                        $sal    = $data["Sal"];
-                        $comm   = $data["Comm"];
-                        $noServ = $data["NoService"];
-                        $noProj = $data["NoProj"]; */
-
-
-                        //?WITH FUNCTION
                         include 'ConnectBdd.php';
 
                         $dbServ        = connexionBDD();
