@@ -65,6 +65,7 @@
         if ($_SESSION['tou'] == 'Administrateur') {
             return true;
         }
+        return false;
     }
 
     //*AFFICHER LA PAGE 

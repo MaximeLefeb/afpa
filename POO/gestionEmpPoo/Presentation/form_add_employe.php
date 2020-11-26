@@ -106,10 +106,10 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Numéro de projet</label>
                                     <select class="form-control form-control-lg" name="noProj">
-                                        <option>Aucun</option>
-                                        <option>101</option>
-                                        <option>102</option>
-                                        <option>103</option>
+                                        <option></option>
+                                        <option value="101" >101</option>
+                                        <option value="102" >102</option>
+                                        <option value="103" >103</option>
                                     </select>
                                 </div>
 
@@ -122,7 +122,7 @@
                 <?php 
             }
             //* FORMULAIRE MODIF
-            function afficherPageModif(String $id, String $nom, String $prenom, String $emp, Int $sup, String $emb, Float $sal, ?Int $comm, Int $noServ, ?Int $noProj) :Void {
+            function afficherPageModif(?String $id, String $nom, String $prenom, String $emp, ?Int $sup, String $emb, Float $sal, ?Int $comm, Int $noServ, ?Int $noProj) :Void {
                 ?>
                 <div class="container">
                     <div class="row">
@@ -203,7 +203,7 @@
                                 <div class="form-group">
                                     <label for="noProj">Numéro de projet</label>
                                     <select class="form-control form-control-lg" name="noProj" value="$noProj">
-                                        <option <?php select($noProj,NULL); ?> value="NULL">Aucun</option>
+                                        <option <?php select($noProj,NULL); ?>></option>
                                         <option <?php select($noProj,101); ?> value="101" >101</option>
                                         <option <?php select($noProj,102); ?> value="102" >102</option>
                                         <option <?php select($noProj,103); ?> value="103" >103</option>

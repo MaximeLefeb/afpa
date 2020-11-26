@@ -1,7 +1,8 @@
 <?php
     include_once '../class/Serv.php';
     include_once '../class/InterfaceDAO.php';
-    include_once '../Divers/ConnectBdd.php';
+    require_once '../class/DaoSqlException.php';
+    require_once '../Divers/ConnectBdd.php';
 
     class Service_mysqli_DAO implements commonFunctionDAO{
         
@@ -102,5 +103,22 @@
             return $data;
         }
 
+        public function selectDependence() :Array {
+            //* CONNECT DB
+            $dbServ = ConnectBdd();
+
+            //*SEARCH REQUEST
+            $selectDependanceRequest = $dbServ->prepare("SELECT DISTINCT s.idService FROM `serv` AS s INNER JOIN `employes` AS e WHERE e.NoServ = s.idService");
+            $selectDependanceRequest->execute();
+            $rs   = $selectSupRequest->get_result();
+            $data = $rs->fetch_all(MYSQLI_ASSOC);
+ 
+            //* Close connection
+            $rs->free();
+            $dbServ->close();
+ 
+            return $data;
+
+        }
     }
 ?>

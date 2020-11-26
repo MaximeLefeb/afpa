@@ -55,7 +55,7 @@
         public function getEmb() :?DateTime {
             return $this->emb;
         }
-        public function setEmb(String $newEmb) :self{
+        public function setEmb(?String $newEmb) :self{
             $dateEmb = new datetime($newEmb);
             $this->emb = $dateEmb;
             return $this;

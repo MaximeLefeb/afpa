@@ -39,5 +39,18 @@
             return $Serv;
 
         }
+
+        public static function service_selectDependence() :Array  {
+            $data = Employe_mysqli_DAO::selectDependence();
+            $dataObjectServ = array();
+
+            foreach ($data as $value) {
+                $ServUndeletable = new Serv();
+                $ServUndeletable->setIdService($value["idServ"]);
+                array_push($dataObjectServ, $ServUndeletable);
+            }
+
+            return $dataObjectServ;
+        }
     }
 ?>

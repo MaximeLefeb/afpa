@@ -1,7 +1,8 @@
 <?php 
     include_once '../class/Employe.php';
-    include_once '../Divers/ConnectBdd.php';
     include_once '../class/InterfaceDAO.php';
+    require_once '../class/DaoSqlException.php';
+    require_once '../Divers/ConnectBdd.php';
 
     class Employe_mysqli_DAO implements commonFunctionDAO{
 
@@ -67,6 +68,8 @@
         }
 
         public function add(Object $EmployeAdd) :Void {
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
             $nom    = $EmployeAdd->getNom();
             $prenom = $EmployeAdd->getPrenom();
             $emp    = $EmployeAdd->getEmp();
@@ -77,21 +80,21 @@
             $noServ = $EmployeAdd->getNoServ();
             $noProj = $EmployeAdd->getNoProj();
 
-            //* TRAITEMENT AJOUT
+            //*TRAITEMENT AJOUT
             $dbServ = ConnectBdd();
 
             //*REQUETE SQL ADD
             $AddRequest = $dbServ->prepare("INSERT INTO employes(id, Nom, Prenom, Emploi, Sup, Embauche, Sal, Comm, NoService, NoProj) VALUES (NULL,UPPER(?),UPPER(?),?,?,?,?,?,?,?)");
             $AddRequest->bind_param("sssisiiii", $nom, $prenom, $emp, $sup, $emb, $sal, $comm, $noServ, $noProj);
-            
-            //*VERIF REQUETE SQL
-            if($AddRequest->execute()){
-                ?><script>alert("Ajout employes ok");</script><?php
-            }else{
-                ?><script>alert("Erreur lors de l'ajout d'employes en base de données");</script><?php
-            }
 
-            $dbServ->close();
+            //*VERIF REQUETE SQL
+            try {
+                $AddRequest->execute();
+            } catch (DaoSqlException $e) {
+                throw new DaoSqlException("Error when adding new employe, primary key already used", 1049);
+            } finally {
+                $dbServ->close();
+            }
         }
 
         public function searchById(String $id) :?Array{
