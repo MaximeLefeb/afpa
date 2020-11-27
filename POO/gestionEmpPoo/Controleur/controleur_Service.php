@@ -14,8 +14,13 @@
             isset($_POST['serv']) && !empty($_POST['serv']) &&
             isset($_POST['ville'])&& !empty($_POST['ville'])) {  
 
+            //*Search all service
+            $dataServ = service_Service::service_searchAllServ();
+            //*Select Dependence director
+            $servDependence = service_Service::service_selectDependence();
+
             service_Service::service_addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            afficherPageService(searchAllServ());
+            afficherPageService($dataServ, $servDependence);
             
         }
     }
@@ -23,9 +28,12 @@
     //*DELETE SERV
     if ($_GET && $_GET["action"]=="delete") {  
         if (!empty($_GET['idService'])) { 
-
+            //*Search all service
+            $dataServ = service_Service::service_searchAllServ();
+            //*Select Dependence director
+            $servDependence = service_Service::service_selectDependence();
             service_Service::service_delServ();
-            afficherPageService(searchAllServ());
+            afficherPageService($dataServ, $servDependence);
 
         }
     }
@@ -34,26 +42,23 @@
     if (isset($_POST['modify'])) { 
         if (isset($_POST['idServ']) && isset($_POST['serv']) && isset($_POST['ville'])) {
 
+            //*Search all service
+            $dataServ = service_Service::service_searchAllServ();
+            //*Select Dependence director
+            $servDependence = service_Service::service_selectDependence();
             service_Service::service_modifyServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            afficherPageService(searchAllServ());
+            afficherPageService($dataServ, $servDependence);
 
         }
     }
 
     //*ARRAY SERVICE
     if ($_GET && $_GET["action"]=="showServ") {
-        afficherPageService(searchAllServ());
-    }
-
-    //*SEARCH ALL SERVICE
-    function searchAllServ() :Array {
+        //*Search all service
         $dataServ = service_Service::service_searchAllServ();
-        return $dataServ;
-    }
+        //*Select Dependence director
+        $servDependence = service_Service::service_selectDependence();
 
-    //*SEARCH ONE SERVICE
-    function searchOneEmp(String $idServ) :Service {
-        $Serv = service_Service::service_searchServ($idServ);
-        return $Serv;
+        afficherPageService($dataServ, $servDependence);
     }
 ?>

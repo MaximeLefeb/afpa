@@ -2,14 +2,14 @@
     include_once '../DAO/Employe_mysqli_DAO.php';
 
     class service_Employe {
-        //TODO CATCH
-        public static function service_addEmp(String $nom,String $prenom,String $emp,Int $sup, String $emb, Float $sal, ?Float $comm, Int $noServ, ?Int $noProj) :Void {
+        public static function service_addEmp(String $nom,String $prenom,String $emp,Int $sup, ?String $emb, Float $sal, ?Float $comm, Int $noServ, ?Int $noProj) :Void {
             $employeAdd = new Employe();
             $employeAdd->setNom($nom)->setPrenom($prenom)->setEmp($emp)->setSup($sup)->setEmb($emb)->setSal($sal)->setComm($comm)->setNoServ($noServ)->setNoProj($noProj);
+            
             try {
                 Employe_mysqli_DAO::add($employeAdd);
-            } catch() {
-                throw new DaoSqlException("Error when adding new employe, primary key already used", 1049);
+            } catch(ServiceAddException $se) {
+                throw new ServiceAddException($se->getCode(), $se->getMessage());
             }
         }
 

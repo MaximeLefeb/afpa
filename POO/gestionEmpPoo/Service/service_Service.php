@@ -41,12 +41,12 @@
         }
 
         public static function service_selectDependence() :Array  {
-            $data = Employe_mysqli_DAO::selectDependence();
+            $data = Service_mysqli_DAO::selectDependence();
             $dataObjectServ = array();
 
             foreach ($data as $value) {
-                $ServUndeletable = new Serv();
-                $ServUndeletable->setIdService($value["idServ"]);
+                $ServUndeletable = new Service();
+                $ServUndeletable->setIdService($value["idService"]);
                 array_push($dataObjectServ, $ServUndeletable);
             }
 

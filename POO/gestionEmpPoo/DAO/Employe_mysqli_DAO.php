@@ -91,7 +91,7 @@
             try {
                 $AddRequest->execute();
             } catch (DaoSqlException $e) {
-                throw new DaoSqlException("Error when adding new employe, primary key already used", 1049);
+                throw new DaoSqlException($e->getCode(), $e->getMessage());
             } finally {
                 $dbServ->close();
             }
@@ -131,6 +131,5 @@
 
             return $data;
         }
-        
     }
 ?>

@@ -108,9 +108,9 @@
             $dbServ = ConnectBdd();
 
             //*SEARCH REQUEST
-            $selectDependanceRequest = $dbServ->prepare("SELECT DISTINCT s.idService FROM `serv` AS s INNER JOIN `employes` AS e WHERE e.NoServ = s.idService");
+            $selectDependanceRequest = $dbServ->prepare("SELECT DISTINCT s.idService FROM `serv` AS s INNER JOIN `employes` AS e WHERE e.NoService = s.idService");
             $selectDependanceRequest->execute();
-            $rs   = $selectSupRequest->get_result();
+            $rs   = $selectDependanceRequest->get_result();
             $data = $rs->fetch_all(MYSQLI_ASSOC);
  
             //* Close connection

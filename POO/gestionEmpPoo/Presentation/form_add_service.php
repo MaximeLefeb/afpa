@@ -63,17 +63,17 @@
                             <h1 class="text-center">Formulaire Modif</h1>
                             <form action="../Controleur/controleur_Service.php" method="POST">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Numéro d'employes</label>
+                                    <label for="exampleInputEmail1">Id de service</label>
                                     <input type="text" class="form-control" name="idServ" value="<?php echo $idServ ?>" readonly>
                                 </div>
                                 <!-- NOM -->
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Nom</label>
+                                    <label for="exampleInputEmail1">Nom du service</label>
                                     <input type="text" class="form-control" name="serv" value="<?php echo $Serv ?>">
                                 </div>
                                 <!-- PRENOM -->
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Prénom</label>
+                                    <label for="exampleInputPassword1">Ville</label>
                                     <input type="text" class="form-control" name="ville" value="<?php echo $ville ?>">
                                 </div>
 

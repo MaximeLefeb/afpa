@@ -27,7 +27,7 @@
     //*PRINT ARRAYBUTONS
     function printArrayButton(Array $ListSup, Int $idEmp) :Void {
         echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Employe.php?action=modify&id=$idEmp;'>Modifier</a></td>";
-        echo "<td>"; if(!disabled($ListSup, $idEmp)) {  echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Employe.php?action=delete&id=$idEmp'>Supprimer</a></button>"; } echo "<td>";
+        echo "<td>"; if(!disabled($ListSup, $idEmp)) {  echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Employe.php?action=delete&id=$idEmp'>Supprimer</a>"; } echo "</td>";
     }
 
     //*PRINT TH TABLEAU
@@ -69,7 +69,13 @@
     }
 
     //*AFFICHER LA PAGE 
-    function afficherPageEmploye(Array $dataEmp, Array $ListSup) :Void {
+    function afficherPageEmploye(Array $dataEmp, Array $ListSup, Exception $e = NULL) :Bool {
+
+        if ($e != NULL) {
+            echo "Error : " . $e.getCode() . " -> " . $e.getMessage();
+            return 1;
+        }
+
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -91,6 +97,11 @@
                         opacity        : 0.5;
                         text-decoration: none;
                     }
+                    #tableau {
+                        -webkit-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                        -moz-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                        box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                    }
                 </style>
             </head>
 
@@ -98,7 +109,7 @@
                 <div class="container-fluid">
                     <div class="row">    
                         <div class="col-sm-12 mb-3">
-                            <table class="table table-striped table-dark">
+                            <table id="tableau" class="table table-striped table-dark mt-3">
                                 <thead class="text-center">
                                     <?php printTableHeader(); ?>
                                 </thead>
@@ -108,15 +119,17 @@
                                 </tbody>
                             </table>
 
-                            <a href="../Controleur/controleur_form_Employe.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
-                            <a href="../Controleur/controleur_Service.php?action=showServ"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
-                            <a href="../Divers/Acceuil.php"><button type="submit" class="btn btn-primary">Retour à l'acceuil</button></a>
-
+                            <div class="text-center">
+                                <a href="../Controleur/controleur_form_Employe.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un employes</button></a>
+                                <a href="../Controleur/controleur_Service.php?action=showServ"><button type="submit" class="btn btn-primary">Voir la table service</button></a>
+                                <a href="../Divers/Acceuil.php"><button type="submit" class="btn btn-primary">Retour à l'acceuil</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </body>
         </html>
         <?php 
+        return 0;
     }
 ?>

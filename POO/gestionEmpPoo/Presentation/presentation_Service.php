@@ -9,13 +9,13 @@
     }
 
     //*PRINT TABLEAU DE SERVICE
-    function printServiceArray(Array $dataServ) :Void {
+    function printServiceArray(Array $dataServ, Array $ListServDependence) :Void {
         $i = 1;
         foreach ($dataServ as $key => $value) {
             echo "<tr id='trNo$i'>";
                 printTd($value);
                 if(ifAdmin()) {
-                    printServArrayButton($value->getIdService());
+                    printServArrayButton($ListServDependence, $value->getIdService());
                 }
             echo "</tr>";
             $i++;
@@ -37,13 +37,23 @@
     }
 
     //*PRINT ARRAYBUTONS
-    function printServArrayButton(Int $idServ) :Void {
+    function printServArrayButton(Array $ListServDependence, Int $idServ) :Void {
         echo "<td><a type='button' class='btn btn-primary' href='../Controleur/controleur_form_Service.php?action=modify&idService=$idServ;'>Modifier</a></td>";
-        echo "<td><a type='button' class='btn btn-danger' href='../Controleur/controleur_Service.php?action=delete&idService=$idServ'>Supprimer</a></button><td>";
+        echo "<td>"; if(!disabled($ListServDependence, $idServ)) { echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Service.php?action=delete&idService=$idServ'>Supprimer</a>"; } echo "</td>";
+    }
+
+    function disabled(Array $ListServDependence, Int $idServ) :?Bool{
+        foreach ($ListServDependence as $Service) {
+            if ($idServ == $Service->getIdService()) {
+                return true;
+            }
+        } 
+
+        return null;
     }
 
     //*AFFICHER LA PAGE 
-    function afficherPageService(Array $dataServ) :Void {
+    function afficherPageService(Array $dataServ, Array $ListServDependence) :Void {
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -65,6 +75,11 @@
                         opacity        : 0.5;
                         text-decoration: none;
                     }
+                    #tableauServ {
+                        -webkit-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                        -moz-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                        box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                    }
                 </style>
             </head>
 
@@ -72,20 +87,21 @@
                 <div class="container-fluid">
                     <div class="row">    
                         <div class="col-sm-12 mb-3">
-                            <table class="table table-striped table-dark">
+                            <table id="tableauServ" class="table table-striped table-dark mt-3">
                                 <thead class="text-center">
                                     <?php printServTableHeader(); ?>
                                 </thead>
                             
                                 <tbody class="text-center">
-                                    <?php printServiceArray($dataServ); ?>
+                                    <?php printServiceArray($dataServ, $ListServDependence); ?>
                                 </tbody>
                             </table>
 
-                            <a href="../Controleur/controleur_form_Service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
-                            <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table Employes</button></a>
-                            <a href="../Divers/Acceuil.php"><button type="submit" class="btn btn-primary">Retour à l'acceuil</button></a>
-
+                            <div class="text-center">
+                                <a href="../Controleur/controleur_form_Service.php?action=ajouter"><button type="submit" class="btn btn-primary">+ Ajouter un Service</button></a>
+                                <a href="../Controleur/controleur_Employe.php?action=showEmp"><button type="submit" class="btn btn-primary">Voir la table Employes</button></a>
+                                <a href="../Divers/Acceuil.php"><button type="submit" class="btn btn-primary">Retour à l'acceuil</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
