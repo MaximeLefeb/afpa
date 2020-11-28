@@ -21,7 +21,7 @@
         }
     }
 
-    //*SEARCH ONE EMPLOYE
+    //*SEARCH ONE SERV
     function searchOneServ(String $idServ) :Service {
         $Service = service_Service::service_searchServ($idServ);
         return $Service;

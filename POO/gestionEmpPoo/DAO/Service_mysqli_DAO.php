@@ -4,7 +4,9 @@
     require_once '../class/DaoSqlException.php';
     require_once '../Divers/ConnectBdd.php';
 
-    class Service_mysqli_DAO implements commonFunctionDAO{
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+    class ServiceMysqliDAO implements commonFunctionDAO{
         
         public function add(Object $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();

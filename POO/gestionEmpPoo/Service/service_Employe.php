@@ -1,29 +1,40 @@
 <?php 
-    include_once '../DAO/Employe_mysqli_DAO.php';
+    include_once '../DAO/EmployeMysqliDAO.php';
+    require_once '../Class/ServiceException.php';
 
     class service_Employe {
         public static function service_addEmp(String $nom,String $prenom,String $emp,Int $sup, ?String $emb, Float $sal, ?Float $comm, Int $noServ, ?Int $noProj) :Void {
             $employeAdd = new Employe();
             $employeAdd->setNom($nom)->setPrenom($prenom)->setEmp($emp)->setSup($sup)->setEmb($emb)->setSal($sal)->setComm($comm)->setNoServ($noServ)->setNoProj($noProj);
-            
+           
             try {
                 Employe_mysqli_DAO::add($employeAdd);
-            } catch(ServiceAddException $se) {
-                throw new ServiceAddException($se->getCode(), $se->getMessage());
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
             }
         }
 
-        public static function service_delEmp() :Void {
-            Employe_mysqli_DAO::delete($_GET["id"]);  
+        public static function service_delEmp() :Void { 
+            try {    
+                Employe_mysqli_DAO::delete($_GET["id"]);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
         }
 
         public static function service_modifyEmp(Int $id, String $nom, String $prenom, String $emp, Int $sup, ?String $emb, Float $sal, ?Float $comm, Int $noServ, ?Int $noProj) :Void {
             $employeModif = new Employe();
             $employeModif->setId($id)->setNom($nom)->setPrenom($prenom)->setEmp($emp)->setSup($sup)->setEmb($emb)->setSal($sal)->setComm($comm)->setNoServ($noServ)->setNoProj($noProj);
-            Employe_mysqli_DAO::modif($employeModif);
+            
+            try {
+                Employe_mysqli_DAO::modif($_GET["id"]);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
         }
 
         public static function service_selectSup() :Array  {
+            //TODO TRY 
             $data = Employe_mysqli_DAO::selectSup();
             $dataObjectSup = array();
 
@@ -37,6 +48,7 @@
         }
 
         public static function service_searchEmp(String $id) :?Employe {
+            //TODO TRY 
             $data = Employe_mysqli_DAO::searchById($id);
             $employe = new Employe();
             $employe->setId($data["id"])->setNom($data["Nom"])->setPrenom($data["Prenom"])->setEmp($data["Emploi"])->setSup($data["Sup"])->setEmb($data["Embauche"])->setSal($data["Sal"])->setComm($data["Comm"])->setNoServ($data["NoService"])->setNoProj($data["NoProj"]);
@@ -45,6 +57,7 @@
         }
 
         public static function service_searchAllEmp() :Array {
+            //TODO TRY 
             $data = Employe_mysqli_DAO::searchAll();
             $dataObject = array();
 

@@ -1,7 +1,11 @@
 <?php 
     function ConnectBdd() {
         //* CONNECT BDD
-        $mysqli = new mysqli('localhost', 'root', '', 'sqlipoo');
-        return $mysqli;
+        try {
+            $mysqli = new mysqli('localhost', 'root', '', 'sqlipoo');
+            return $mysqli;
+        } catch (\Throwable $th) {
+            throw new DaoSqlException($e->getMessage(), $e->getCode());
+        }
     }
 ?> 

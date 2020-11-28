@@ -71,8 +71,8 @@
     //*AFFICHER LA PAGE 
     function afficherPageEmploye(Array $dataEmp, Array $ListSup, Exception $e = NULL) :Bool {
 
-        if ($e != NULL) {
-            echo "Error : " . $e.getCode() . " -> " . $e.getMessage();
+        if ($e) {
+            echo "Error -> " . $e->getMessage() . ". Code : " . $e->getCode();
             return 1;
         }
 

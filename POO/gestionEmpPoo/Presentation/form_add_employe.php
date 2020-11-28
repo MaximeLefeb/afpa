@@ -40,17 +40,17 @@
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nom</label>
-                                    <input type="text" class="form-control" name="nom">
+                                    <input type="text" class="form-control" name="nom" required>
                                 </div>
                                 <!-- PRENOM -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Prénom</label>
-                                    <input type="text" class="form-control" name="prenom">
+                                    <input type="text" class="form-control" name="prenom" required>
                                 </div>
                                 <!-- EMPLOI -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Emploi</label>
-                                    <select class="form-control form-control-lg" name="emploi">
+                                    <select class="form-control form-control-lg" name="emploi" required>
                                         <option value="SECRETAIRE">SECRETAIRE</option>
                                         <option value="VENDEUR">VENDEUR</option>
                                         <option value="TECHNICIEN">TECHNICIEN</option>
@@ -65,7 +65,7 @@
                                 <!-- //SUPERIEUR -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Supérieur hiérarchique</label>
-                                    <select class="form-control form-control-lg" name="sup">
+                                    <select class="form-control form-control-lg" name="sup" required>
                                         <option>1</option>
                                         <option>3</option>
                                         <option>6</option>
@@ -77,12 +77,12 @@
                                 <!-- EMBAUCHE -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Embauche</label>
-                                    <input type="date" class="form-control" name="embauche">
+                                    <input type="date" class="form-control" name="embauche" required>
                                 </div>
                                 <!-- SALAIRE -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Salaire</label>
-                                    <input type="text" class="form-control" name="sal">
+                                    <input type="text" class="form-control" name="sal" required>
                                 </div>
                                 <!-- COMMISION -->
                                 <div class="form-group">
@@ -92,7 +92,7 @@
                                 <!-- NUMERO SERVICE -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Numéro de service</label>
-                                    <select class="form-control form-control-lg" name="noService">
+                                    <select class="form-control form-control-lg" name="noService" required>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -137,17 +137,17 @@
                                 <!-- NOM -->
                                 <div class="form-group">
                                     <label for="nom">Nom</label>
-                                    <input type="text" class="form-control" name="nom" value="<?php echo $nom ?>">
+                                    <input type="text" class="form-control" name="nom" value="<?php echo $nom ?>" required>
                                 </div>
                                 <!-- PRENOM -->
                                 <div class="form-group">
                                     <label for="prenom">Prénom</label>
-                                    <input type="text" class="form-control" name="prenom" value="<?php echo $prenom ?>">
+                                    <input type="text" class="form-control" name="prenom" value="<?php echo $prenom ?>" required>
                                 </div>
                                 <!-- EMPLOI -->
                                 <div class="form-group">
                                     <label for="Emp">Emploi</label>
-                                    <select class="form-control form-control-lg" name="emploi">
+                                    <select class="form-control form-control-lg" name="emploi" required>
                                         <option <?php select($emp,"SECRETAIRE");?>value="SECRETAIRE">SECRETAIRE</option>
                                         <option <?php select($emp,"VENDEUR"); ?>value="VENDEUR">VENDEUR</option>
                                         <option <?php select($emp,"TECHNICIEN");?>value="TECHNICIEN">TECHNICIEN</option>
@@ -162,7 +162,7 @@
                                 <!-- //SUPERIEUR -->
                                 <div class="form-group">
                                     <label for="">Supérieur hiérarchique</label>
-                                    <select class="form-control form-control-lg" name="sup" value="<?php echo $sup ?>">
+                                    <select class="form-control form-control-lg" name="sup" value="<?php echo $sup ?>" required>
                                         <option <?php select($sup,"1");?>value="1">1</option>
                                         <option <?php select($sup,"3");?>value="3">3</option>
                                         <option <?php select($sup,"6");?>value="6">6</option>
@@ -174,12 +174,12 @@
                                 <!-- EMBAUCHE -->
                                 <div class="form-group">
                                     <label for="Emb">Embauche</label>
-                                    <input type="date" class="form-control" name="embauche" value="<?php echo $emb ?>">
+                                    <input type="date" class="form-control" name="embauche" value="<?php echo $emb ?>" required>
                                 </div>
                                 <!-- SALAIRE -->
                                 <div class="form-group">
                                     <label for="Sal">Salaire</label>
-                                    <input type="text" class="form-control" name="sal" value="<?php echo $sal ?>">
+                                    <input type="text" class="form-control" name="sal" value="<?php echo $sal ?>" required>
                                 </div>
                                 <!-- COMMISION -->
                                 <div class="form-group">
@@ -189,7 +189,7 @@
                                 <!-- NUMERO SERVICE -->
                                 <div class="form-group">
                                     <label for="NoServ">Numéro de service</label>
-                                    <select class="form-control form-control-lg" name="noService" value="<?php echo $noServ ?>">
+                                    <select class="form-control form-control-lg" name="noService" value="<?php echo $noServ ?>" required>
                                         <option <?php select($noServ,"1"); ?> value="1">1</option>
                                         <option <?php select($noServ,"2"); ?> value="2">2</option>
                                         <option <?php select($noServ,"3"); ?> value="3">3</option>

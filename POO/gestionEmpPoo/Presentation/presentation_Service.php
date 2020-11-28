@@ -42,6 +42,7 @@
         echo "<td>"; if(!disabled($ListServDependence, $idServ)) { echo "<a type='button' class='btn btn-danger' href='../Controleur/controleur_Service.php?action=delete&idService=$idServ'>Supprimer</a>"; } echo "</td>";
     }
 
+    //*SI SERVICE A AU MOINS 1 EMPLOYE DESACTIVER DELETE BUTTON
     function disabled(Array $ListServDependence, Int $idServ) :?Bool{
         foreach ($ListServDependence as $Service) {
             if ($idServ == $Service->getIdService()) {

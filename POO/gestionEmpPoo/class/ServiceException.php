@@ -1,5 +1,5 @@
 <?php 
 
-    class ServiceAddException extends Exception {}
+    class ServiceException extends Exception {}
 
 ?>
