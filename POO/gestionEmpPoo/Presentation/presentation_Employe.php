@@ -108,7 +108,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 text-center mt-3">
-                            <h1>Aujourd'hui $i employes on été ajouter à la base de données</h1>
+                            <h1>Aujourd'hui $i employes ont été ajouté à la base de données</h1>
                         </div>
                     </div>
                    
@@ -127,11 +127,11 @@
                         </div>
                         <!-- SEARCH BY DATE -->
                         <div class="col-sm-2 mt-3 mb-3">
-                            <input class="form-control" id="dateInput" type="text" placeholder="Rechercher par date d'embauche...">
+                            <input class="form-control" id="dateInput" type="date" placeholder="Rechercher par date d'embauche...">
                         </div>
                         <!-- SEARCH BY NOPROJ -->
                         <div class="col-sm-2 mt-3 mb-3">
-                            <input class="form-control" id="noProjInput" type="text" placeholder="Rechercher par numéro de projet...">
+                            <input class="form-control" id="noProjInput" type="number" placeholder="Rechercher par numéro de projet...">
                         </div>
                         <!-- SEARCH BY SERVICE NAME -->
                         <div class="col-sm-2 mt-3 mb-3">
@@ -159,6 +159,11 @@
                         </div>
                     </div>
                 </div>
+                <script
+                    src="https://code.jquery.com/jquery-3.3.1.min.js"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous">
+                </script>
                 <script src="../Divers/script.js"></script>
             </body>
         </html>

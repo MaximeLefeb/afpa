@@ -25,22 +25,6 @@
         }
     }
 
-    //*DELETE EMP
-    if ($_GET && $_GET["action"] == "delete") {   
-        if (!empty($_GET['id'])) {
-            try {
-                //*Search all employe
-                $data = service_Employe::service_searchAllEmp();
-                //*Select Dependence director
-                $ListSup = service_Employe::service_selectSup();
-                service_Employe::service_delEmp();
-                afficherPageEmploye($data, $ListSup); 
-            } catch(ServiceException $ce) {
-                afficherPageEmploye($data, $ListSup, $ce);
-            }    
-        }
-    }
-
     //*MODIFY EMP
     if (isset($_POST['modify'])) { 
         if (isset($_POST['id']) && !empty($_POST['id'])) {
@@ -59,17 +43,31 @@
             }
         }
     }
-
-    //*ARRAY EMPLOYE
-    if ($_GET && $_GET["action"]=="showEmp") {
-        try {
-            //*Search all employe
-            $data = service_Employe::service_searchAllEmp();
-            //*Select Dependence director
-            $ListSup = service_Employe::service_selectSup();
-            afficherPageEmploye($data, $ListSup);
-        } catch(ServiceException $ce) {
-            afficherPageEmploye($data, $ListSup, $ce);
-        }  
+    
+    if (isset($_GET)) {
+        if ($_GET["action"] == "delete") {   
+            if (!empty($_GET['id'])) {
+                try {
+                    //*Search all employe
+                    $data = service_Employe::service_searchAllEmp();
+                    //*Select Dependence director
+                    $ListSup = service_Employe::service_selectSup();
+                    service_Employe::service_delEmp();
+                    afficherPageEmploye($data, $ListSup); 
+                } catch(ServiceException $ce) {
+                    afficherPageEmploye($data, $ListSup, $ce);
+                }    
+            }
+        } else if ($_GET["action"]=="showEmp") {
+            try {
+                //*Search all employe
+                $data = service_Employe::service_searchAllEmp();
+                //*Select Dependence director
+                $ListSup = service_Employe::service_selectSup();
+                afficherPageEmploye($data, $ListSup);
+            } catch(ServiceException $ce) {
+                afficherPageEmploye($data, $ListSup, $ce);
+            }  
+        }
     }
 ?>

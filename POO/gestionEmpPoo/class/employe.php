@@ -1,5 +1,5 @@
 <?php 
-    class Employe {
+    class Employe implements JsonSerializable {
         private $id;
         private $nom;
         private $prenom;
@@ -96,6 +96,22 @@
         //*Convert datetime -> String
         public function datetimeToString($datetime) :?String {
             return $dateToString = $datetime->format('Y-m-d');
+        }
+
+        //*Encode json
+        public function jsonSerialize() {
+            return [
+                'Id'         => $this->getId(),
+                'Nom'        => $this->getNom(),
+                'Prenom'     => $this->getPrenom(),
+                'Emploi'     => $this->getEmp(),
+                'Superieur'  => $this->getSup(),
+                'Embauche'   => $this->datetimeToString($this->getEmb()),
+                'Salaire'    => $this->getSal(),
+                'Commission' => $this->getComm(),
+                'noService'  => $this->getNoServ(),
+                'noProjet'   => $this->getNoProj()
+            ];
         }
 
         public function __toString() :string{
