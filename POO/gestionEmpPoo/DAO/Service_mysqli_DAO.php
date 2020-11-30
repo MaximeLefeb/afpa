@@ -20,7 +20,7 @@
             
             //*VERIF REQUETE SQL
             try {
-                $DeleteRequest->execute();
+                $AddRequest->execute();
             } catch (mysqli_sql_exception $e) {
                 throw new DaoSqlException($e->getMessage(), $e->getCode());
             } finally {
@@ -37,7 +37,7 @@
 
             //*VERIF REQUETE SQL
             try {
-                $AddRequest->execute();
+                $DeleteRequest->execute();
             } catch (mysqli_sql_exception $e) {
                 throw new DaoSqlException($e->getMessage(), $e->getCode());
             } finally {

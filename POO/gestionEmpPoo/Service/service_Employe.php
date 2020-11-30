@@ -27,7 +27,7 @@
             $employeModif->setId($id)->setNom($nom)->setPrenom($prenom)->setEmp($emp)->setSup($sup)->setEmb($emb)->setSal($sal)->setComm($comm)->setNoServ($noServ)->setNoProj($noProj);
             
             try {
-                Employe_mysqli_DAO::modif($_GET["id"]);
+                Employe_mysqli_DAO::modif($employeModif);
             } catch(DaoSqlException $se) {
                 throw new ServiceException($se->getMessage(), $se->getCode());
             }

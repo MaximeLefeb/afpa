@@ -14,8 +14,6 @@
             isset($_POST['serv']) && !empty($_POST['serv']) &&
             isset($_POST['ville'])&& !empty($_POST['ville'])) {  
 
-            service_Service::service_addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            afficherPageService($dataServ, $servDependence);
             try {
                 //*Search all service
                 $dataServ = service_Service::service_searchAllServ();
