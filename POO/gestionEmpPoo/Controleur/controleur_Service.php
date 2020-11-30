@@ -14,51 +14,63 @@
             isset($_POST['serv']) && !empty($_POST['serv']) &&
             isset($_POST['ville'])&& !empty($_POST['ville'])) {  
 
-            //*Search all service
-            $dataServ = service_Service::service_searchAllServ();
-            //*Select Dependence director
-            $servDependence = service_Service::service_selectDependence();
-
             service_Service::service_addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
             afficherPageService($dataServ, $servDependence);
-            
+            try {
+                //*Search all service
+                $dataServ = service_Service::service_searchAllServ();
+                //*Select Dependence director
+                $servDependence = service_Service::service_selectDependence();
+                service_Service::service_addServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
+                afficherPageService($dataServ, $servDependence);
+            } catch(ServiceException $ce) {
+                afficherPageService($dataServ, $servDependence, $ce);
+            }
         }
     }
     
     //*DELETE SERV
     if ($_GET && $_GET["action"]=="delete") {  
         if (!empty($_GET['idService'])) { 
-            //*Search all service
-            $dataServ = service_Service::service_searchAllServ();
-            //*Select Dependence director
-            $servDependence = service_Service::service_selectDependence();
-            service_Service::service_delServ();
-            afficherPageService($dataServ, $servDependence);
-
+            try {
+                //*Search all service
+                $dataServ = service_Service::service_searchAllServ();
+                //*Select Dependence director
+                $servDependence = service_Service::service_selectDependence();
+                service_Service::service_delServ();
+                afficherPageService($dataServ, $servDependence);
+            } catch(ServiceException $ce) {
+                afficherPageService($dataServ, $servDependence, $ce);
+            }
         }
     }
 
     //*MODIFY SERV
     if (isset($_POST['modify'])) { 
         if (isset($_POST['idServ']) && isset($_POST['serv']) && isset($_POST['ville'])) {
-
-            //*Search all service
-            $dataServ = service_Service::service_searchAllServ();
-            //*Select Dependence director
-            $servDependence = service_Service::service_selectDependence();
-            service_Service::service_modifyServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
-            afficherPageService($dataServ, $servDependence);
-
+            try {
+                //*Search all service
+                $dataServ = service_Service::service_searchAllServ();
+                //*Select Dependence director
+                $servDependence = service_Service::service_selectDependence();
+                service_Service::service_modifyServ($_POST['idServ'],$_POST['serv'],$_POST['ville']);
+                afficherPageService($dataServ, $servDependence);
+            } catch(ServiceException $ce) {
+                afficherPageService($dataServ, $servDependence, $ce);
+            }
         }
     }
 
     //*ARRAY SERVICE
     if ($_GET && $_GET["action"]=="showServ") {
-        //*Search all service
-        $dataServ = service_Service::service_searchAllServ();
-        //*Select Dependence director
-        $servDependence = service_Service::service_selectDependence();
-
-        afficherPageService($dataServ, $servDependence);
+        try {
+           //*Search all service
+            $dataServ = service_Service::service_searchAllServ();
+            //*Select Dependence director
+            $servDependence = service_Service::service_selectDependence();
+            afficherPageService($dataServ, $servDependence);
+        } catch(ServiceException $ce) {
+            afficherPageService($dataServ, $servDependence, $ce);
+        }
     }
 ?>

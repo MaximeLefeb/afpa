@@ -6,8 +6,7 @@
 
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-    class ServiceMysqliDAO implements commonFunctionDAO{
-        
+    class Service_mysqli_DAO implements commonFunctionDAO{
         public function add(Object $ServiceAdd) :Void {
             $idServ    = $ServiceAdd->getIdService();
             $nomServ   = $ServiceAdd->getService();
@@ -15,68 +14,70 @@
 
             //* TRAITEMENT AJOUT
             $dbServ=ConnectBdd();
-            
             //*REQUETE SQL ADD
             $AddRequest = $dbServ->prepare("INSERT INTO serv(`idService`,`Service`, `Ville`) VALUES (?,UPPER(?),UPPER(?))");
             $AddRequest->bind_param("iss", $idServ, $nomServ, $villeServ);
             
             //*VERIF REQUETE SQL
-            if($AddRequest->execute()){
-                ?><script>alert("Ajout service ok");</script><?php
-            }else{
-                ?><script>alert("Erreur lors de l'ajout de service en base de données");</script><?php
+            try {
+                $DeleteRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            } finally {
+                $dbServ->close();
             }
-
-            $dbServ->close();
         }
 
         public function delete(Int $idServ) :Void {
             //* TRAITEMENT SUPRESSION
             $dbServ=ConnectBdd();
-            
             //*REQUETE SQL DEL
             $DeleteRequest = $dbServ->prepare("DELETE FROM `serv` WHERE idService = ?");
             $DeleteRequest->bind_param("i", $idServ);
 
             //*VERIF REQUETE SQL
-            if ($DeleteRequest->execute()) {
-                ?><script>alert("Delete ok");</script><?php
-            }else{
-                ?><script>alert("Erreur lors de la suppression");</script><?php
+            try {
+                $AddRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            } finally {
+                $dbServ->close();
             }
-
-            $dbServ->close();
         }
 
         public function modif(Object $ServiceModif) :Void {
-            //* TRAITEMENT MODIFICATION
-            $dbServ=ConnectBdd();
-
             $idServ    = $ServiceModif->getIdService();
             $nomServ   = $ServiceModif->getService();
             $villeServ = $ServiceModif->getVille();
-            
+
+            //* TRAITEMENT MODIFICATION
+            $dbServ    = ConnectBdd();
             //*REQUETE SQL MODIFY
             $ModiFyRequest = $dbServ->prepare("UPDATE `serv` SET idService=?, service =UPPER(?), ville=UPPER(?) WHERE idService = ?");
             $ModiFyRequest->bind_param("issi", $idServ, $nomServ, $villeServ, $idServ);
             
             //*VERIF REQUETE SQL
-            if ($ModiFyRequest->execute()) {
-                ?><script>alert("Modif service ok");</script><?php
-            }else{
-                ?><script>alert("Echec de la modif");</script><?php
+            try {
+                $ModiFyRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            } finally {
+                $dbServ->close();
             }
-
-            $dbServ->close();
         }
 
         public function searchAll() :Array {
             //* CONNECT DB
             $dbServ=ConnectBdd();
-
             //* SEARCH BDD
             $requestSelectServ = $dbServ->prepare("SELECT * FROM serv");
-            $requestSelectServ->execute(); 
+        
+            try {
+                $requestSelectServ->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+
             $rs   = $requestSelectServ->get_result();
             $dataServ = $rs->fetch_all(MYSQLI_ASSOC);
 
@@ -90,11 +91,16 @@
         public function searchById(String $idServ) :?Array {
             //* CONNECT DB
             $dbServ = ConnectBdd();
-
             //* SEARCH BDD
             $selectRequest = $dbServ->prepare("SELECT * FROM serv WHERE idService = ?");
             $selectRequest->bind_param("i", $idServ);
-            $selectRequest->execute();
+            
+            try {
+                $selectRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+
             $rs   = $selectRequest->get_result();
             $data = $rs->fetch_array(MYSQLI_ASSOC);
 
@@ -108,10 +114,15 @@
         public function selectDependence() :Array {
             //* CONNECT DB
             $dbServ = ConnectBdd();
-
             //*SEARCH REQUEST
             $selectDependanceRequest = $dbServ->prepare("SELECT DISTINCT s.idService FROM `serv` AS s INNER JOIN `employes` AS e WHERE e.NoService = s.idService");
-            $selectDependanceRequest->execute();
+    
+            try {
+                $selectDependanceRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+
             $rs   = $selectDependanceRequest->get_result();
             $data = $rs->fetch_all(MYSQLI_ASSOC);
  

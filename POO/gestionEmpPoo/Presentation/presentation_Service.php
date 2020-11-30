@@ -54,7 +54,12 @@
     }
 
     //*AFFICHER LA PAGE 
-    function afficherPageService(Array $dataServ, Array $ListServDependence) :Void {
+    function afficherPageService(Array $dataServ, Array $ListServDependence, Exception $e = NULL) :Bool {
+        if ($e) {
+            echo "Error -> " . $e->getMessage() . ". Code : " . $e->getCode();
+            return 1;
+        }
+
         ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -109,5 +114,6 @@
             </body>
         </html>
         <?php 
+        return 0;
     }
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once '../class/Employe.php';
     include_once '../class/InterfaceDAO.php';
     require_once '../class/DaoSqlException.php';
@@ -7,20 +7,24 @@
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
     class Employe_mysqli_DAO implements commonFunctionDAO{
-
         public function searchAll() :Array {
             //* CONNECT DB
             $db=ConnectBdd();
-
             //* REQUETE SQL SEARCH ALL
             $requestSelectEmp = $db->prepare("SELECT * FROM  employes");
 
-            //TODO
-            Self::tryExecuteGetExcept($requestSelectEmp, $db);
+            try {
+                $requestSelectEmp->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+            
             $rs   = $requestSelectEmp->get_result();
             $dataEmp = $rs->fetch_all(MYSQLI_ASSOC);
 
+            //* Close connection
             $rs->free();
+            $db->close();
 
             return $dataEmp;
         }
@@ -86,18 +90,22 @@
         public function searchById(String $id) :?Array{
             //* CONNECT DB
             $db = ConnectBdd();
-
             //* REQUETE SQL SEARCH BY ID
             $selectRequest = $db->prepare("SELECT * FROM employes WHERE id = ?");
             $selectRequest->bind_param("i", $id);
 
-            //TODO
-            Self::tryExecuteGetExcept($selectRequest, $db);
+            try {
+                $selectRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+
             $rs   = $selectRequest->get_result();
             $data = $rs->fetch_array(MYSQLI_ASSOC);
 
             //* Close connection
             $rs->free();
+            $db->close();
 
             return $data;
         }
@@ -105,35 +113,32 @@
         public function selectSup() :Array {
             //* CONNECT DB
             $db = ConnectBdd(); 
-
             //* REQUETE SQL SEARCH SUPERIEUR 
             $selectSupRequest = $db->prepare("SELECT DISTINCT e.id FROM `employes` AS e INNER JOIN `employes` AS e1 WHERE e.id=e1.sup");
-
-            //TODO
-            Self::tryExecuteGetExcept($selectSupRequest, $db);
+            
+            try {
+                $selectSupRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+            
             $rs   = $selectSupRequest->get_result();
             $data = $rs->fetch_all(MYSQLI_ASSOC);
 
             //* Close connection
             $rs->free();
+            $db->close();
 
             return $data;
         }
 
-        public static function tryExecuteGetExcept($request, $db, $toReturn = NULL) {
+        public static function tryExecuteGetExcept($request, $db) {
             try {
                 $request->execute();
             } catch (mysqli_sql_exception $e) {
                 throw new DaoSqlException($e->getMessage(), $e->getCode());
             } finally {
-                //? PAS DE FINNALY ?
                 $db->close();
-                
-                /*                 
-                if ($toReturn) {
-                    #code...
-                } 
-                */
             }
         }
     }

@@ -1,25 +1,45 @@
 <?php 
     include_once '../DAO/Service_mysqli_DAO.php';
+    require_once '../Class/ServiceException.php';
 
     class service_Service {
         public static function service_addServ($idServ,$serv,$ville) :Void {
             $Service = new Service();
             $Service->setIdService($idServ)->setService($serv)->setVille($ville);
-            Service_mysqli_DAO::add($Service);
+           
+            try {
+                Service_mysqli_DAO::add($Service);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
         }
 
         public static function service_delServ() :Void {
-            Service_mysqli_DAO::delete($_GET['idService']);
+            try {
+                Service_mysqli_DAO::delete($_GET['idService']);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
         }
 
         public static function service_modifyServ($idServ,$serv,$ville) :Void {
             $ServiceModified = new Service();
             $ServiceModified->setIdService($idServ)->setService($serv)->setVille($ville);
-            Service_mysqli_DAO::modif($ServiceModified);
+
+            try {
+                Service_mysqli_DAO::modif($ServiceModified);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
         }
 
         public static function service_searchAllServ() :Array {
-            $dataServ = Service_mysqli_DAO::searchAll();
+            try {
+                $dataServ = Service_mysqli_DAO::searchAll();
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+        
             $dataObject = array();
 
             foreach ($dataServ as $value) {
@@ -32,7 +52,12 @@
         }
 
         public static function service_searchServ(String $idServ) :?Service {
-            $data = Service_mysqli_DAO::searchById($idServ);
+            try {
+                $data = Service_mysqli_DAO::searchById($idServ);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+            
             $Serv = new Service();
             $Serv->setIdService($data["idService"])->setService($data["Service"])->setVille($data["Ville"]);
 
@@ -41,7 +66,12 @@
         }
 
         public static function service_selectDependence() :Array  {
-            $data = Service_mysqli_DAO::selectDependence();
+            try {
+                $data = Service_mysqli_DAO::selectDependence();
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+            
             $dataObjectServ = array();
 
             foreach ($data as $value) {

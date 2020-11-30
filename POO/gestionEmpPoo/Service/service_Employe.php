@@ -1,5 +1,5 @@
 <?php 
-    include_once '../DAO/EmployeMysqliDAO.php';
+    include_once '../DAO/Employe_mysqli_DAO.php';
     require_once '../Class/ServiceException.php';
 
     class service_Employe {
@@ -34,8 +34,12 @@
         }
 
         public static function service_selectSup() :Array  {
-            //TODO TRY 
-            $data = Employe_mysqli_DAO::selectSup();
+            try {
+                $data = Employe_mysqli_DAO::selectSup();
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+
             $dataObjectSup = array();
 
             foreach ($data as $value) {
@@ -48,8 +52,12 @@
         }
 
         public static function service_searchEmp(String $id) :?Employe {
-            //TODO TRY 
-            $data = Employe_mysqli_DAO::searchById($id);
+            try {
+                $data = Employe_mysqli_DAO::searchById($id);
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+        
             $employe = new Employe();
             $employe->setId($data["id"])->setNom($data["Nom"])->setPrenom($data["Prenom"])->setEmp($data["Emploi"])->setSup($data["Sup"])->setEmb($data["Embauche"])->setSal($data["Sal"])->setComm($data["Comm"])->setNoServ($data["NoService"])->setNoProj($data["NoProj"]);
 
@@ -57,8 +65,12 @@
         }
 
         public static function service_searchAllEmp() :Array {
-            //TODO TRY 
-            $data = Employe_mysqli_DAO::searchAll();
+            try {
+                $data = Employe_mysqli_DAO::searchAll();
+            } catch(DaoSqlException $se) {
+                throw new ServiceException($se->getMessage(), $se->getCode());
+            }
+            
             $dataObject = array();
 
             foreach ($data as $value) {

@@ -3,7 +3,6 @@
     include_once '../Divers/ConnectBdd.php';
     
     Class Utilisateur_mysqli_DAO {
-
         public static function AddUser(String $mail, String $pwd) :Void {
             $pwdHash = service_Utilisateur::hashPwd($pwd);
             $ToU = 'Utilisateur';
@@ -19,14 +18,13 @@
             $stmt->bind_param("sss", $mail, $ToU, $pwdHash);
 
             //* Verify request
-            if($stmt->execute()) {
-                ?><script type='text/javascript'> alert('Ajout ok'); </script><?php
-            } else {
-                ?><script type='text/javascript'> alert('Erreur lors de l insertion en base de donnée'); </script><?php
+            try {
+                $stmt->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            } finally {
+                $mysqli->close();
             }
-
-            //* Close connection 
-            $mysqli->close();
         }
 
         public static function searchUser(String $mail) :?Array {
@@ -36,7 +34,13 @@
             //* SQL REQUEST
             $selectRequest = $dbUser->prepare("SELECT * FROM user WHERE mail = ?");
             $selectRequest->bind_param("s", $mail);
-            $selectRequest->execute();
+
+            try {
+                $selectRequest->execute();
+            } catch (mysqli_sql_exception $e) {
+                throw new DaoSqlException($e->getMessage(), $e->getCode());
+            }
+
             $rs   = $selectRequest->get_result();
             $data = $rs->fetch_array(MYSQLI_ASSOC);
 
