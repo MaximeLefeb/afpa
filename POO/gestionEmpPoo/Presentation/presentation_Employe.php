@@ -106,6 +106,39 @@
 
             <body>
                 <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 text-center mt-3">
+                            <h1>Aujourd'hui $i employes on été ajouter à la base de données</h1>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <!-- SEARCH BY NAME -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="nameInput" type="text" placeholder="Recherche par nom...">
+                        </div>
+                        <!-- SEARCH BY LASTNAME -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="lastnameInput" type="text" placeholder="Rechercher par prénom...">
+                        </div>
+                        <!-- SEARCH BY EMPLOI -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="emploiInput" type="text" placeholder="Rechercher par emploi...">
+                        </div>
+                        <!-- SEARCH BY DATE -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="dateInput" type="text" placeholder="Rechercher par date d'embauche...">
+                        </div>
+                        <!-- SEARCH BY NOPROJ -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="noProjInput" type="text" placeholder="Rechercher par numéro de projet...">
+                        </div>
+                        <!-- SEARCH BY SERVICE NAME -->
+                        <div class="col-sm-2 mt-3 mb-3">
+                            <input class="form-control" id="serviceNameInput" type="text" placeholder="Rechercher par nom de service...">
+                        </div>
+                    </div>
+                    <hr>
                     <div class="row">    
                         <div class="col-sm-12 mb-3">
                             <table id="tableau" class="table table-striped table-dark mt-3">
@@ -126,6 +159,7 @@
                         </div>
                     </div>
                 </div>
+                <script src="../Divers/script.js"></script>
             </body>
         </html>
         <?php 
