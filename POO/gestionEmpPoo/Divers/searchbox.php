@@ -2,11 +2,11 @@
     include_once '../Service/service_Employe.php';
     include_once '../Presentation/presentation_Employe.php';
 
-    //*SEARCH BAR
-
-    $data = service_Employe::service_searchAllEmp();
-    $ReturnedEmploye = filterByName($data, $_GET["nom"]);
-    echo json_encode($ReturnedEmploye);
+    if (isset($_GET["nom"])) {
+        $data = service_Employe::service_searchAllEmp();
+        $ReturnedEmploye = filterByName($data, $_GET["nom"]);
+        echo json_encode($ReturnedEmploye);
+    }
 
     function filterByName(array $employeList, String $searchedName) :Array {
         $ReturnedEmploye = [];

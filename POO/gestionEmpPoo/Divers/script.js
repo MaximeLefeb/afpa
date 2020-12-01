@@ -5,22 +5,46 @@ $("#nameInput").on('input',function(e) {
 
     $.getJSON(url, function(data) {
         const d = $.Deferred();
-        maReponse = data;
+        let response = data;
         $("tbody").empty();
         $.each(data, function(cle, valeur) {
-            console.log(valeur);
-            //* PRINT ARRAY 
-            $("<tr>").append($("<td>").html(valeur.Id), 
-                            $("<td>").html(valeur.Nom), 
-                            $("<td>").html(valeur.Prenom), 
-                            $("<td>").html(valeur.Empoi), 
-                            $("<td>").html(valeur.Superieur), 
-                            $("<td>").html(valeur.Embauche), 
-                            $("<td>").html(valeur.Salaire), 
-                            $("<td>").html(valeur.Commission), 
-                            $("<td>").html(valeur.noProjet), 
-                            $("<td>").html(valeur.noService)).appendTo($("tbody"));
+            $("<tr>").append(
+                $("<td>").html(valeur.Id), 
+                $("<td>").html(valeur.Nom), 
+                $("<td>").html(valeur.Prenom), 
+                $("<td>").html(valeur.Emploi), 
+                $("<td>").html(valeur.Superieur), 
+                $("<td>").html(valeur.Embauche), 
+                $("<td>").html(valeur.Salaire), 
+                $("<td>").html(valeur.Commission), 
+                $("<td>").html(valeur.noProjet), 
+                $("<td>").html(valeur.noService),
+                $("<td>").append($("<a>").attr({type:'button', class:'btn btn-primary',href:'#'}).html('Modifier')),
+                $("<td>").append($("<a>").attr({type:'button', class:'btn btn-danger', href:'#'}).html('Supprimer'))).appendTo($("tbody"));
         });
-        d.resolve(maReponse);
+
+        d.resolve(response);
+
     });
+});
+
+$("#lastnameInput").on('input', function(e) {
+    e.preventDefault();
+    let searchedJson = JSON.stringify($(this).val().toUpperCase());
+    console.log(searchedJson);
+
+    $.ajax({
+        url: "../Controleur/controleur_searchbox.php",
+        type: "POST",
+        data: {prenom:searchedJson},
+        success: function(data) {
+            console.log(data);
+        },
+        error: function(e) {
+            console.log(e.message);
+        }
+    });
+
+    //TODO getJSON 
+
 });

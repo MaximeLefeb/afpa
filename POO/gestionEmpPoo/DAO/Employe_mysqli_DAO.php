@@ -132,7 +132,7 @@
             return $data;
         }
 
-        public static function tryExecuteGetExcept($request, $db) {
+        public static function tryExecuteGetExcept($request, $db) :?Exception {
             try {
                 $request->execute();
             } catch (mysqli_sql_exception $e) {

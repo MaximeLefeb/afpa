@@ -100,6 +100,10 @@
                         -webkit-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
                         -moz-box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
                         box-shadow: 0px 0px 22px 6px rgba(0,0,0,0.75);
+                        vertical-align:middle;
+                    }
+                    td{
+                        vertical-align:middle !important;
                     }
                 </style>
             </head>
@@ -138,7 +142,9 @@
                             <input class="form-control" id="serviceNameInput" type="text" placeholder="Rechercher par nom de service...">
                         </div>
                     </div>
+
                     <hr>
+                    
                     <div class="row">    
                         <div class="col-sm-12 mb-3">
                             <table id="tableau" class="table table-striped table-dark mt-3">

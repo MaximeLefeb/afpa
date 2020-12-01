@@ -10,7 +10,11 @@
         private $comm;
         private $noServ;
         private $noProj;
+        public static $counter = 0;
 
+        public function __construct() {
+            self::$counter++;
+        }
         //* ---------------------------ID-------------------------------
         public function getId() :int{
             return $this->id;
