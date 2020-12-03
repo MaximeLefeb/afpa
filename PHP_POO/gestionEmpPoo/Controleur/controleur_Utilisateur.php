@@ -71,7 +71,7 @@
             if (isset($_POST['mailLogin']) && !empty($_POST['mailLogin']) &&
                 isset($_POST['pwdLogin']) && !empty($_POST['pwdLogin'])) {
 
-                $mail = htmlentities($_POST['mail']);
+                $mail = htmlentities($_POST['mailLogin']);
                 $pwd = htmlentities($_POST['pwdLogin']);
                 ConnectUser($mail, $pwd);  
             }

@@ -7,7 +7,7 @@
         public static function Filter(String $searched) :Array {
             try {
                 $db = ConnectBdd();
-                $filterRequest = $db->prepare("SELECT * FROM employes WHERE prenom = ?");;
+                $filterRequest = $db->prepare("SELECT * FROM employes WHERE prenom = ?");
                 $filterRequest->bind_param("s", $searched);
                 $filterRequest->execute();
                 $result = $filterRequest->get_result();
