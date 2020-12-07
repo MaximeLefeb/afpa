@@ -24,7 +24,7 @@
 
     //*PRINT TD TABLEAU
     function printTd(Service $value) :Void {
-       echo '<td>' . $value->getIdService() . '</td>
+        echo '<td>' . $value->getIdService() . '</td>
             <td>' . $value->getService() . '</td>
             <td>' . $value->getVille() . '</td>';
     }

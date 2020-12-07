@@ -12,7 +12,10 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class='container'>
+            {% block body %}{% endblock %}
+        </div>
+
         {% block javascripts %}
             <script 
                 src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
