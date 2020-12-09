@@ -2,60 +2,74 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Produit;
+use App\Form\ProduitType;
+use App\Service\ProductService;
+use App\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ProduitRepository;
-use App\Form\ProduitType;
-use App\Entity\Produit;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HelloWorldController extends AbstractController {
 
     /**
-     * @Route("/showProduct", name="showProduct")
+     * @Route("/showProducts", name="showProducts")
      */
-    public function showAllProduct(ProduitRepository $repository): Response {
-        $produits = $repository->findAll();
+    public function showAllProducts(ProductService $service) :Response {
+        $produits = $service->showProducts();
 
         return $this->render('hello_world/index.html.twig', [
             'Products' => $produits,
-            'monNom' => 'Maxime Lefebvre',
         ]);
     }
 
     /**
      * @Route("/addProduct", name="addProduct")
      */
-    public function formAddProduct(): Response {
+    public function formAddProduct(ProductService $service, Request $request) :Response {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
-        //Auto complete form 
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $service->addProduct($produit);
+            return $this->redirectToRoute('showProducts');
+        }
 
+        return $this->render('hello_world/addProduct.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/modifyProduct/{id}", name="modifyProduct", requirements={"id","\d+"})
+     */
+    public function modifyProduct(ProductService $service, Produit $id, Request $request) :Response {
+        $form = $this->createForm(ProduitType::class, $id);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $service->modifProduct();
+            return $this->redirectToRoute('showProducts');
+        }
+        
         return $this->render('hello_world/addProduct.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/delProduct", name="delProduct")
+     * @Route("delProduct/{id}", name="delProduct",requirements={"id","\d+"},methods={"DELETE"}) 
      */
-    public function deleteProduct(): Response {
-        return $this->render('hello_world/delProduct.html.twig', [
-            'monNom' => 'Maxime Lefebvre',
-        ]);
-    }
-
-    /**
-     * @Route("/modifyProduct", name="modifyProduct")
-     */
-    public function modifyProduct(): Response {
-        $produit = new Produit();
-        $produit->setDesignation('Chaise')->setPrix(150);
-        $form = $this->createForm(ProduitType::class, $produit);
-        //Auto complete form 
-
-        return $this->render('hello_world/addProduct.html.twig', [
-            'form' => $form->createView(),
-        ]);
+    public function deleteProduct(Request $request,Produit $produit) :Response {
+        if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($produit);
+            $entityManager->flush();
+        }
+        
+        return $this->redirectToRoute('showProducts');
     }
 }
+    
