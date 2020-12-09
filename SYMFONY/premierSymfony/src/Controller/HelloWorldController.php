@@ -17,8 +17,15 @@ class HelloWorldController extends AbstractController {
      * @Route("/showProducts", name="showProducts")
      */
     public function showAllProducts(ProductService $service) :Response {
-        $produits = $service->showProducts();
-
+        try {
+            $produits = $service->showProducts();
+        } catch (ServiceException $e) {
+            return $this->render('hello_world/index.html.twig', [
+                'Products' => [],
+                'error' => $e->getMessage(),
+            ]);
+        }
+    
         return $this->render('hello_world/index.html.twig', [
             'Products' => $produits,
         ]);
@@ -33,8 +40,14 @@ class HelloWorldController extends AbstractController {
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $service->addProduct($produit);
-            return $this->redirectToRoute('showProducts');
+            try {
+                $service->addProduct($produit);
+            } catch (ServiceException $e) {
+                return $this->render('hello_world/index.html.twig', [
+                    'Products' => [],
+                    'error' => $e->getMessage(),
+                ]);
+            } 
         }
 
         return $this->render('hello_world/addProduct.html.twig', [
@@ -50,7 +63,14 @@ class HelloWorldController extends AbstractController {
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            $service->modifProduct();
+            try {
+                $service->modifProduct();
+            } catch (ServiceException $e) {
+                return $this->render('hello_world/index.html.twig', [
+                    'Products' => [],
+                    'error' => $e->getMessage(),
+                ]);
+            } 
             return $this->redirectToRoute('showProducts');
         }
         
@@ -64,11 +84,17 @@ class HelloWorldController extends AbstractController {
      */
     public function deleteProduct(Request $request,Produit $produit) :Response {
         if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($produit);
-            $entityManager->flush();
+            try {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->remove($produit);
+                $entityManager->flush();
+            } catch (ServiceException $e) {
+                return $this->render('hello_world/index.html.twig', [
+                    'Products' => [],
+                    'error' => $e->getMessage(),
+                ]);
+            } 
         }
-        
         return $this->redirectToRoute('showProducts');
     }
 }

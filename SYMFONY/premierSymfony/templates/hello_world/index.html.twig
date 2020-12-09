@@ -21,6 +21,11 @@
     
     <div class="example-wrapper row">
         <div class="col-12 text-center">
+
+            {% if error is defined  %}
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+            {% endif %}
+
             <table class="table table-dark">
                 <thead>
                     <tr>
