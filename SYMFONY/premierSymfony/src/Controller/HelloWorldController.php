@@ -9,6 +9,8 @@ use App\Repository\ProduitRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HelloWorldController extends AbstractController {
@@ -57,6 +59,7 @@ class HelloWorldController extends AbstractController {
     
     /**
      * @Route("/modifyProduct/{id}", name="modifyProduct", requirements={"id","\d+"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function modifyProduct(ProductService $service, Produit $id, Request $request) :Response {
         $form = $this->createForm(ProduitType::class, $id);
@@ -81,6 +84,7 @@ class HelloWorldController extends AbstractController {
 
     /**
      * @Route("delProduct/{id}", name="delProduct",requirements={"id","\d+"},methods={"DELETE"}) 
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteProduct(Request $request,Produit $produit) :Response {
         if ($this->isCsrfTokenValid('delete' . $produit->getId(), $request->request->get('_token'))) {

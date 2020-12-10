@@ -1,18 +1,25 @@
 <?php 
 namespace App\Service;
 
-use App\Service\interfaceProduit\ProductInterface;
-use Doctrine\ORM\EntityManagerInterface; 
-use App\Repository\ProduitRepository;
 use App\Entity\Produit;
+use App\Repository\ProduitRepository;
+use Doctrine\ORM\EntityManagerInterface; 
+use Symfony\Component\Security\Core\Security;
+use App\Service\interfaceProduit\ProductInterface;
 
 class ProductService implements ProductInterface {
     private $repository;
     private $entityManager;
+    private $security;
 
-    public function __construct(ProduitRepository $repository, EntityManagerInterface $entityManager) {
+    public function __construct(ProduitRepository $repository, EntityManagerInterface $entityManager, Security $security) {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
+        $this->security = $security;
+    }
+
+    public function getUser() {
+        $user = $this->security->getUser();
     }
 
     public function addProduct(Object $produit) :Void {
