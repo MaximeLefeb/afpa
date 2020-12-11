@@ -15,12 +15,12 @@ class UserFixtures extends Fixture {
 
     public function load(ObjectManager $em) {
         $faker = \Faker\Factory::create('fr_FR');
-        
-        for ($i=0; $i < 50; $i++) { 
+        for ($i=0; $i < 25; $i++) { 
             $user = new User();
             $user->setEmail($faker->email)
-                    ->setPassword($this->passwordEncoder->encodePassword($user, $i.$i.$i.$i));
-
+                ->setPassword($this->passwordEncoder
+                ->encodePassword($user, $i.$i.$i.$i))
+            ;
             $em->persist($user);
         }
         $em->flush();

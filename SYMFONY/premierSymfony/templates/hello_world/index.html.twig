@@ -46,6 +46,8 @@
                             <td>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <a class="btn btn-primary" href="{{ path('modifyProduct',{'id': product.id}) }}">Modifier</a>
+                                {% else %}
+                                    <p>Indisponible !</p>
                                 {% endif %}
                             </td>
                             <td>
@@ -55,14 +57,21 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                                         <button class="btn btn-danger">Supprimer</button>
                                     </form>
+                                {% else %}
+                                    <p>Indisponible !</p>
                                 {% endif %}
                             </td>
                         </tr>
                     {% endfor %}   
                 </tbody>
             </table>
-            <a class="btn btn-primary" href="http://localhost:8000/login">Se connecter</a>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="btn btn-primary" href="http://localhost:8000/login">Se connecter</a>
+            {% else %}
+                <a class="btn btn-primary" href="http://localhost:8000/logout">Se Déconnecter</a>
+            {% endif %}
             <a class="btn btn-primary" href="http://localhost:8000/addProduct">Ajouter un produit</a>
+            <a class="btn btn-primary" href="http://localhost:8000/register">Créer un compte</a>
         </div>
     </div>
 {% endblock %}

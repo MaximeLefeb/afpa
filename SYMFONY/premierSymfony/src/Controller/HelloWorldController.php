@@ -50,6 +50,7 @@ class HelloWorldController extends AbstractController {
                     'error' => $e->getMessage(),
                 ]);
             } 
+            return $this->redirectToRoute('showProducts');
         }
 
         return $this->render('hello_world/addProduct.html.twig', [

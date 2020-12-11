@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProduitRepository;
 use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
@@ -34,22 +34,22 @@ class Produit {
      */
     private $prix;
 
-    public function getId(): ?int {
+    public function getId() :?int {
         return $this->id;
     }
 
-    public function getDesignation(): ?string {
+    public function getDesignation() :?string {
         return $this->designation;
     }
-    public function setDesignation(string $designation): self {
+    public function setDesignation(string $designation) :self {
         $this->designation = $designation;
         return $this;
     }
 
-    public function getPrix(): ?float {
+    public function getPrix() :?float {
         return $this->prix;
     }
-    public function setPrix(float $prix): self {
+    public function setPrix(float $prix) :self {
         $this->prix = $prix;
         return $this;
     }

@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface {
     /**
@@ -33,6 +35,11 @@ class User implements UserInterface {
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
     public function getId() :?int {
         return $this->id;
     }
@@ -40,7 +47,6 @@ class User implements UserInterface {
     public function getEmail() :?string {
         return $this->email;
     }
-
     public function setEmail(string $email) :self {
         $this->email = $email;
         return $this;
@@ -51,7 +57,7 @@ class User implements UserInterface {
      *
      * @see UserInterface
      */
-    public function getUsername(): string{
+    public function getUsername() :string {
         return (string) $this->email;
     }
 
@@ -64,7 +70,6 @@ class User implements UserInterface {
 
         return array_unique($roles);
     }
-
     public function setRoles(array $roles) :self {
         $this->roles = $roles;
         return $this;
@@ -95,5 +100,14 @@ class User implements UserInterface {
     public function eraseCredentials() {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function isVerified() :bool {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified) :self {
+        $this->isVerified = $isVerified;
+        return $this;
     }
 }
