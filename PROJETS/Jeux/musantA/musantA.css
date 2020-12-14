@@ -6,13 +6,10 @@
     top     : 150px;
     left    : 150px;
     z-index: 1;
-    /*A DELETE */
-    background-color   : black;
 }
 
 #inventory {
     border-radius   : 25px 25px 25px 25px;
-    border          : 2px solid black;
     height          : 33%;
     width           : 33%;
     top             : 33%;
@@ -20,7 +17,6 @@
     z-index         : 5;
     position        : absolute;
     visibility      : hidden;
-    background-color: rgba(0, 0, 0, 0.1);
     padding         : 1%;
 }
 

@@ -1,11 +1,19 @@
 $("<canvas>").attr("id", "character").appendTo("body");
-//! CONFIG
-let character      = $("#character");
+//! MAP
+let ratio       = window.devicePixelRatio;
+let borderMap_Y = $(document).height();
+let borderMap_X = $(document).width();
+//! CONFIG CHARACTER
+let character       = $("#character");
+let characterContext= character[0].getContext('2d');
 let characterSprite = new Image();
-let borderMap_Y    = $(document).height();
-let borderMap_X    = $(document).width();
-let character_posY = parseInt(character.css('top'));
-let character_posX = parseInt(character.css('left'));
+let character_posY  = parseInt(character.css('top'));
+let character_posX  = parseInt(character.css('left'));
+let step   = 0,
+    radius = 40,
+    x      = borderMap_X / 2,
+    speed  =  radius * 0.2;
+//! CONTROLS 
 let map = {
     'z' : false,
     's' : false,
@@ -14,9 +22,10 @@ let map = {
     'i' : false
 }
 
-/* characterSprite.onload = animate;
-characterSprite.src = "sprite/character.png";
-context.imageSmoothingEnabled = false; */
+characterSprite.onload = animate;
+characterContext.scale(ratio, ratio);
+characterSprite.src    = "sprite/characterDown.png";
+characterContext.imageSmoothingEnabled = false;
 
 function consolePosition() {
     console.log("Y : " + character_posY + "px");
@@ -27,7 +36,6 @@ character.click(function(e) {
     alert();
 });
 
-//* CONTROLS -> UP : Z | DOWN : S | LEFT : Q |RIGHT : A 
 $(document).keydown(function (event) {
     if (event.key in map) {
         map[event.key] = true;
@@ -101,21 +109,31 @@ function inventory() {
     });
 }
 
-/* function CharacterAnimation() {
+function animate() {
     draw();
     update();
     requestAnimationFrame(animate);
 }
 
 function draw() {
-    context.clearRect(0,0, width, height);
-    draw(x,y);
+    characterContext.fillRect(0, 0, borderMap_X, borderMap_Y);
+    drawCharacter(x, borderMap_Y, radius, Math.floor(step));
 }
 
-function drawCharacter() {
-    context.drawImage(characterSprite, 0, 0, 100, 100, 50, 50);
+function drawCharacter(x, y, r, step) {
+    var s = r/3;
+    characterContext.drawImage(characterSprite, 32*step, 0, 32, 32, x - 16*s, y - 26*s, 32*s, 32*s);
 }
 
 function update() {
-    drawCharacter();
-} */
+    x += speed;
+    
+    if (x < radius || x > borderMap_X - radius) {
+        speed *= -1;
+    }
+    
+    step += 0.3;
+    if (step >= 3) {
+        step -= 3;
+    }
+}
