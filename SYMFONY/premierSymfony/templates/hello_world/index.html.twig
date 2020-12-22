@@ -12,7 +12,7 @@
             padding: 2px 6px; 
         }
         .container { 
-            height : 100vh;
+            height : 94vh;
             -webkit-box-shadow: 2px 0px 21px 0px rgba(0,0,0,0.75);
             -moz-box-shadow: 2px 0px 21px 0px rgba(0,0,0,0.75);
             box-shadow: 2px 0px 21px 0px rgba(0,0,0,0.75);
@@ -26,14 +26,18 @@
                 <div class="alert alert-danger" role="alert">{{error}}</div>
             {% endif %}
 
-            <table class="table table-dark">
-                <thead>
+            <table class="table mt-3">
+                <thead class="thead-dark">
                     <tr>
                         <th>Numéro de produit</th>
                         <th>Nom de produit</th>
                         <th>Prix (€)</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        {% else %}
+                            <th>Acheter</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 
@@ -45,33 +49,27 @@
                             <td>{{ product.prix }}</td>
                             <td>
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <a class="btn btn-primary" href="{{ path('modifyProduct',{'id': product.id}) }}">Modifier</a>
+                                    <a class="btn btn-outline-info" href="{{ path('modifyProduct',{'id': product.id}) }}">Modifier</a>
                                 {% else %}
-                                    <p>Indisponible !</p>
+                                    <a class="btn btn-outline-info" href="#">Acheter ce produit</a>
                                 {% endif %}
                             </td>
-                            <td>
-                                {% if is_granted('ROLE_ADMIN') %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <td>
                                     <form method="post" action="{{ path('delProduct',{'id': product.id}) }}" onsubmit="return confirm('Êtes vous sûr de vouloir supprimer ce produit ?');">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                                         <button class="btn btn-danger">Supprimer</button>
                                     </form>
-                                {% else %}
-                                    <p>Indisponible !</p>
-                                {% endif %}
-                            </td>
+                                </td>
+                            {% endif %}
                         </tr>
                     {% endfor %}   
                 </tbody>
             </table>
-            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a class="btn btn-primary" href="http://localhost:8000/login">Se connecter</a>
-            {% else %}
-                <a class="btn btn-primary" href="http://localhost:8000/logout">Se Déconnecter</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-outline-info" href="http://localhost:8000/addProduct">Ajouter un produit</a>
             {% endif %}
-            <a class="btn btn-primary" href="http://localhost:8000/addProduct">Ajouter un produit</a>
-            <a class="btn btn-primary" href="http://localhost:8000/register">Créer un compte</a>
         </div>
     </div>
 {% endblock %}

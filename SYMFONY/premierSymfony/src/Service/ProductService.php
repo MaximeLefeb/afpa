@@ -41,7 +41,12 @@ class ProductService implements ProductInterface {
 
     public function delProduct(Object $id) :Void {
         $produit = $this->repository->find($id);
-        $this->produitManager->remove($produit);
-        $this->produitManager->flush();
+        $this->entityManager->remove($produit);
+        $this->entityManager->flush();
+    }
+
+    public function buyProduct(Object $id) :Void {
+       $this->entityManager->persist($produit);
+       $this->entityManager->flush();
     }
 }

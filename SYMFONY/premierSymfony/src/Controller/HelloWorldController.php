@@ -35,6 +35,7 @@ class HelloWorldController extends AbstractController {
 
     /**
      * @Route("/addProduct", name="addProduct")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function formAddProduct(ProductService $service, Request $request) :Response {
         $produit = new Produit();
@@ -99,6 +100,21 @@ class HelloWorldController extends AbstractController {
                     'error' => $e->getMessage(),
                 ]);
             } 
+        }
+        return $this->redirectToRoute('showProducts');
+    }
+
+    /**
+     * @Route("buyProduct/{id}", name="buyProduct",requirements={"id","\d+"}) 
+     */
+    public function buyProduct(ProductService $service, Request $request) :Response {
+        try {
+            $service->buyProduct();
+        } catch(ServiceException $e) {
+            return $this->render('hello_world/index.html.twig', [
+                'Products' => [],
+                'error' => $e->getMessage(),
+            ]);
         }
         return $this->redirectToRoute('showProducts');
     }

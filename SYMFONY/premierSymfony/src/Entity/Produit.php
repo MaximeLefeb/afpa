@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -34,6 +36,16 @@ class Produit {
      */
     private $prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="produit")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $commande;
+
+    public function __construct() {
+        $this->user = new ArrayCollection();
+    }
+
     public function getId() :?int {
         return $this->id;
     }
@@ -51,6 +63,18 @@ class Produit {
     }
     public function setPrix(float $prix) :self {
         $this->prix = $prix;
+        return $this;
+    }
+
+    public function getCommande(): ?Commande
+    {
+        return $this->commande;
+    }
+
+    public function setCommande(?Commande $commande): self
+    {
+        $this->commande = $commande;
+
         return $this;
     }
 }
