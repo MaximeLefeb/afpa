@@ -1,0 +1,9 @@
+<h3 class="text-center">Cars List</h3>
+
+<hr>
+
+<app-add-car (addCarEventEmitter)="addReceivedCar($event)"></app-add-car>
+
+<hr>
+
+<app-car (click)="throwCarDetail(car)" *ngFor="let car of cars" [aCar]="car"></app-car>
