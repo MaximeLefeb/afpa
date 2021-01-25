@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AddCarComponent implements OnInit {
 ​
-  @Output() addVoitureEventEmitter = new EventEmitter<{mark: string, status: string}>();
+  @Output() addCarEventEmitter = new EventEmitter<{mark: string, status: string}>();
 ​
   inputValue:string = '';
 
@@ -21,7 +21,7 @@ export class AddCarComponent implements OnInit {
 ​
   // Utilisée avec la variable locale #monInput (dans le template)
   onAddVoiture2(value:string) {
-    this.addVoitureEventEmitter.emit({mark: value, status: "Arrêtée"});
+    this.addCarEventEmitter.emit({mark: value, status: "Arrêtée"});
   }
 ​
   onKeyUp(event:Event) {
