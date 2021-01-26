@@ -7,6 +7,7 @@ import { CarComponent } from './cars_list/car/car.component';
 import { AddCarComponent } from './cars_list/car/car.add.component';
 import { CarDetailComponent } from './cars_details/car.detail.component';
 import { CarService } from './common/voiture.service';
+import { ColorfullDirective } from './directive/colorfull.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CarService } from './common/voiture.service';
     CarsListComponent,
     CarComponent,
     AddCarComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    ColorfullDirective
   ],
   imports: [
     BrowserModule
