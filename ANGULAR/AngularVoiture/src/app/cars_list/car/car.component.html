@@ -24,14 +24,14 @@
     </button> -->
 
     <button
-      *ngIf="aCar.status === 'Démarrée'"
-      (click)="demarrerArreter()"
+      *ngIf="aCar.status"
+      (click)="OnOff()"
       class="btn btn-danger w-100">Arrêter
     </button>
 
     <button
-      *ngIf="aCar.status === 'Arrêtée'"
-      (click)="demarrerArreter()"
+      *ngIf="!aCar.status"
+      (click)="OnOff()"
       class="btn btn-success w-100">Démarrer
     </button>
 

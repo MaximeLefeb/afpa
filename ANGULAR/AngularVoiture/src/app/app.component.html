@@ -1,13 +1,19 @@
 <div class="container-fluid">
+
   <div class="row">
-
     <div class="col-6">
-      <app-cars-list (car_detail)="getCarDetail($event)"></app-cars-list>
+      <app-cars-list (selectCar)="onReceivedCar($event)"></app-cars-list>
     </div>
 
     <div class="col-6">
-      <app-car-detail [detail]="detail"></app-car-detail>
+      <app-car-detail></app-car-detail>
     </div>
-
   </div>
+
+  <div class="row text-center">
+    <div class="col-12">
+      <!--* FORM INCOMMING -->
+    </div>
+  </div>
+
 </div>

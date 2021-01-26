@@ -1,23 +1,13 @@
-<h3 class="text-center">Détails voitures</h3>
+<div class="text-center" *ngIf="car">
+  <h3>Détails voitures</h3><hr>
 
-<hr>
+  <div class="row">
+    <div class="col">
+      {{car.mark}}
+    </div>
 
-<div class="row">
-  <div class="col-12">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Mark</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>{{detail.mark}}</td>
-          <td>{{detail.status}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col">
+      {{car.status ? 'Démarée' : 'Arrêtée'}}
+    </div>
   </div>
 </div>

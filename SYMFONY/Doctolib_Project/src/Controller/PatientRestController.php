@@ -43,7 +43,7 @@ class PatientRestController extends AbstractFOSRestController {
     }
 
     /**
-     *@OA\Get(
+     * @OA\Get(
      *     path="/patients",
      *     tags={"Patient"},
      *     summary="Returns a list of PatientDTO",
@@ -79,7 +79,7 @@ class PatientRestController extends AbstractFOSRestController {
     }
 
     /**
-     *@OA\Post(
+     * @OA\Post(
      *     path="/patients",
      *     tags={"Patient"},
      *     summary="Add a new PatientDTO",
@@ -141,9 +141,10 @@ class PatientRestController extends AbstractFOSRestController {
     }
 
     /**
-     *@OA\Put(
+     * @OA\Put(
      *     path="/patient/{id}",
      *     tags={"Patient"},
+     *     summary="Modify a PatientDTO",
      *     description="Modify a object of type PatientDTO",
      *     @OA\Parameter(
      *         name="id",
@@ -208,9 +209,10 @@ class PatientRestController extends AbstractFOSRestController {
     }
 
     /** 
-     *@OA\Delete(
+     * @OA\Delete(
      *     path="/patient/{id}",
      *     tags={"Patient"},
+     *     summary="Delete a Patient",
      *     description="Delete a object of type Patient",
      *     @OA\Parameter(
      *          name="id",
@@ -243,7 +245,9 @@ class PatientRestController extends AbstractFOSRestController {
     /** 
      * @OA\Get(
      *   path="/patient/{id}",
-     *   tags={"id"},
+     *   tags={"Patient"},
+     *   summary="Return information about a Patient",
+     *   description="Return information about a Patient",
      *   @OA\Parameter(
      *     name="id",
      *     in="path",
@@ -252,7 +256,7 @@ class PatientRestController extends AbstractFOSRestController {
      *   ),
      *   @OA\Response(
      *     response="200",
-     *     description="The User",
+     *     description="The praticien",
      *     @OA\JsonContent(ref="#/components/schemas/PatientDTO")
      *   ),
      *   @OA\Response(

@@ -2,8 +2,9 @@
 
 <hr>
 
-<app-add-car (addCarEventEmitter)="addReceivedCar($event)"></app-add-car>
+<!-- <app-add-car (addCarEventEmitter)="addReceivedCar($event)"></app-add-car> -->
+<app-add-car></app-add-car>
 
 <hr>
 
-<app-car (car_detail)="throwCarDetail(car)" *ngFor="let car of cars" [aCar]="car"></app-car>
+<app-car *ngFor="let car of cars" [aCar]="car"></app-car>

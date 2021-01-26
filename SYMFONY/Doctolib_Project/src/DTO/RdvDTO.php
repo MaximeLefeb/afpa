@@ -4,12 +4,40 @@ namespace App\DTO;
 
 use App\Entity\Praticien;
 use App\Entity\Patient;
+Use OpenApi\Annotations as OA;
 
+/**
+ * @OA\Schema()
+ */
 class RdvDTO {
+    /**
+     * @OA\Property(type="number")
+     * @var int
+     */
     private $id;
+
+    /**
+     * @OA\Property(type="string")
+     * @var string
+     */
     private $dateRdv;
+
+    /**
+     * @OA\Property(type="string")
+     * @var string
+     */
     private $adresse;
+
+    /**
+     * @OA\Property(type="number")
+     * @var int
+     */
     private $patient;
+
+    /**
+     * @OA\Property(type="number")
+     * @var int
+     */
     private $praticien;
 
     public function getId() :?int {

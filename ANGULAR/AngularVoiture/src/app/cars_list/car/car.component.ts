@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { CarService } from '../../common/voiture.service';
 ​
 @Component({
   selector: 'app-car',
@@ -6,25 +8,26 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: [
     '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css',
     './car.component.css'
-]
+  ]
 })
 export class CarComponent implements OnInit {
-  constructor() {}
+  constructor(private CarService:CarService) {}
   ngOnInit(): void {}
 
-  @Output() car_detail = new EventEmitter<{mark: string, status: string}>();​
-  throwCarDetail(car) {
-    this.car_detail.emit(car);
+  @Input() aCar:{mark:string, status:boolean};
+
+  //!Emmit car details
+  @Output() car = new EventEmitter<{mark: string, status: boolean}>();​
+  throwCarDetail(mark:string) {
+    this.CarService.emmitCarSelected(mark);
   }
 
-  @Input() aCar:{mark:string, status:string};
-
-  //!Switch car's state
-  demarrerArreter() {
-    if(this.aCar.status == "Démarrée") {
-      this.aCar.status = "Arrêtée";
-    } else if(this.aCar.status == "Arrêtée") {
-      this.aCar.status = "Démarrée";
+  //! Switch car's state
+  OnOff() {
+    if(this.aCar.status) {
+      this.aCar.status = false;
+    } else if(!this.aCar.status) {
+      this.aCar.status = true;
     }
   }
 }

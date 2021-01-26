@@ -18,6 +18,14 @@ use FOS\RestBundle\Controller\Annotations\Delete;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+
+/**
+ * @OA\Info(
+ *      title="Rdv Management",
+ *      description="Rendez-vous manager (GET,PUT,DELETE,POST)",
+ *      version="0.01",
+ * )
+ */
 class RdvRestController extends AbstractFOSRestController {
     private $rdvService;
     private $entityManager;
@@ -35,6 +43,25 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Get(
+     *     path="/rdvs",
+     *     tags={"Rdv"},
+     *     summary="Returns a list of RdvDTO",
+     *     description="Returns a list of RdvDTO",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation", 
+     *         @OA\JsonContent(ref="#/components/schemas/RdvDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=404,
+     *         description="If no RdvDTO found",    
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * ) 
      * @Get(RdvRestController::URI_RDV_COLLECTION)
      */
     public function searchAll() {
@@ -52,6 +79,49 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Post(
+     *     path="/rdvs",
+     *     tags={"Rdv"},
+     *     summary="Add a new RdvDTO",
+     *     description="Create a object of type RdvDTO",
+     *     @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="dateRdv",
+     *                      type="string"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="adresse",
+     *                      type="string"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="patient",
+     *                      type="number"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="praticien",
+     *                      type="number"
+     *                  ),
+     *                  example={"dateRdv": "2021-01-12T10:46:59+01:00", "adresse": "13 Boulevard de l'exemple", "patient": 0, "praticien": 0}
+     *              )
+     *          )
+     *     ),
+     *     @OA\Response(
+     *         response=405,
+     *         description="Invalid request body"
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Successfully created", 
+     *         @OA\JsonContent(ref="#/components/schemas/PraticienDTO")   
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * ) 
      * @Post(RdvRestController::URI_RDV_COLLECTION)
      * @ParamConverter("rdvDTO", converter="fos_rest.request_body")
      * @return void
@@ -67,6 +137,26 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Delete(
+     *     path="/rdv/{id}",
+     *     tags={"Rdv"},
+     *     summary="Delete a Rdv",
+     *     description="Delete a object of type Rdv",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          @OA\Schema(type="number")
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Successfully deleted"
+     *     ),
+     *      @OA\Response(
+     *         response=500,
+     *         description="Internal server Error. Please contact us",    
+     *     )
+     * ) 
      * @Delete(RdvRestController::URI_RDV_INSTANCE)
      * @param [type] $id
      * @return void
@@ -81,6 +171,31 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Get(
+     *   path="/rdv/{id}",
+     *   tags={"Rdv"},
+     *   summary="Return a RdvDTO object",
+     *   description="Return information about a RdvDTO",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     required=true,
+     *     @OA\Schema(type="number")
+     *   ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="The Rdv",
+     *     @OA\JsonContent(ref="#/components/schemas/RdvDTO")
+     *   ),
+     *   @OA\Response(
+     *     response="500",
+     *     description="Internal server Error. Please contact us",
+     *   ),
+     *   @OA\Response(
+     *     response="404",
+     *     description="No user found for this id",
+     *   )
+     * )  
      * @Get(RdvRestController::URI_RDV_INSTANCE)
      * @return void
      */
@@ -99,6 +214,31 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Get(
+     *   path="/rdv/patient/{id}",
+     *   tags={"Rdv"},
+     *   summary="Return a list of RdvDTO from a patient id",
+     *   description="Return information about a RdvsDTO",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     required=true,
+     *     @OA\Schema(type="number")
+     *   ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="Rdvs from a patient id",
+     *     @OA\JsonContent(ref="#/components/schemas/RdvDTO")
+     *   ),
+     *   @OA\Response(
+     *     response="500",
+     *     description="Internal server Error. Please contact us",
+     *   ),
+     *   @OA\Response(
+     *     response="404",
+     *     description="No user found for this id",
+     *   )
+     * )  
      * @Get(RdvRestController::URI_RDV_PATIENT_INSTANCE)
      * @return void
      */
@@ -117,6 +257,31 @@ class RdvRestController extends AbstractFOSRestController {
     }
 
     /**
+     * @OA\Get(
+     *   path="/rdv/praticien/{id}",
+     *   tags={"Rdv"},
+     *   summary="Return a list of RdvDTO from a praticien id",
+     *   description="Return information about a RdvsDTO",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     required=true,
+     *     @OA\Schema(type="number")
+     *   ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="Rdvs from a praticien id",
+     *     @OA\JsonContent(ref="#/components/schemas/RdvDTO")
+     *   ),
+     *   @OA\Response(
+     *     response="500",
+     *     description="Internal server Error. Please contact us",
+     *   ),
+     *   @OA\Response(
+     *     response="404",
+     *     description="No user found for this id",
+     *   )
+     * )  
      * @Get(RdvRestController::URI_RDV_PRATICIEN_INSTANCE)
      * @return void
      */

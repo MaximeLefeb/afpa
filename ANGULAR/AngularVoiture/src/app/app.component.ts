@@ -9,14 +9,11 @@ import { Component, Output } from '@angular/core';
   ]
 })
 export class AppComponent {
-  title = 'AngularVoiture';
+  title = "car App";
 
-  detail:{mark:string, status:string} = {
-    mark:"none selected",
-    status:"none selected"
-  };
+  selectedCar:{mark:string, status:boolean};
 
-  getCarDetail(event) {
-    this.detail = event;
+  onReceivedCar(car:{mark:string, status:boolean}) {
+    this.selectedCar = car;
   }
 }

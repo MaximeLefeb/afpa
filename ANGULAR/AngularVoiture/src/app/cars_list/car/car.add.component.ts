@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { CarService } from '../../common/voiture.service';
 ​
 @Component({
   selector: 'app-add-car',
@@ -6,24 +8,26 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.min.css']
 })
 export class AddCarComponent implements OnInit {
-​
-  @Output() addCarEventEmitter = new EventEmitter<{mark: string, status: string}>();
-​
+  @Output() addCarEventEmiter = new EventEmitter<{mark:string, status:string}>();
+
   inputValue:string = '';
 
-  constructor() {}
+  constructor(private carsService:CarService) {}
 
   ngOnInit(): void {}
-​
+  ​
   // onAddVoiture(){
   //   this.addVoitureEventEmitter.emit({marque: this.inputValue, status: "Arrêtée"});
   // }
-​
-  // Utilisée avec la variable locale #monInput (dans le template)
+
+  //! Add car
+  //* (WHITHOUT SERVICE) -> ​@Output() addCarEventEmitter = new EventEmitter<{mark: string, status: string}>();
   onAddVoiture2(value:string) {
-    this.addCarEventEmitter.emit({mark: value, status: "Arrêtée"});
+    //* (WHITHOUT SERVICE) -> this.addCarEventEmitter.emit({mark: value, status: "Arrêtée"});
+    this.carsService.addCar({mark: value, status: false});
   }
 ​
+  //! Get input value
   onKeyUp(event:Event) {
     this.inputValue = (<HTMLInputElement>event.target).value;
   }
