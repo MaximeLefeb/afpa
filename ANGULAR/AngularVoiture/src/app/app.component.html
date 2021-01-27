@@ -12,8 +12,26 @@
 
   <div class="row text-center mt-5">
     <div class="col-12">
-      <!--* FORM INCOMMING -->
       <p [color]="'red'" colorMe>I'm a colorfull element !</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row text-center mt-5">
+    <div class="col-12">
+      <!--* Form -->
+     <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+        <label>Email adress</label>
+        <input type="email" name="mail" class="form-control" [(ngModel)]="mail" #mailAdress ="ngModel" required>
+        <p class="help-block alertText" *ngIf="mailAdress.invalid && mailAdress.touched">Email adress must be completed ! </p>
+
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" [(ngModel)]="pwd" #password ="ngModel" required pwd>
+        <p class="help-block alertText" *ngIf="password.invalid && password.touched">Password must be completed ! </p>
+
+        <input type="submit" value="Validate" class="btn btn-primary" [disabled]="registerForm.invalid">
+      </form>
     </div>
   </div>
 

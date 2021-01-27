@@ -13,10 +13,7 @@ export class CarDetailComponent implements OnInit {
 
   constructor(private serviceCar:CarService) {
     this.serviceCar.selectCar.subscribe(mark => {
-      console.log('voiture avant : ' + this.car);
-      console.log(mark);
       this.car = this.serviceCar.getDetailCar(mark);
-      console.log(this.car);
     })
   }
 

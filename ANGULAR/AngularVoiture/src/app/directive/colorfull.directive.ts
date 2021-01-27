@@ -12,7 +12,7 @@ export class ColorfullDirective implements OnInit, OnChanges {
     this.elementRef.nativeElement.style.backgroundColor = this.color;
   }
   @HostListener('mouseout')
-  mouseout () {
+  mouseout() {
     this.elementRef.nativeElement.style.backgroundColor = 'transparent';
   }
 
@@ -23,6 +23,6 @@ export class ColorfullDirective implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('init star !')
+    console.log('Init star !')
   }
 }
