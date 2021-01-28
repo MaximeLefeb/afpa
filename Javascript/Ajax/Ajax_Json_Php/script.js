@@ -32,7 +32,10 @@ function doGetJson(url, isSelect) {
             if(isSelect) {
                 $("#modele").append($("<option value='" + valeur.modele + "'>").html(valeur.modele));
             }
-            $("<tr>").append($("<td>").html(valeur.marque), $("<td>").html(valeur.modele), $("<td>").html(valeur.carburant)).appendTo($("tbody"));
+            $("<tr>").append(
+                $("<td>").html(valeur.marque), 
+                $("<td>").html(valeur.modele), 
+                $("<td>").html(valeur.carburant)).appendTo($("tbody"));
         });
         d.resolve(maReponse);
     })

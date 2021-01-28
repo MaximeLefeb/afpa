@@ -9,7 +9,6 @@ use FOS\RestBundle\View\View;
 use OpenApi\Annotations as OA;
 use App\Service\PatientService;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Controller\PatientRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Put;
 use Symfony\Component\HttpFoundation\Response;

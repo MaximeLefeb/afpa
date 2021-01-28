@@ -7,7 +7,7 @@ use App\Entity\Rdv;
 use App\Mapper\RdvMapper;
 use App\Service\RdvService;
 use FOS\RestBundle\View\View;
-use App\Controller\RdvRestController;
+use OpenApi\Annotations as OA;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Service\Exception\RdvServiceException;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\Post;
 use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\Annotations\Delete;
+use App\Service\Exception\PraticienServiceException;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 

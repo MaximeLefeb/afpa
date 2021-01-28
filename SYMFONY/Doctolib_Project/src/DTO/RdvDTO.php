@@ -44,11 +44,11 @@ class RdvDTO {
         return $this->id;
     }
 
-    public function getDateRdv() :?\DateTimeInterface {
+    public function getDateRdv() :?string {
         return $this->dateRdv;
     }
-    public function setDateRdv(?\DateTimeInterface $dateRdv) :self {
-        $this->dateRdv = $dateRdv;
+    public function setDateRdv(string $dateRdv) :self {
+        $this->dateRdv = new \DateTimeInterface($dateRdv);
         return $this;
     }
 

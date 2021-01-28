@@ -5,10 +5,10 @@ namespace App\Controller;
 use App\DTO\PraticienDTO;
 use App\Entity\Praticien;
 use FOS\RestBundle\View\View;
+use OpenApi\Annotations as OA;
 use App\Mapper\PraticienMapper;
 use App\Service\PraticienService;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Controller\PraticienRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Put;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +30,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class PraticienRestController extends AbstractFOSRestController {
     private $praticienService;
     private $entityManager;
-    private $mapper;
+    private $praticienMapper;
 
     const URI_PRATICIEN_COLLECTION = "/praticiens";
     const URI_PRATICIEN_INSTANCE = "/praticien/{id}";
