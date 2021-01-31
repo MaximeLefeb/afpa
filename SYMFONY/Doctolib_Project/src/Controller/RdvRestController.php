@@ -159,7 +159,7 @@ class RdvRestController extends AbstractFOSRestController {
      *     )
      * ) 
      * @Delete(RdvRestController::URI_RDV_INSTANCE)
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function remove(Rdv $rdv) {

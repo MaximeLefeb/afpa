@@ -229,7 +229,7 @@ class PatientRestController extends AbstractFOSRestController {
      *     )
      * ) 
      * @Delete(PatientRestController::URI_PATIENT_INSTANCE)
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function remove(Patient $patient) {

@@ -52,7 +52,7 @@ class PraticienService {
             $this->entityManager->remove($praticien);
             $this->entityManager->flush();
         } catch (DriverException $e) {
-            throw new ProduitServiceException($e->getMessage(), $e->getCode());
+            throw new PraticienServiceException($e->getMessage(), $e->getCode());
         }
     }
 
@@ -61,7 +61,7 @@ class PraticienService {
             $praticien = $this->repository->find($id);
             return $this->praticienMapper->transform_Praticien_To_PraticienDTO($praticien);
         } catch (DriverException $e) {
-            throw new ProduitServiceException($e->getMessage(), $e->getCode());
+            throw new PraticienServiceException($e->getMessage(), $e->getCode());
         }
     }
 }

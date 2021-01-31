@@ -229,7 +229,7 @@ class PraticienRestController extends AbstractFOSRestController {
      *     )
      * )  
      * @Delete(PraticienRestController::URI_PRATICIEN_INSTANCE)
-     * @param [type] $id
+     * @param int $id
      * @return void
      */
     public function remove(Praticien $praticien) {

@@ -52,7 +52,7 @@ class PatientService {
             $this->entityManager->remove($patient);
             $this->entityManager->flush();
         } catch (DriverException $e) {
-            throw new ProduitServiceException($e->getMessage(), $e->getCode());
+            throw new PatientServiceException($e->getMessage(), $e->getCode());
         }
     }
 
@@ -61,7 +61,7 @@ class PatientService {
             $patient = $this->repository->find($id);
             return $this->patientMapper->transform_Patient_To_PatientDTO($patient);
         } catch (DriverException $e) {
-            throw new ProduitServiceException($e->getMessage(), $e->getCode());
+            throw new PatientServiceException($e->getMessage(), $e->getCode());
         }
     }
 }
