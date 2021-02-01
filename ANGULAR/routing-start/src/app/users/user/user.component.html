@@ -1,2 +1,11 @@
-<p>User with ID _ID_ loaded.</p>
-<p>User name is _NAME_</p>
+<p>User with ID {{ user.id }} loaded.</p>
+<p>User name is {{ user.name }}</p>
+<!-- /user/20/laura?allowDetail=1 -->
+<a class="btn btn-primary" fragment="titre-principal" [queryParams]="{allowDetail: 1}" [routerLink]="['/users', 20, 'Laura']">Voir son amie Laura</a>
+<button class="btn btn-primary" (click)="onClick(20, 'Laura')">Voir son amie Laura</button>
+
+
+<hr>
+<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+<h2 id="titre-principal">Mon titre</h2>

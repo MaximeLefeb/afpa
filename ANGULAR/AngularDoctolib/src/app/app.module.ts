@@ -1,21 +1,28 @@
+import { AppRoutingModule } from './app.routes';
+//* MODULES
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
+//* COMPONENTS
 import { AppComponent } from './app.component';
+import { IndexComponent } from './components/index/index.component';
 
-//* SERVICE
+//* SERVICES
 import { PraticienService } from './service/Praticien.service';
 import { PatientService } from './service/Patient.service';
 import { RdvService } from './service/Rdv.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     PraticienService,

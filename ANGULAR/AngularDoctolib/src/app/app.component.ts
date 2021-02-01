@@ -154,7 +154,6 @@ export class AppComponent implements OnInit {
     })
     */
 
-
     /* //? DELETE RDV
     this.rdvService.DelRdv(3)
     */
