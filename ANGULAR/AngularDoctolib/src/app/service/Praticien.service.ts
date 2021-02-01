@@ -26,28 +26,42 @@ export class PraticienService {
   DelPraticien(id) {
     this.http.delete<Praticien>("http://localhost:8000/praticien/" + id, {
       observe : 'body',
+    }).subscribe((response) => {
+      console.log('Succesfully delete. ' + response);
+    }, (error) => {
+      console.log(error);
     })
   }
 
   AddPraticien(mail:string, nom:string, prenom:string, specialite:string, password:string) {
     this.http.post<Praticien[]>("http://localhost:8000/praticiens", {
-      email    : mail,
-      nom      : nom,
-      prenom   : prenom,
-      age      : specialite,
-      password : password,
-      observe  : 'response'
+      email     : mail,
+      nom       : nom,
+      prenom    : prenom,
+      specialite: specialite,
+      password  : password
+    }, {
+      observe  : 'response',
+    }).subscribe((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
     })
   }
 
   PutPraticien(id:number, mail:string, nom:string, prenom:string, specialite:string, password:string) {
     this.http.put<Praticien[]>("http://localhost:8000/praticien/" + id, {
-      email    : mail,
-      nom      : nom,
-      prenom   : prenom,
-      age      : specialite,
-      password : password,
-      observe  : 'response'
+      email     : mail,
+      nom       : nom,
+      prenom    : prenom,
+      specialite: specialite,
+      password  : password,
+    }, {
+      observe  : 'response',
+    }).subscribe((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
     })
   }
 }

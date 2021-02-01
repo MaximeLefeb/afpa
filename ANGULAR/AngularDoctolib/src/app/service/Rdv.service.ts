@@ -40,6 +40,10 @@ export class RdvService {
   DelRdv(id) {
     this.http.delete<Rdv>("http://localhost:8000/rdv/" + id, {
       observe : 'body',
+    }).subscribe((response) => {
+      console.log('Succesfully delete. ' + response);
+    }, (error) => {
+      console.log(error);
     })
   }
 
@@ -49,7 +53,12 @@ export class RdvService {
       adresse  : adresse,
       patient  : patient,
       praticien: praticien,
-      observe  : 'response'
+    }, {
+      observe  : 'response',
+    }).subscribe((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
     })
   }
 }

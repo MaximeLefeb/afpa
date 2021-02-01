@@ -27,7 +27,7 @@ export class PatientService {
     this.http.delete<Patient>("http://localhost:8000/patient/" + id, {
       observe : 'body',
     }).subscribe((response) => {
-      console.log('Succesfully delete');
+      console.log('Succesfully delete. ' + response);
     }, (error) => {
       console.log(error);
     })
