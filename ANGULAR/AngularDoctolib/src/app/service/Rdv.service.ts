@@ -24,14 +24,14 @@ export class RdvService {
   }
 
   getRdvByIdPatient(id) {
-    let rdvFound = this.http.get<Rdv>("http://localhost:8000/rdv/patient" + id, {
+    let rdvFound = this.http.get<Rdv>("http://localhost:8000/rdv/patient/" + id, {
       observe : 'body',
     })
     return rdvFound;
   }
 
   getRdvByIdPraticien(id) {
-    let rdvFound = this.http.get<Rdv>("http://localhost:8000/rdv/praticien" + id, {
+    let rdvFound = this.http.get<Rdv>("http://localhost:8000/rdv/praticien/" + id, {
       observe : 'body',
     })
     return rdvFound;

@@ -107,7 +107,7 @@ class PraticienRestController extends AbstractFOSRestController {
      *                      property="password",
      *                      type="string"
      *                  ),
-     *                  example={"email": "exemple@gmail.com", "nom": "nomExemple", "prenom": "prenomExemple", "age": 0, "password": "pwdExemple"}
+     *                  example={"email": "exemple@gmail.com", "nom": "nomExemple", "prenom": "prenomExemple", "specialite": "Pédiatre", "password": "pwdExemple"}
      *              )
      *          )
      *     ),
@@ -175,7 +175,7 @@ class PraticienRestController extends AbstractFOSRestController {
      *                      property="password",
      *                      type="string"
      *                  ),
-     *                  example={"email": "exemple@gmail.com", "nom": "nomExemple", "prenom": "prenomExemple", "age": 0, "password": "pwdExemple"}
+     *                  example={"email": "exemple@gmail.com", "nom": "nomExemple", "prenom": "prenomExemple", "specialite": "Pédiatre", "password": "pwdExemple"}
      *              )
      *          )
      *     ),

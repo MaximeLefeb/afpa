@@ -18,7 +18,6 @@ class RdvDTO {
 
     /**
      * @OA\Property(type="string")
-     * @var string
      */
     private $dateRdv;
 
@@ -44,11 +43,11 @@ class RdvDTO {
         return $this->id;
     }
 
-    public function getDateRdv() :?string {
+    public function getDateRdv() :?\DateTimeInterface {
         return $this->dateRdv;
     }
-    public function setDateRdv(string $dateRdv) :self {
-        $this->dateRdv = new \DateTimeInterface($dateRdv);
+    public function setDateRdv(?\DateTimeInterface $dateRdv) :self {
+        $this->dateRdv = $dateRdv;
         return $this;
     }
 

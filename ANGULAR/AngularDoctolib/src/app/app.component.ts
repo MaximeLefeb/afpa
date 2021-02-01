@@ -133,7 +133,7 @@ export class AppComponent implements OnInit {
       console.log(this.rdv);
     }, (error) => {
       console.log(error);
-    }
+    })
     */
 
     /* //? GET RDV BY ID PATIENT
@@ -142,7 +142,7 @@ export class AppComponent implements OnInit {
       console.log(this.rdv);
     }, (error) => {
       console.log(error);
-    }
+    })
     */
 
     /* //? GET RDV BY ID PRATICIEN
@@ -151,8 +151,9 @@ export class AppComponent implements OnInit {
       console.log(this.rdv);
     }, (error) => {
       console.log(error);
-    }
+    })
     */
+
 
     /* //? DELETE RDV
     this.rdvService.DelRdv(3)
