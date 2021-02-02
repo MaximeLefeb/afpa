@@ -1,0 +1,15 @@
+.btn {
+  border-radius: 0px 5px 5px 0px;
+  color        : white;
+  background   : linear-gradient(0deg, rgba(255,136,0,1) 0%, rgba(222,164,75,1) 32%, rgba(231,223,51,1) 100%);
+}
+
+#searchBar {
+  border-radius: 5px 0px 0px 5px;
+  width: 90%;
+  padding:30px 20px 30px 20px;
+}
+
+.btn {
+  padding:18px 20px 18px 20px;
+}

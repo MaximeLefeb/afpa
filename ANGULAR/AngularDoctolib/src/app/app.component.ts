@@ -1,10 +1,11 @@
-import { RdvService } from './service/Rdv.service';
-import { PraticienService } from './service/Praticien.service';
-import { PatientService } from './service/Patient.service';
-import { Component, OnInit } from '@angular/core';
-import { Patient } from './model/Patient.model';
-import { Praticien } from './model/Praticien.model';
 import { Rdv } from './model/Rdv.model';
+import { AppService } from './app.service';
+import { Patient } from './model/Patient.model';
+import { Component, OnInit } from '@angular/core';
+import { RdvService } from './service/Rdv.service';
+import { Praticien } from './model/Praticien.model';
+import { PatientService } from './service/Patient.service';
+import { PraticienService } from './service/Praticien.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit {
   constructor(
     private patientService:PatientService,
     private praticienService:PraticienService,
-    private rdvService:RdvService
+    private rdvService:RdvService,
+    private AppService:AppService
   ) {}
 
   ngOnInit():void {

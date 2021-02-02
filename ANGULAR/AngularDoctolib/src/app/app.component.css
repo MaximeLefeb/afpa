@@ -1,7 +1,14 @@
 .navbar {
-  background-color: deepskyblue !important;
+  background-color: #2688ca !important;
+  -webkit-box-shadow: 0px 6px 21px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 6px 21px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 6px 21px 0px rgba(0,0,0,0.75);
 }
 
 .nav-link , .navbar-brand{
   color: white !important;
+}
+
+#mainBlock {
+  margin-top: 15%;
 }
