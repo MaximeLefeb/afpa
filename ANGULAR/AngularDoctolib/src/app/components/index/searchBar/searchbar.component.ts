@@ -1,5 +1,5 @@
 import { AppService } from './../../../app.service';
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-searchbar',

@@ -1,5 +1,5 @@
-import { Praticien } from './../../model/Praticien.model';
 import { Component, Input } from '@angular/core';
+import { Praticien } from './../../model/Praticien.model';
 
 @Component({
   selector: 'app-praticiens',

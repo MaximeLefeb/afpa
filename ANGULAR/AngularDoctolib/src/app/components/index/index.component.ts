@@ -1,4 +1,3 @@
-import { PraticienService } from './../../service/Praticien.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

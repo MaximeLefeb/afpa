@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4"></div>
+
+    <div class="col-4 text-center mt-5">
+      <h2>Inscription Patient</h2>
+      <form (ngSubmit)="onSubmit(formContent)" #formContent="ngForm">
+        <div class="mb-3">
+          <label for="Nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="Nom" name="Nom" aria-describedby="Nom" ngModel>
+        </div>
+        <div class="mb-3">
+          <label for="Prenom" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="Prenom" name="Prenom"  ngModel>
+        </div>
+        <div class="mb-3">
+          <label for="Age" class="form-label">Age</label>
+          <input type="number" class="form-control" id="Age" name="Age" ngModel>
+        </div>
+        <div class="mb-3">
+          <label for="Email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="Email" name="Email"  ngModel>
+        </div>
+        <div class="mb-3">
+          <label for="Password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="Password" name="Password"  ngModel>
+        </div>
+        <button type="submit" class="btn btn-info">Inscription</button>
+      </form>
+    </div>
+
+    <div class="col-4"></div>
+  </div>
+</div>

@@ -1,9 +1,8 @@
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AppService } from 'src/app/app.service';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Praticien } from './../../model/Praticien.model';
 import { PraticienService } from './../../service/Praticien.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-searchResult',
@@ -13,15 +12,15 @@ import { ActivatedRoute } from '@angular/router';
   ]
 })
 export class searchResultComponent implements OnInit {
-  allPraticiens:Praticien[];
   filteredPraticiens:Praticien[] = [];
+  allPraticiens:Praticien[];
   research:string;
 
   constructor(
     private praticienService:PraticienService,
     private SpinnerService:NgxSpinnerService,
-    private route:ActivatedRoute) {
-  }
+    private route:ActivatedRoute
+  ) {}
 
   ngOnInit():void {
     this.SpinnerService.show();
