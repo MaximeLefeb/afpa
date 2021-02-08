@@ -16,6 +16,7 @@ import { PraticienService } from './service/Praticien.service';
 })
 export class AppComponent implements OnInit {
   title = 'AngularDoctolib';
+  session = localStorage;
 
   allPatients:Patient[];
   patient:Patient;

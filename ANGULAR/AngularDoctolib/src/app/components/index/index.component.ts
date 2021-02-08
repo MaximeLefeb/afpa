@@ -9,5 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   constructor() {}
-  ngOnInit():void {}
+  ngOnInit():void {
+    console.log(localStorage);
+  }
 }

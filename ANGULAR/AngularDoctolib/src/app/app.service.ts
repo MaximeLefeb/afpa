@@ -17,8 +17,6 @@ export class AppService {
       username : mail,
       password : pwd,
     }).pipe(map(response => {
-      this.SpinnerService.show();
-
       if (response) {
         this.getUserInfo(mail).subscribe((userInfo) => {
           localStorage.setItem('userInfo', JSON.stringify(userInfo));

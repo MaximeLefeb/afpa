@@ -12,8 +12,7 @@ const ROUTES:Routes = [
   {path : "registerPatient", component : RegisterPatientComponent},
   {path : "search", component : searchResultComponent},
   {path : "login", component : LoginComponent},
-  {path : "index", component : IndexComponent},
-  {path : "", component : AppComponent},
+  {path : "", component : IndexComponent},
 ]
 
 @NgModule({

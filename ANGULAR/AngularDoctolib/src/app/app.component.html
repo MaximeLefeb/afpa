@@ -4,26 +4,32 @@
     <div class="col-12 p-0">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Doctolib</a>
+          <a class="navbar-brand" [routerLink]="['/']">Doctolib</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Les praticiens</a>
+              <!-- IF NON CONNECTER -->
+              <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/login']">Se connecter</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Mes rendez-vous</a>
+              <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/registerPraticien']">M'inscrire</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Se connecter</a>
+              <!-- IF CONNECTER -->
+              <li *ngIf="session.length != 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/']">Mon compte</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">M'inscrire</a>
+              <li *ngIf="session.length != 0"class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['']">Mes rendez-vous</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active btn" aria-current="page" href="#">Vous êtes praticien ?</a>
+              <!-- OTHERS -->
+              <li class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['']">Les praticiens</a>
+              </li>
+              <li class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
+                <a class="nav-link btn" [routerLink]="['/registerPatient']">Vous êtes praticien ?</a>
               </li>
             </ul>
           </div>
