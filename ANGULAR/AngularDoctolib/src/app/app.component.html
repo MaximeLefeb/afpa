@@ -22,14 +22,14 @@
                 <a class="nav-link" [routerLink]="['/']" (click)="logout()">Se déconnecter</a>
               </li>
               <li *ngIf="session.length != 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/']">Mon compte</a>
+                <a class="nav-link" [routerLink]="['/account']">Mon compte</a>
               </li>
               <li *ngIf="session.length != 0"class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/']">Mes rendez-vous</a>
               </li>
               <!-- OTHERS -->
               <li class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/']">Les praticiens</a>
+                <a class="nav-link" [routerLink]="['']">Les praticiens</a>
               </li>
               <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
                 <a class="nav-link btn" [routerLink]="['/registerPatient']">Vous êtes praticien ?</a>

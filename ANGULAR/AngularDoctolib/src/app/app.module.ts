@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { RdvsComponent } from './components/rdvs/rdvs.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyAccountComponent } from './components/myAccount/MyAccount.component';
 import { PraticiensComponent } from './components/praticiens/praticiens.component';
 import { SearchBarComponent } from './components/index/searchBar/searchbar.component';
 import { searchResultComponent } from './components/searchResult/searchResult.component';
@@ -31,6 +32,7 @@ import { PraticienService } from './service/Praticien.service';
     RdvsComponent,
     LoginComponent,
     IndexComponent,
+    MyAccountComponent,
     SearchBarComponent,
     PraticiensComponent,
     searchResultComponent,
