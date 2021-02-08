@@ -1,0 +1,30 @@
+<div id="connexion" class="row">
+
+  <div class="col-4"></div>
+
+  <div id="mainBlock text-center" class="col-4 mt-5">
+
+    <h2 class="text-center">Connexion</h2>
+
+    <form class="col-12 text-center" id="formConnexion" (ngSubmit)="onSubmit(formContent)" #formContent="ngForm">
+
+      <div class="mb-3 mt-3">
+        <label for="Email" class="form-label">Adresse Mail</label>
+        <input type="email" class="form-control text-center" id="Email" name="Email" aria-describedby="emailHelp" ngModel>
+      </div>
+
+      <div class="mb-3">
+        <label for="Password" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control text-center" id="Password" name="Password" ngModel>
+      </div>
+
+      <button type="submit" class="btn w-100 mt-3">Connexion</button>
+      <a class="btn w-100 mt-5" [routerLink]="['/registerPatient']">S'incrire</a>
+      <a class="btn w-100 mt-3" [routerLink]="['/registerPraticien']">Vous êtes praticien ?</a>
+    </form>
+
+  </div>
+
+  <div class="col-4"></div>
+
+</div>

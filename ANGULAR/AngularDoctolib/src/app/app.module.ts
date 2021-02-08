@@ -1,9 +1,10 @@
+import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
 //* MODULES
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { RdvsComponent } from './components/rdvs/rdvs.component';
 import { IndexComponent } from './components/index/index.component';
+import { LoginComponent } from './components/login/login.component';
 import { PraticiensComponent } from './components/praticiens/praticiens.component';
 import { SearchBarComponent } from './components/index/searchBar/searchbar.component';
 import { searchResultComponent } from './components/searchResult/searchResult.component';
@@ -27,12 +29,13 @@ import { PraticienService } from './service/Praticien.service';
   declarations: [
     AppComponent,
     RdvsComponent,
+    LoginComponent,
     IndexComponent,
     SearchBarComponent,
     PraticiensComponent,
     searchResultComponent,
     RegisterPatientComponent,
-    RegisterPraticienComponent
+    RegisterPraticienComponent,
   ],
   imports: [
     FormsModule,
@@ -47,7 +50,10 @@ import { PraticienService } from './service/Praticien.service';
     AppService,
     PatientService,
     PraticienService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}

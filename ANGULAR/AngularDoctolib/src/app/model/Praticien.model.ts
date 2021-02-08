@@ -1,6 +1,8 @@
 export interface Praticien {
-  int        : number,
+  id         : number,
   nom        : string,
   prenom     : string,
-  specialite : string
+  specialite : string,
+  email      : string,
+  password   : string
 }

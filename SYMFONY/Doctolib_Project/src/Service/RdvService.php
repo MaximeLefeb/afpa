@@ -10,6 +10,7 @@ use App\Repository\PatientRepository;
 use App\Repository\PraticienRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\DBAL\Exception\DriverException;
+use App\Service\Exception\RdvServiceException;
 
 class RdvService {
     private $repository;
@@ -57,7 +58,7 @@ class RdvService {
         try {
             $this->entityManager->remove($rdv);
             $this->entityManager->flush();
-        } catch(DriverException $e){
+        } catch(DriverException $e) {
             throw new RdvServiceException("Un problème est technique est servenu. Veuilllez réessayer ultérieurement.", $e->getCode());
         }
     }
@@ -66,7 +67,7 @@ class RdvService {
         try {
             $rdv = $this->repository->find($id);
             return $this->rdvMapper->transform_Rdv_TO_RdvDTO($rdv);
-        } catch(DriverException $e){
+        } catch(DriverException $e) {
             throw new RdvServiceException("Un problème est technique est servenu. Veuilllez réessayer ultérieurement.", $e->getCode());
         }
     }

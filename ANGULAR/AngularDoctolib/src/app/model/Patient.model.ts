@@ -1,6 +1,8 @@
 export interface Patient {
-  int    : number,
-  nom    : string,
-  prenom : string,
-  age    : number
+  id       : number,
+  nom      : string,
+  prenom   : string,
+  age      : number
+  email    : string,
+  password : string
 }

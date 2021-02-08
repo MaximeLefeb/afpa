@@ -1,3 +1,4 @@
+import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
@@ -10,6 +11,7 @@ const ROUTES:Routes = [
   {path : "registerPraticien", component : RegisterPraticienComponent},
   {path : "registerPatient", component : RegisterPatientComponent},
   {path : "search", component : searchResultComponent},
+  {path : "login", component : LoginComponent},
   {path : "index", component : IndexComponent},
   {path : "", component : AppComponent},
 ]
