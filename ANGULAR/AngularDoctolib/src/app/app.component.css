@@ -7,6 +7,11 @@
 
 .nav-link , .navbar-brand{
   color: white !important;
+  transition: 0.5s;
+}
+
+.nav-link:hover {
+  color: rgba(255,136,0,1) !important;
 }
 
 #mainBlock {

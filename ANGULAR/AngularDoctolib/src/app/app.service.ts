@@ -35,7 +35,6 @@ export class AppService {
   public logout() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('userInfo');
-    //! REDIRECT TO INDEX
   }
 
   public getUserInfo(email:string) {

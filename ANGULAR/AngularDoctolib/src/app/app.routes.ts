@@ -1,7 +1,6 @@
-import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { RouterModule, Routes } from "@angular/router";
+import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
 import { searchResultComponent } from './components/searchResult/searchResult.component';
 import { RegisterPatientComponent } from './components/patients/form/registerPatient.component';

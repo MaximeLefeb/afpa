@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Rdv } from './model/Rdv.model';
 import { AppService } from './app.service';
 import { Patient } from './model/Patient.model';
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit {
     private praticienService:PraticienService,
     private rdvService:RdvService,
     private AppService:AppService,
+    private router:Router,
   ) {}
 
   ngOnInit():void {
