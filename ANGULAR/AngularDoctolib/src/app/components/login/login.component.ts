@@ -1,6 +1,7 @@
 import { NgForm } from '@angular/forms';
 import { AppService } from './../../app.service';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,10 @@ export class LoginComponent implements OnInit {
     const password = form.value['Password'];
 
     this.appService.login(email, password).subscribe(data => {
-      console.log(JSON.parse(localStorage.getItem('jwt')));
+      //! SET REDIRECTION
     }, error => {
       console.log(error);
+      //! SET ALERT DANGER
     });
   }
 }

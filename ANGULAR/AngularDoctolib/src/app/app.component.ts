@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     private patientService:PatientService,
     private praticienService:PraticienService,
     private rdvService:RdvService,
-    private AppService:AppService
+    private AppService:AppService,
   ) {}
 
   ngOnInit():void {
@@ -168,5 +168,9 @@ export class AppComponent implements OnInit {
       3
     )
     */
+  }
+
+  logout() {
+    this.AppService.logout();
   }
 }
