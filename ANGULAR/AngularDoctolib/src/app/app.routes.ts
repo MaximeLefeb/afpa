@@ -17,6 +17,7 @@ const ROUTES:Routes = [
       {path : "modify", component : ModifAccountComponent}
     ]
   },
+  {path : "modif", component : ModifAccountComponent},
   {path : "login", component : LoginComponent},
   {path : "", component : IndexComponent},
 ]

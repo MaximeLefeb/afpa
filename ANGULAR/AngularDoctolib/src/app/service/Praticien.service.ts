@@ -1,13 +1,18 @@
+import { Router } from '@angular/router';
 import { Injectable } from "@angular/core";
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient } from "@angular/common/http";
-import { Praticien } from "../model/Praticien.model"
+import { Praticien } from "../model/Praticien.model";
 
 @Injectable({
   providedIn : 'root'
 })
 export class PraticienService {
 
-  constructor(private http:HttpClient) {}
+  constructor(
+    private router:Router,
+    private http:HttpClient,
+    private SpinnerService:NgxSpinnerService) {}
 
   getAllPraticiens() {
     let listePraticien = this.http.get<Praticien[]>("http://localhost:8000/praticiens", {
@@ -60,6 +65,8 @@ export class PraticienService {
       observe  : 'response',
     }).subscribe((response) => {
       console.log(response);
+      this.SpinnerService.hide();
+      this.router.navigate(['/account']);
     }, (error) => {
       console.log(error);
     })

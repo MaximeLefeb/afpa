@@ -1,13 +1,18 @@
+import { Router } from '@angular/router';
 import { Injectable } from "@angular/core";
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Patient } from "../model/Patient.model";
 import { HttpClient } from "@angular/common/http";
-import { Patient } from "../model/Patient.model"
 
 @Injectable({
   providedIn : 'root'
 })
 export class PatientService {
 
-  constructor(private http:HttpClient) {}
+  constructor(
+    private router:Router,
+    private http:HttpClient,
+    private SpinnerService:NgxSpinnerService) {}
 
   getAllPatients() {
     let listePatient = this.http.get<Patient[]>("http://localhost:8000/patients", {
@@ -60,6 +65,8 @@ export class PatientService {
       observe : 'body'
     }).subscribe((response) => {
       console.log(response);
+      this.SpinnerService.hide();
+      this.router.navigate(['/account']);
     }, (error) => {
       console.log(error);
     })
