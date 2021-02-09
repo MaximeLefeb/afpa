@@ -33,6 +33,9 @@ class PatientDTO extends User{
      */
     private $age;
 
+    public function setId(Int $id) :?Int {
+        return $this->id = $id;
+    }
     public function getId() :?Int {
         return $this->id;
     }

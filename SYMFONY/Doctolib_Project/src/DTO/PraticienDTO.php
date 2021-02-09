@@ -33,6 +33,9 @@ class PraticienDTO extends User {
      */
     private $specialite;
 
+    public function setId(Int $id) :?Int {
+        return $this->id = $id;
+    }
     public function getId() :?int {
         return $this->id;
     }

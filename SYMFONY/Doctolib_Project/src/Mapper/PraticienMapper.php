@@ -30,6 +30,7 @@ class PraticienMapper {
 
     public function transform_Praticien_To_PraticienDTO(Praticien $praticien) :PraticienDTO {
         $praticienDTO = new PraticienDTO();
+        $praticienDTO->setId($praticien->getId());
         $praticienDTO->setNom($praticien->getNom());
         $praticienDTO->setPrenom($praticien->getPrenom());
         $praticienDTO->setSpecialite($praticien->getSpecialite());

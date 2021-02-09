@@ -29,6 +29,7 @@ class PatientMapper {
 
     public function transform_Patient_To_PatientDTO(Patient $patient) :PatientDTO {
         $patientDTO = new PatientDTO();
+        $patientDTO->setId($patient->getId());
         $patientDTO->setNom($patient->getNom());
         $patientDTO->setPrenom($patient->getPrenom());
         $patientDTO->setAge($patient->getAge());
