@@ -15,7 +15,7 @@
                 <a class="nav-link" [routerLink]="['/login']">Se connecter</a>
               </li>
               <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/registerPraticien']">M'inscrire</a>
+                <a class="nav-link" [routerLink]="['/registerPatient']">M'inscrire</a>
               </li>
               <!-- IF CONNECTER -->
               <li *ngIf="session.length != 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
@@ -32,7 +32,7 @@
                 <a class="nav-link" [routerLink]="['']">Les praticiens</a>
               </li>
               <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link btn" [routerLink]="['/registerPatient']">Vous êtes praticien ?</a>
+                <a class="nav-link btn" [routerLink]="['/registerPraticien']">Vous êtes praticien ?</a>
               </li>
             </ul>
           </div>

@@ -2,10 +2,9 @@
   background: linear-gradient(0deg, rgba(255,136,0,1) 0%, rgba(222,164,75,1) 32%, rgba(231,223,51,1) 100%);
   color     : white;
 }
-.btn:hover {
-  font-size: 1.1em;
-}
-
 .btn-blue {
   background : linear-gradient(180deg, rgba(38,136,202,1) 0%, rgba(0,138,255,1) 35%, rgba(51,203,231,1) 100%);
+}
+.btn:hover {
+  font-size: 1.1em;
 }

@@ -1,11 +1,10 @@
-import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
 //* MODULES
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutingModule } from './app.routes';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //* COMPONENTS
@@ -13,6 +12,7 @@ import { AppComponent } from './app.component';
 import { RdvsComponent } from './components/rdvs/rdvs.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 import { MyAccountComponent } from './components/myAccount/MyAccount.component';
 import { PraticiensComponent } from './components/praticiens/praticiens.component';
 import { SearchBarComponent } from './components/index/searchBar/searchbar.component';
@@ -23,8 +23,12 @@ import { RegisterPraticienComponent } from './components/praticiens/form/registe
 //* SERVICES
 import { AppService } from './app.service';
 import { RdvService } from './service/Rdv.service';
+import { AlertService } from './service/Alert.service';
 import { PatientService } from './service/Patient.service';
 import { PraticienService } from './service/Praticien.service';
+
+//* OTHERS
+import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { PraticienService } from './service/Praticien.service';
     RdvsComponent,
     LoginComponent,
     IndexComponent,
+    AlertsComponent,
     MyAccountComponent,
     SearchBarComponent,
     PraticiensComponent,
@@ -50,6 +55,7 @@ import { PraticienService } from './service/Praticien.service';
   providers: [
     RdvService,
     AppService,
+    AlertService,
     PatientService,
     PraticienService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true},

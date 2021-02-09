@@ -8,19 +8,22 @@
 
     <form class="col-12 text-center" id="formConnexion" (ngSubmit)="onSubmit(formContent)" #formContent="ngForm">
 
+      <alerts *ngIf="alert == true"></alerts>
+
       <div class="mb-3 mt-3">
         <label for="Email" class="form-label">Adresse Mail</label>
-        <input type="email" class="form-control text-center" id="Email" name="Email" aria-describedby="emailHelp" ngModel>
+        <input type="email" class="form-control text-center" id="Email" name="Email" ngModel required>
       </div>
 
       <div class="mb-3">
         <label for="Password" class="form-label">Mot de passe</label>
-        <input type="password" class="form-control text-center" id="Password" name="Password" ngModel>
+        <input type="password" class="form-control text-center" id="Password" name="Password" ngModel required>
       </div>
 
-      <button type="submit" class="btn w-100 mt-3">Connexion</button>
+      <button type="submit" class="btn w-100 mt-3" [disabled]="formContent.invalid">Connexion</button>
       <a class="btn btn-blue w-100 mt-5" [routerLink]="['/registerPatient']">S'incrire</a>
       <a class="btn btn-blue w-100 mt-3" [routerLink]="['/registerPraticien']">Praticien pas encore inscrit ?</a>
+
     </form>
 
   </div>

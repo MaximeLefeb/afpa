@@ -2,6 +2,7 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient } from '@angular/common/http';
+import { AlertService } from './service/Alert.service';
 
 @Injectable({
   providedIn : 'root'
@@ -10,6 +11,7 @@ export class AppService {
 
   constructor(
     private http:HttpClient,
+    private alertService:AlertService,
     private SpinnerService:NgxSpinnerService) {}
 
   public login(mail:string, pwd:string) {
@@ -22,8 +24,8 @@ export class AppService {
           localStorage.setItem('userInfo', JSON.stringify(userInfo));
           this.SpinnerService.hide();
         },(error) => {
-          //! SET ALERT DANGER
           this.SpinnerService.hide();
+          this.alertService.alert = true;
           console.log(error);
         });
 
