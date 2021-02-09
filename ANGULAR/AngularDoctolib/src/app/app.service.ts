@@ -21,14 +21,20 @@ export class AppService {
     }).pipe(map(response => {
       if (response) {
         this.getUserInfo(mail).subscribe((userInfo) => {
+
+          //*CHECK IF PATIENT OR PRATICIEN ANS STORE THE TYPE IN LOCALSTORAGE
+          if ("age" in userInfo) {
+            localStorage.setItem('type', JSON.stringify("patient"));
+          } else {
+            localStorage.setItem('type', JSON.stringify("praticien"));
+          }
+
           localStorage.setItem('userInfo', JSON.stringify(userInfo));
           this.SpinnerService.hide();
         },(error) => {
           this.SpinnerService.hide();
           this.alertService.alert = true;
-          console.log(error);
         });
-
         localStorage.setItem('jwt', JSON.stringify(response));
       }
     }));
@@ -37,6 +43,7 @@ export class AppService {
   public logout() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('type');
   }
 
   public getUserInfo(email:string) {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PatientService } from './../../service/Patient.service';
+import { PraticienService } from './../../service/Praticien.service';
 
 @Component({
   selector : 'app-myAccount',
@@ -12,5 +14,7 @@ export class MyAccountComponent implements OnInit {
     console.log(localStorage);
   }
 
-  constructor() {}
+  constructor(
+    private patientService:PatientService,
+    private praticienService:PraticienService) {}
 }
