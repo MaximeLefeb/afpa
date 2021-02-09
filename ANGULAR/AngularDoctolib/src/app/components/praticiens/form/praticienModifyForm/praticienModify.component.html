@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-4"></div>
+
+  <div class="col-4">
+    <h2 class="text-center">Modification Praticien</h2>
+
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" id="formModifPraticien" class="col-12">
+      <div class="mb-3">
+        <label for="Nom" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="Nom" name="Nom" aria-describedby="Nom" [(ngModel)]="praticien.nom">
+      </div>
+
+      <div class="mb-3">
+        <label for="Nom" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="Prenom" name="Prenom" aria-describedby="PreNom" [(ngModel)]="praticien.prenom">
+      </div>
+
+      <div class="mb-3">
+        <label for="Specialite" class="form-label">Spécialité</label>
+        <input type="text" class="form-control" id="Specialite" name="Specialite"[(ngModel)]="praticien.specialite">
+      </div>
+
+      <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="Email" name="Email" [(ngModel)]="praticien.email">
+      </div>
+
+      <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password" ngModel>
+      </div>
+
+      <button type="submit" class="btn btn-success">Modification</button>
+    </form>
+  </div>
+
+  <div class="col-4"></div>
+</div>

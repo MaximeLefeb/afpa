@@ -1,9 +1,9 @@
-import { AlertService } from './../../service/Alert.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AppService } from './../../app.service';
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from './../../service/Alert.service';
 
 @Component({
   selector: 'app-login',

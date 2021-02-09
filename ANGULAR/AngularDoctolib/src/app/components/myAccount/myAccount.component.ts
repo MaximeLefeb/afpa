@@ -9,12 +9,19 @@ import { PraticienService } from './../../service/Praticien.service';
 })
 export class MyAccountComponent implements OnInit {
   userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  type     = JSON.parse(localStorage.getItem('type'));
 
-  ngOnInit():void {
-    console.log(localStorage);
-  }
+  ngOnInit():void {}
 
   constructor(
     private patientService:PatientService,
     private praticienService:PraticienService) {}
+
+  public deleteAccount(id:number) {
+    if (this.type == 'praticien') {
+      this.praticienService.DelPraticien(id);
+    } else {
+      this.patientService.DelPatient(id);
+    }
+  }
 }

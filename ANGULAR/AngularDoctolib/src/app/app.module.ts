@@ -19,6 +19,7 @@ import { SearchBarComponent } from './components/index/searchBar/searchbar.compo
 import { searchResultComponent } from './components/searchResult/searchResult.component';
 import { RegisterPatientComponent } from './components/patients/form/registerPatient.component';
 import { RegisterPraticienComponent } from './components/praticiens/form/registerPraticien.component';
+import { PraticienModifyComponent } from './components/praticiens/form/praticienModifyForm/praticienModify.component';
 
 //* SERVICES
 import { AppService } from './app.service';
@@ -41,6 +42,7 @@ import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
     SearchBarComponent,
     PraticiensComponent,
     searchResultComponent,
+    PraticienModifyComponent,
     RegisterPatientComponent,
     RegisterPraticienComponent,
   ],

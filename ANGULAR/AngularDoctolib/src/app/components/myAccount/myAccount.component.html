@@ -7,12 +7,23 @@
         <h3>Vos informations personnelles</h3><hr>
         <p><strong>Nom : </strong> {{userInfo.nom}}</p>
         <p><strong>Prénom : </strong> {{userInfo.prenom}}</p>
-        <p><strong>Age : </strong> {{userInfo.age}}</p>
+
+        <!-- CHECK TYPE OF USER -->
+        <p *ngIf="type == 'patient'">
+          <strong>Age : </strong> {{userInfo.age}}
+        </p>
+        <p *ngIf="type == 'praticien'">
+          <strong>Spécialité : </strong> {{userInfo.specialite}}
+        </p>
+
         <p><strong>Mail : </strong> {{userInfo.email}}</p>
 
         <div class="text-center mb-5">
-          <a href="#" class="btn btn-danger">
+          <a  (click)="deleteAccount(userInfo.id)" class="btn btn-outline-danger mr-2">
             supprimer mon compte
+          </a>
+          <a [routerLink]="['modify']" class="btn btn-outline-primary ml-2">
+            Modifier mon compte
           </a>
         </div>
       </div>
