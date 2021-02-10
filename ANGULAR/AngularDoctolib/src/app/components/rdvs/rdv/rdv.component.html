@@ -1,12 +1,25 @@
-<div class="row" id="rdv">
-  <div class="col-6">
-    <p>docteur : DOCTOR</p>
-    <p>Le DATE</p>
-  </div>
+<div class="row">
+  <div class="col-12 table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Date</th>
+          <th scope="col">Patient</th>
+          <th scope="col">Praticien</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Annuler</th>
+        </tr>
+      </thead>
 
-  <div class="col-6">
-    <button class="btn btn-danger">
-      Annuler
-    </button>
+      <tbody>
+        <tr scope="row" *ngFor="let rdv of rdvs">
+          <td>{{rdv.dateRdv}}</td>
+          <td>{{rdv.patient}}</td>
+          <td>{{rdv.praticien}}</td>
+          <td>{{rdv.adresse}}</td>
+          <td><a class="btn btn-primary" [routerLink]="['/']"> Annuler</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

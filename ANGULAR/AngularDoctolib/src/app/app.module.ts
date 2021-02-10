@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //* COMPONENTS
 import { AppComponent } from './app.component';
 import { RdvsComponent } from './components/rdvs/rdvs.component';
+import { RdvComponent } from './components/rdvs/rdv/rdv.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
@@ -36,6 +37,7 @@ import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
 @NgModule({
   declarations: [
     AppComponent,
+    RdvComponent,
     RdvsComponent,
     LoginComponent,
     IndexComponent,

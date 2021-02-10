@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Component, Input, OnInit } from '@angular/core';
+import { RdvService } from './../../../service/Rdv.service';
 
 @Component({
   selector: 'app-rdv',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
     './rdv.component.css'
   ]
 })
-export class IndexComponent implements OnInit {
-  constructor() {}
-  ngOnInit():void {}
+export class RdvComponent implements OnInit {
+  userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  type     = JSON.parse(localStorage.getItem('type'));
+  @Input() namePraticien:string;
+  @Input() namePatient:string;
+  @Input() rdvs:any;
+
+  constructor(
+    private rdvService:RdvService,
+    private SpinnerService:NgxSpinnerService,) {}
+
+  ngOnInit():void {
+  }
 }

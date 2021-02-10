@@ -3,7 +3,7 @@
 
   <div class="col-8 mt-5">
     <div class="row">
-      <div id="userInfo" class="col-8">
+      <div id="userInfo" class="col-6">
         <h3>Vos informations personnelles</h3><hr>
         <p><strong>Nom : </strong> {{userInfo.nom}}</p>
         <p><strong>Prénom : </strong> {{userInfo.prenom}}</p>
@@ -22,17 +22,26 @@
           <a  (click)="deleteAccount(userInfo.id)" class="btn btn-outline-danger mr-2">
             supprimer mon compte
           </a>
-          <a [routerLink]="['modify']" class="btn btn-outline-primary ml-2">
+          <a [routerLink]="['/modif']" class="btn btn-outline-primary ml-2">
             Modifier mon compte
           </a>
         </div>
       </div>
 
-      <div class="col-4">
-        <app-rdvs></app-rdvs>
+      <div class="col-1"></div>
+
+      <div id="rdv" class="col-5">
+        <h3>Vos rendez-vous</h3>
+        <app-rdvs [namePatient]="namePatient" [namePraticien]="namePraticien" [rdvs]="allRdvs"></app-rdvs>
       </div>
     </div>
   </div>
 
   <div class="col-2"></div>
 </div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">
+    Please Wait.
+  </p>
+</ngx-spinner>

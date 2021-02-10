@@ -37,49 +37,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit():void {
-    /* //! GET ALL PATIENTS
-    this.patientService.getAllPatients().subscribe((response) => {
-      this.allPatients = response;
-      console.log(this.allPatients);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
-    /* //! GET ONE PATIENT
-    this.patientService.getPatient(1).subscribe((response) => {
-      this.patient = response;
-      console.log(this.patient);
-    },(error) => {
-      console.log(error);
-    })
-    */
-
-    /* //! ADD PATIENT
-    this.patientService.AddPatient(
-      "test@httprequest.com",
-      "testHttpNom",
-      "testHttpPrenom",
-      21,
-      "motDePasse"
-    )
-    */
-
-    /* //! DELETE PATIENT
-    this.patientService.DelPatient(13)
-    */
-
-    /* //! MODIFY PATIENT
-    this.patientService.PutPatient(
-      14,
-      "testModifier@httprequest.com",
-      "testHttpNomModifier",
-      "testHttpPrenomModifier",
-      21,
-      "motDePasse"
-    )
-    */
-
     /* //* GET ALL PRATICIEN
     this.praticienService.getAllPraticiens().subscribe((response) => {
       this.allPraticiens = response;
@@ -96,20 +53,6 @@ export class AppComponent implements OnInit {
     },(error) => {
       console.log(error);
     })
-    */
-
-    /* //* ADD PRATICIEN
-    this.praticienService.AddPraticien(
-      "testPraticien_1999@httprequest.com",
-      "testHttpNom_Praticien",
-      "testHttpPrenom_Praticien",
-      "Kinesie",
-      "motDePasse"
-    )
-    */
-
-    /* //* DELETE PATIENT
-    this.praticienService.DelPraticien(23)
     */
 
     /* //* MODIFY PATIENT
