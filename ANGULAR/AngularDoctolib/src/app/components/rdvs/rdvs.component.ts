@@ -24,34 +24,5 @@ export class RdvsComponent implements OnChanges {
   ) {}
 
   ngOnChanges():void {
-    this.GetName();
-  }
-
-  public replaceIdByName() {
-    for (const rdv of this.rdvs) {
-      rdv.praticien = this.namePraticien;
-      rdv.patient = this.namePatient;
-      this.SpinnerService.hide();
-    }
-  }
-
-  public GetName() {
-    //! OUTPUT LA FONCTION POUR LA LANCER DANS LE COMPOSANT PARENT UNIQUEMENT A LA FIN DU GETRDV
-    //* GET NOM FOR REPLACE RDV ID PRATICIEN
-    this.praticienService.getPraticien(this.rdvs.praticien).subscribe(practicienFound => {
-      this.namePraticien = practicienFound.nom;
-      this.replaceIdByName();
-    }, (error) => {
-      this.SpinnerService.hide();
-      console.log(error);
-    });
-    //* GET NOM FOR REPLACE RDV ID PATIENT
-    this.patientService.getPatient(this.rdvs.patient).subscribe(patientFound => {
-      this.namePatient = patientFound.nom;
-      this.replaceIdByName();
-    }, (error) => {
-      this.SpinnerService.hide();
-      console.log(error);
-    })
   }
 }

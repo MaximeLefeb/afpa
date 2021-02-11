@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { Praticien } from './../../model/Praticien.model';
 import { RdvService } from './../../service/Rdv.service';
 import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -27,9 +29,11 @@ export class MyAccountComponent implements OnInit {
     //* ECRAN DE CAHRGEMENT
     this.SpinnerService.show();
 
+    //* GET ALL RDVS FOR THE CURRENT USER CONNECTED
     if (this.type == 'praticien') {
       this.rdvService.getRdvByIdPraticien(this.userInfo.id).subscribe((response) => {
         this.allRdvs = (response);
+        this.GetName(this.allRdvs);
       }, (error) => {
         this.SpinnerService.hide();
         console.log(error);
@@ -37,6 +41,7 @@ export class MyAccountComponent implements OnInit {
     } else if(this.type == 'patient') {
       this.rdvService.getRdvByIdPatient(this.userInfo.id).subscribe((response) => {
         this.allRdvs = (response);
+        this.GetName(this.allRdvs);
       }, (error) => {
         this.SpinnerService.hide();
         console.log(error);
@@ -44,6 +49,7 @@ export class MyAccountComponent implements OnInit {
     }
   }
 
+  //* FOR DELETE ACCOUNT BUTTON
   public deleteAccount(id:number) {
     if (this.type == 'praticien') {
       this.praticienService.DelPraticien(id);
@@ -51,4 +57,31 @@ export class MyAccountComponent implements OnInit {
       this.patientService.DelPatient(id);
     }
   }
+
+  //*GET NAME OF PATIENT AND PRATICIEN
+  public GetName(rdvs) {
+    //* FOR EACH RDV
+    for (const rdv of rdvs) {
+      //*GET PRATICIEN NAME
+      this.praticienService.getPraticien(rdv.praticien).subscribe(practicienFound => {
+        //*GET PATIENT NAME
+        this.patientService.getPatient(rdv.patient).subscribe(patientFound => {
+          //* SET THE RESULT IN VARS
+          this.namePraticien = practicienFound.nom;
+          this.namePatient   = patientFound.nom;
+          //* REPLACE ID BY NAME FOUND
+          rdv.praticien = this.namePraticien
+          rdv.patient   = this.namePatient
+          this.SpinnerService.hide();
+        }, (error) => {
+          this.SpinnerService.hide();
+          console.log(error);
+        })
+      }, (error) => {
+        this.SpinnerService.hide();
+        console.log(error);
+      });
+    }
+  }
 }
+
