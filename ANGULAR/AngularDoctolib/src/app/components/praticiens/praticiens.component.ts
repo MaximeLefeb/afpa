@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Praticien } from './../../model/Praticien.model';
+import { Praticien } from '../../model/Praticien.model';
 
 @Component({
-  selector: 'app-praticiens',
+  selector: 'app-praticien',
   templateUrl: './praticiens.component.html',
   styleUrls: [
     './praticiens.component.css'

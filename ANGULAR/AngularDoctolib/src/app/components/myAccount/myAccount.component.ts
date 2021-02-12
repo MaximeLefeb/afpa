@@ -1,9 +1,6 @@
-import { Observable } from 'rxjs';
-import { Praticien } from './../../model/Praticien.model';
-import { RdvService } from './../../service/Rdv.service';
-import { Component, OnInit } from "@angular/core";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Rdv } from "src/app/model/Rdv.model";
+import { Component, OnInit } from "@angular/core";
+import { RdvService } from './../../service/Rdv.service';
 import { PatientService } from './../../service/Patient.service';
 import { PraticienService } from './../../service/Praticien.service';
 
@@ -26,7 +23,7 @@ export class MyAccountComponent implements OnInit {
     private praticienService:PraticienService) {}
 
   ngOnInit():void {
-    //* ECRAN DE CAHRGEMENT
+    //* ECRAN DE CHARGEMENT
     this.SpinnerService.show();
 
     //* GET ALL RDVS FOR THE CURRENT USER CONNECTED

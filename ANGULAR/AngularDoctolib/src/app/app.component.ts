@@ -37,44 +37,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit():void {
-    /* //* GET ALL PRATICIEN
-    this.praticienService.getAllPraticiens().subscribe((response) => {
-      this.allPraticiens = response;
-      console.log(this.allPraticiens);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
-    /* //* GET ONE PRATICIEN
-    this.praticienService.getPraticien(3).subscribe((response) => {
-      this.praticien = response;
-      console.log(this.praticien);
-    },(error) => {
-      console.log(error);
-    })
-    */
-
-    /* //* MODIFY PATIENT
-    this.praticienService.PutPraticien(
-      20,
-      "testModifier_praticien@httprequest.com",
-      "testHttpNomModifier01",
-      "testHttpPrenomModifier01",
-      "Orthopédie",
-      "motDePasse02"
-    )
-    */
-
-    /* //? GET ALL RDV
-    this.rdvService.getAllRdvs().subscribe((response) => {
-      this.allRdvs = response;
-      console.log(this.allRdvs);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
     /* //? GET RDV
     this.rdvService.getRdv(7).subscribe((response) => {
       this.rdv = response;
@@ -82,28 +44,6 @@ export class AppComponent implements OnInit {
     }, (error) => {
       console.log(error);
     })
-    */
-
-    /* //? GET RDV BY ID PATIENT
-    this.rdvService.getRdvByIdPatient(10).subscribe((response) => {
-      this.rdv = response;
-      console.log(this.rdv);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
-    /* //? GET RDV BY ID PRATICIEN
-    this.rdvService.getRdvByIdPraticien(5).subscribe((response) => {
-      this.rdv = response;
-      console.log(this.rdv);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
-    /* //? DELETE RDV
-    this.rdvService.DelRdv(3)
     */
 
     /* //? ADD RDV

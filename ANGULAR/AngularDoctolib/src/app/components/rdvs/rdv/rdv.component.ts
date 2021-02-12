@@ -18,8 +18,12 @@ export class RdvComponent implements OnInit {
 
   constructor(
     private rdvService:RdvService,
-    private SpinnerService:NgxSpinnerService,) {}
+    private SpinnerService:NgxSpinnerService,
+  ) {}
 
-  ngOnInit():void {
+  ngOnInit():void {}
+
+  public deleteRdv(id) {
+    this.rdvService.DelRdv(id);
   }
 }

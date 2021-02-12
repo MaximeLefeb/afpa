@@ -1,8 +1,25 @@
-<div class="row">
-  <div id="praticien" class="col-12 m-3">
-    <h1>Docteur</h1>
-    <h5>{{Praticien.nom}}</h5>
-    <h5>{{Praticien.prenom}}</h5>
-    <h5>{{Praticien.specialite}}</h5>
+<div class="row p-0">
+  <div class="col-2"></div>
+
+  <div id="praticien" class="col-8 mt-3 mb-3">
+    <h1>Docteur</h1><hr>
+    <div class="row">
+      <div class="col-6 p-3">
+        <h5>{{Praticien.nom}}</h5>
+        <h5>{{Praticien.prenom}}</h5>
+        <h5>{{Praticien.specialite}}</h5>
+      </div>
+
+      <div class="col-6 text-right">
+        <div>
+          <a href="" class="btn btn-outline-primary w-25">Consulter le profil</a>
+        </div>
+        <div>
+          <a href="" class="btn btn-outline-primary w-25">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="col-2"></div>
 </div>

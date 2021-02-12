@@ -7,16 +7,18 @@ import { searchResultComponent } from './components/searchResult/searchResult.co
 import { RegisterPatientComponent } from './components/patients/form/registerPatient.component';
 import { RegisterPraticienComponent } from './components/praticiens/form/registerPraticien.component';
 import { ModifAccountComponent } from './components/myAccount/FormModifyMyAccount/modifAccount.component';
+import { ListPraticiensComponent } from './components/praticiens/list/listPraticiens.component';
 
 const ROUTES:Routes = [
   {path : "registerPraticien", component : RegisterPraticienComponent},
   {path : "registerPatient", component : RegisterPatientComponent},
   {path : "search", component : searchResultComponent},
   {path : "account", component : MyAccountComponent,
-    children :[
+    children : [
       {path : "modify", component : ModifAccountComponent}
     ]
   },
+  {path : "listPraticiens", component : ListPraticiensComponent},
   {path : "modif", component : ModifAccountComponent},
   {path : "login", component : LoginComponent},
   {path : "", component : IndexComponent},

@@ -18,6 +18,7 @@ import { MyAccountComponent } from './components/myAccount/MyAccount.component';
 import { PraticiensComponent } from './components/praticiens/praticiens.component';
 import { SearchBarComponent } from './components/index/searchBar/searchbar.component';
 import { searchResultComponent } from './components/searchResult/searchResult.component';
+import { ListPraticiensComponent } from './components/praticiens/list/listPraticiens.component';
 import { RegisterPatientComponent } from './components/patients/form/registerPatient.component';
 import { RegisterPraticienComponent } from './components/praticiens/form/registerPraticien.component';
 import { PatientModifyComponent } from './components/patients/form/patientForm/patientModify.component';
@@ -48,6 +49,7 @@ import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
     searchResultComponent,
     ModifAccountComponent,
     PatientModifyComponent,
+    ListPraticiensComponent,
     PraticienModifyComponent,
     RegisterPatientComponent,
     RegisterPraticienComponent,

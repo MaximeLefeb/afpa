@@ -24,12 +24,9 @@
               <li *ngIf="session.length != 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/account']">Mon compte</a>
               </li>
-              <li *ngIf="session.length != 0"class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/']">Mes rendez-vous</a>
-              </li>
               <!-- OTHERS -->
               <li class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['/']">Les praticiens</a>
+                <a class="nav-link" [routerLink]="['/listPraticiens']">Les praticiens</a>
               </li>
               <li *ngIf="session.length == 0" class="nav-item" routerLinkActiveOptions="{exact:true}" routerLinkActive="active">
                 <a class="nav-link btn" [routerLink]="['/registerPraticien']">Vous êtes praticien ?</a>
