@@ -36,25 +36,7 @@ export class AppComponent implements OnInit {
     private router:Router,
   ) {}
 
-  ngOnInit():void {
-    /* //? GET RDV
-    this.rdvService.getRdv(7).subscribe((response) => {
-      this.rdv = response;
-      console.log(this.rdv);
-    }, (error) => {
-      console.log(error);
-    })
-    */
-
-    /* //? ADD RDV
-    this.rdvService.AddRdv(
-      "2021-02-01 11:30:00",
-      "86 Allée des flandres",
-      10,
-      3
-    )
-    */
-  }
+  ngOnInit():void {}
 
   logout() {
     this.AppService.logout();

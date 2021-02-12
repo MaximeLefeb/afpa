@@ -17,7 +17,7 @@
           <td>{{rdv.patient}}</td>
           <td>{{rdv.praticien}}</td>
           <td>{{rdv.adresse}}</td>
-          <td><a class="btn btn-primary" [routerLink]="['/']"> Annuler</a></td>
+          <td><a class="btn btn-primary" (click)="deleteRdv(rdv.id)"> Annuler</a></td>
         </tr>
       </tbody>
     </table>

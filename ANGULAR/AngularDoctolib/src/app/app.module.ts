@@ -14,6 +14,7 @@ import { RdvComponent } from './components/rdvs/rdv/rdv.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
+import { SetRdvComponent } from './components/rdvs/setRdv/setRdv.component';
 import { MyAccountComponent } from './components/myAccount/MyAccount.component';
 import { PraticiensComponent } from './components/praticiens/praticiens.component';
 import { SearchBarComponent } from './components/index/searchBar/searchbar.component';
@@ -43,6 +44,7 @@ import { JwtInterceptor } from './JwtInterceptor/jwtInterceptor.component';
     LoginComponent,
     IndexComponent,
     AlertsComponent,
+    SetRdvComponent,
     MyAccountComponent,
     SearchBarComponent,
     PraticiensComponent,

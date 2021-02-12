@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Praticien } from '../../model/Praticien.model';
 
 @Component({
@@ -8,9 +8,10 @@ import { Praticien } from '../../model/Praticien.model';
     './praticiens.component.css'
   ]
 })
-export class PraticiensComponent {
+export class PraticiensComponent implements OnInit {
   //* Get praticien detail
   @Input() Praticien:Praticien;
 
+  ngOnInit():void {}
   constructor() {}
 }

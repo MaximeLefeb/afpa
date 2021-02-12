@@ -69,6 +69,7 @@ export class MyAccountComponent implements OnInit {
           //* REPLACE ID BY NAME FOUND
           rdv.praticien = this.namePraticien
           rdv.patient   = this.namePatient
+          //* MASQUER ECRAN DE CHARGEMENT
           this.SpinnerService.hide();
         }, (error) => {
           this.SpinnerService.hide();

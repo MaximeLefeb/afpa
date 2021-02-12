@@ -1,0 +1,41 @@
+<div class="row mt-5 mb-5">
+  <div class="col-4"></div>
+
+  <div class="col-4">
+    <h2 class="text-center mt-5 mb-5">Prise de rendez-vous</h2>
+    <form (ngSubmit)="onSubmit(formContent)" #formContent="ngForm">
+      <div class="row mb-3">
+        <div class="col">
+          <label for="Date" class="form-label">First name</label>
+          <input type="text" class="form-control" name="Prenom" [(ngModel)]="userInfo.prenom" required>
+        </div>
+        <div class="col">
+          <label for="Date" class="form-label">Last name</label>
+          <input type="text" class="form-control" name="Nom" [(ngModel)]="userInfo.nom" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="Praticen" class="form-label">Praticien</label>
+        <input type="text" class="form-control" id="Praticen" [(ngModel)]="praticien.nom" name="Praticen" aria-describedby="Praticen" ngModel required>
+      </div>
+      <div class="mb-3">
+        <label for="Date" class="form-label">Date</label>
+        <input type="datetime-local" class="form-control" id="Date" name="Date" ngModel required>
+      </div>
+      <div class="mb-3">
+        <label for="Adresse" class="form-label">Adresse</label>
+        <input type="text" class="form-control" id="Adresse" name="Adresse" ngModel required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Valider</button>
+    </form>
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+      <p style="color: white">
+        Please Wait.
+      </p>
+    </ngx-spinner>
+  </div>
+
+  <div class="col-4"></div>
+</div>
+

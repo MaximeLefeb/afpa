@@ -1,3 +1,4 @@
+import { SetRdvComponent } from './components/rdvs/setRdv/setRdv.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from './components/login/login.component';
@@ -15,12 +16,14 @@ const ROUTES:Routes = [
   {path : "search", component : searchResultComponent},
   {path : "account", component : MyAccountComponent,
     children : [
+      //TODO changer modif route vers account/modify
       {path : "modify", component : ModifAccountComponent}
     ]
   },
   {path : "listPraticiens", component : ListPraticiensComponent},
   {path : "modif", component : ModifAccountComponent},
   {path : "login", component : LoginComponent},
+  {path : "setRdv", component : SetRdvComponent},
   {path : "", component : IndexComponent},
 ]
 
