@@ -40,6 +40,10 @@ class Patient extends User {
         $this->rdv = new ArrayCollection();
     }
 
+    public function getId() :?int {
+        return parent::getId();
+    }
+
     public function getNom() :?string {
         return $this->nom;
     }
@@ -70,7 +74,6 @@ class Patient extends User {
     public function getRdv() :Collection {
         return $this->rdv;
     }
-
     public function addRdv(Rdv $rdv) :self {
         if (!$this->rdv->contains($rdv)) {
             $this->rdv[] = $rdv;
@@ -78,7 +81,6 @@ class Patient extends User {
         }
         return $this;
     }
-
     public function removeRdv(Rdv $rdv) :self {
         if ($this->rdv->removeElement($rdv)) {
             if ($rdv->getPatient() === $this) {

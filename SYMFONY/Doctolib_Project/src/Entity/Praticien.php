@@ -35,9 +35,12 @@ class Praticien extends User {
      */
     private $rdv;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->rdv = new ArrayCollection();
+    }
+
+    public function getId() :?int {
+        return parent::getId();
     }
 
     public function getNom():?string {
@@ -70,7 +73,6 @@ class Praticien extends User {
     public function getRdv() :Collection {
         return $this->rdv;
     }
-
     public function addRdv(Rdv $rdv) :self {
         if (!$this->rdv->contains($rdv)) {
             $this->rdv[] = $rdv;
@@ -78,7 +80,6 @@ class Praticien extends User {
         }
         return $this;
     }
-
     public function removeRdv(Rdv $rdv) :self {
         if ($this->rdv->removeElement($rdv)) {
             if ($rdv->getPraticien() === $this) {
