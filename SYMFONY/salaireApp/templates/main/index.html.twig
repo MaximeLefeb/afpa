@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+ {% block stylesheets %} <link rel="stylesheet" href="styleMain.css"> {% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h1>Tu es {{ user.nom }} {{ user.prenom }}</h1>
+            </div>
+        
+            <div class="col text-center my-5">
+                {% for user in users %}
+                    <h5>{{ user.nom }}</h5>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}{% endblock %}
+{% endblock %}
