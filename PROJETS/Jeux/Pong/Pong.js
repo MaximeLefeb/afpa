@@ -8,12 +8,12 @@ var ilt           = tab[Math.floor(Math.random() * 10)];
 var timer         = 3;
 var defaultColor;
     //Paddle J1
-var Barre1hauteur = $("#Barre1").css("height", 130);
+var Barre1hauteur  = $("#Barre1").css("height", 130);
 var speedOfPaddle1 = 0;
 var player1Y       = 360;
 var player1X       = 30;
     //Paddle J2
-var Barre2hauteur = $("#Barre2").css("height", paddleHeight);
+var Barre2hauteur  = $("#Barre2").css("height", paddleHeight);
 var speedOfPaddle2 = 0;
 var player2Y       = 360;
 var player2X       = 30;

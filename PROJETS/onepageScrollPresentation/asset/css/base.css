@@ -1,0 +1,66 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.one {
+    background: rgb(41,41,41);
+    background: linear-gradient(0deg,
+        rgba(41,41,41,1)   0%,
+        rgba(35,35,35,1)  40%,
+        rgba(31,31,31,1) 100%
+    );
+}
+
+.one, .two, .three {
+    height: 100vh;
+}
+
+.oneText {
+    font-family            : 'Aldo', sans-serif;
+    font-size              : 12vw;
+    background             : rgb(0,215,213);
+    background             : -webkit-linear-gradient( 0deg,
+        rgba(0,215,213,0.9)   0%, 
+        rgba(5,148,207,0.9)  15%, 
+        rgba(15,101,190,0.9) 30%, 
+        rgba(117,15,190,0.9) 45%, 
+        rgba(195,5,215,0.9)  60%, 
+        rgba(215,5,87,0.9)   75%, 
+        rgba(255,129,10,0.9) 90%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.reflectMaxOne {
+    position: absolute;
+    left    : 32vw;
+    opacity : 0.2;
+}
+
+.reflectMaxTwo {
+    position: absolute;
+    left    : 31.4vw;
+    opacity : 0.1;
+}
+
+#devSpan {
+    font-family: 'Print Clearly', sans-serif;
+}
+
+.imgLogo {
+    width : 200px;
+    height: 200px;
+}
+
+.height-logo {
+    height: 200px;
+}
+
+/* 
+    @media screen and (max-width: 360px) {
+        .h-320px {
+            height: 200px;
+        }
+    } 
+*/

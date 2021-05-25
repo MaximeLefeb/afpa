@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+.textEffect {
+    display    : inline-block;
+    overflow   : hidden;
+    white-space: nowrap;
+}
+
+.textEffect:first-of-type {
+    animation: showup 7s infinite;
+}
+
+.textEffect:last-of-type {
+    width:0px;
+    animation: reveal 7s infinite;
+}
+
+.textEffect:last-of-type span {
+    margin-left:3vw;
+    animation: slidein 7s infinite;
+}
+
+@keyframes showup {
+    0%   { opacity:0; }
+    20%  { opacity:1; }
+    80%  { opacity:1; }
+    100% { opacity:0; }
+}
+
+@keyframes slidein {
+    0%   { margin-left:-800px; }
+    20%  { margin-left:-800px; }
+    35%  { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0%   { opacity:0;width:0px; }
+    20%  { opacity:1;width:0px; }
+    30%  { width:355px; }
+    80%  { opacity:1; }
+    100% { opacity:0;width:355px; }
+}
+
+/*
+    <div id="devSpan" class="textEffect">
+        Développeur
+    </div> 
+
+    <div class="textEffect"> 
+        <span>Web / Web Mobile</span>
+    </div>
+*/
