@@ -57,10 +57,17 @@
     height: 200px;
 }
 
-/* 
-    @media screen and (max-width: 360px) {
-        .h-320px {
-            height: 200px;
-        }
-    } 
-*/
+@media screen and (max-width: 360px) {
+    .two {
+        height: 100%;
+    }
+
+    .three {
+        background-color: grey;
+    }
+} 
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

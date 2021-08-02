@@ -98,4 +98,3 @@ new ScrollMagic.Scene({offset: 0, duration: 300 })
 ;
 //* END REFLECT EFFECT *//
 
-/* $('#devSpan').textillate({ in: { effect: 'rollIn' } }); */
