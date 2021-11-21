@@ -1,0 +1,23 @@
+/* font-family: 'Fabrica', sans-serif; */
+
+body {
+    background-color: #1b2435;
+    /*overflow-y: hidden;*/
+}
+
+.btn-home {
+    border: 1px solid white;
+    padding: 1vh 3vw 1vh 3vw;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s all ease;
+}
+.btn-home:hover {
+    color: #1b2435;
+    background-color: white;
+}
+
+.f-right {
+    float: right;
+}

@@ -1,0 +1,44 @@
+#navbar {
+    -webkit-box-shadow: 0px 3px 18px -4px rgba(0,0,0,0.61);
+    -moz-box-shadow   : 0px 3px 18px -4px rgba(0,0,0,0.61);
+    box-shadow        : 0px 3px 18px -4px rgba(0,0,0,0.61);
+}
+
+#players {
+    opacity: 0.8;
+    height : 100vh;
+    background-color: #1e2b3f;
+}
+
+#players > p {
+    font-family: 'Fabrica', sans-serif;
+    color      : white;
+}
+
+#game-block > img {
+    width             : 70%;
+    -webkit-box-shadow: 7px 0px 18px 3px rgba(0,0,0,0.44);
+    -moz-box-shadow   : 7px 0px 18px 3px rgba(0,0,0,0.44);
+    box-shadow        : 7px 0px 18px 3px rgba(0,0,0,0.44);
+}
+
+#game-block > input {
+    background-color: #1e2b3f;
+    padding         : 1vh 3vw 1vh 3vw;
+    color           : white;
+    border          : none;
+    border-radius   : 25px;
+    transform       : scale(1);
+    transition      : 0.5s all ease;
+}
+#game-block > input:focus {
+    outline           : none;
+    -webkit-box-shadow: 7px 0px 18px 3px rgba(0,0,0,0.44);
+    -moz-box-shadow   : 7px 0px 18px 3px rgba(0,0,0,0.44);
+    box-shadow        : 7px 0px 18px 3px rgba(0,0,0,0.44);
+}
+
+#timer {
+    color: white;
+    font-size: 2vw;
+}

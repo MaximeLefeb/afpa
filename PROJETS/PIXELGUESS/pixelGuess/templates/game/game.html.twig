@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/game.css')}}">{% endblock %}
+{% block title %}PixelGuess - {{type}}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div id="players" class="col-2">
+                <p class="text-center py-4">Players</p>
+            </div>
+
+            <div id="game-block" class="col-10 text-center py-5">
+                <img id="img-game" data-id="{{guess.id}}" src="{{ asset(guess.img) }}" alt="Image placeholder block">
+                <div id="timer"></div>
+                <input type="text" name="response" id="response" class="mt-5 text-center" placeholder="Guess">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/game.js')}}"></script>
+{% endblock %}

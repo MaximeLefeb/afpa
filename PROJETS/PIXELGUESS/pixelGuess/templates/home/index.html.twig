@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/home.css')}}">{% endblock %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+
+            <div class="col-6 text-center pb-5" id="bloc-title">
+                <h1 id="title">
+                    Pixel Guess
+                </h1>
+            </div>
+
+            <div class="col-3"></div>
+        </div>
+
+        <div class="row choice-tab text-center">
+            <div class="col-1 mx-3"></div>
+
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-flusha h-55vh corner-top-radius choice" onclick="window.location='/game/cinema'">
+                <span class="theme-name text-uppercase">Cinéma</span>
+            </div>
+
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-orange h-55vh corner-top-radius choice" onclick="window.location='/game/serie'">
+                <span class="theme-name text-uppercase">Série</span>
+            </div>
+
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-yellow h-55vh corner-top-radius choice" onclick="window.location='/game/jeux'">
+                <span class="theme-name text-uppercase">Jeux</span>
+            </div>
+
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-green h-55vh corner-top-radius choice" onclick="window.location='/game/marque'">
+                <span class="theme-name text-uppercase">Marque</span>
+            </div>
+            
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-blue h-55vh corner-top-radius choice" onclick="window.location='/game/anime'">
+                <span class="theme-name text-uppercase">Animé</span>
+            </div>
+            
+            <div class="pt-4 col-sm-12 col-lg-1 mx-5 bg-purple h-55vh corner-top-radius choice" onclick="window.location='/game/tous'">
+                <span class="theme-name text-uppercase">Tous</span>
+            </div>
+
+            <div class="col-sm-12 col-lg-1"></div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+body {
+    background-color: #1b2435;
+}
+
+h1, h3 {
+    color: white;
+    font-family: 'Fabrica', sans-serif;
+    font-size: 3vw;
+    font-weight: 500;
+}
+
+#error-img {
+    width: 50%;
+    height: 50%;
+}

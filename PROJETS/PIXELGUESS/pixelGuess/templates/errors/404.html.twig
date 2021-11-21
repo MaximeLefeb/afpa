@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/error.css')}}">{% endblock %}
+{% block title %}PixelGuess - Error{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5 pt-5">
+                <div class="text-center">
+                    <img id="error-img" src="{{ asset('assets/img/warning.svg') }}" alt="Error Image">
+
+                    {% if Error is defined %}
+                        <h1>Error 404 - not found</h1>
+                        <h3>{{ Error }}</h3>
+                    {% else %}
+                        <h1>Error 505 - Internal Error Server</h1>
+                        <h3>Une erreur est survenue</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
