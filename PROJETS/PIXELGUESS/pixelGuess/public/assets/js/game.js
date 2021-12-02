@@ -1,13 +1,13 @@
 //* Pixelized effect on guess (image)
 let canvas   = document.createElement("canvas");
 var timerId  = setInterval(countdown, 1000);
-var guess_id = $("img-game").id;
+var guess_id = $("img-game").data();
 var guess    = new Image();
 var sample   = 200
 var canvas_px, timer;
 
 guess.onload = () => {
-    alert(guess_id)
+    alert($("img-game").data(), $("guess-image").data())
     $("#img-game").remove();
     draw(guess);
     $("#game-block").prepend(canvas_px);
@@ -46,10 +46,12 @@ function draw(img, sample_size = 100, depixelized = false) {
         canvas_px     = $("#guess-image")[0];
         canvas_px.src = canvas.toDataURL("image/jpeg");
         canvas_px.id  = "guess-image";
+        canvas_px.data('id', guess_id);
     } else {
         canvas_px     = new Image();
         canvas_px.src = canvas.toDataURL("image/jpeg");
         canvas_px.id  = "guess-image";
+        canvas_px.data('id', guess_id);
     }
 }
 
@@ -69,15 +71,12 @@ function countdown() {
         //sample = 100;
         //* lauch play with previous id
     } else {
-        if (sample < 100) {
-            sample-= 1;
-            draw(guess, sample, true);
-        } else {
-            sample-= 2;
-            draw(guess, sample, true);
-            //timeLeft--;
-            //$("#timer").text(timeLeft);
-        }
+        //* slow down the depixelized effect
+        //? Maybe check sample lvl with if then cahnge sample -=2 by -=1
+        sample-= 2;
+        draw(guess, sample, true);
+        //timeLeft--;
+        //$("#timer").text(timeLeft);
     }
 }
 
