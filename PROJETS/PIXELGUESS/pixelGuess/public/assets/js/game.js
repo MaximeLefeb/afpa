@@ -1,17 +1,53 @@
 //* Pixelized effect on guess (image)
 let canvas   = document.createElement("canvas");
-var timerId  = setInterval(countdown, 1000);
-var guess_id = $("img-game").data();
+var guess_id = $("#img-game").data();
 var guess    = new Image();
-var sample   = 200
 var canvas_px, timer;
 
 guess.onload = () => {
-    alert($("img-game").data(), $("guess-image").data())
     $("#img-game").remove();
     draw(guess);
     $("#game-block").prepend(canvas_px);
-    timer = setInterval(countdown, 1000/10);
+    duration = 5;
+    sample   = 0;
+    sample_per_second = sample / duration;
+    timer    = setInterval(function() {
+        console.log(`Valeur de variable sample : ${sample_per_second}`);
+        // if (sample == 0 && timeLeft == 0) {
+        //     clearTimeout(timer);
+        //     //alert();
+        //     sleep(3000);
+        //     play();
+        //     //sample = 100;
+        //     //* lauch play with previous id
+        // } else {
+        //     console.log('test');
+        //     //* slow down the depixelized effect
+        //     //? Maybe check sample lvl with if then cahnge sample -=2 by -=1
+        //     sample -= 2;
+        //     //draw(guess, sample, true);
+        //     //timeLeft--;
+        //     //$("#timer").text(timeLeft);
+        // }
+        //
+        // return;
+
+
+        $("#timer").html(duration);
+
+        if (--duration < 0) {
+            clearInterval(timer);
+            $("div#response").removeClass("d-none");
+            sleep(3000);
+            // play(guess_id.id);
+        } else {
+            sample -= sample_per_second;
+
+            draw(guess, sample, true);
+
+            console.log(`Valeur de variable sample : ${sample}`);
+        }
+    }, 1000);
 }
 
 $(document).ready(() => {
@@ -24,7 +60,7 @@ function sleep(ms) {
     );
 }
 
-function draw(img, sample_size = 100, depixelized = false) {
+function draw(img, sample_size = 400, depixelized = false, timer = 30) {
     canvas.width  = img.width;
     canvas.height = img.height;
 
@@ -46,37 +82,10 @@ function draw(img, sample_size = 100, depixelized = false) {
         canvas_px     = $("#guess-image")[0];
         canvas_px.src = canvas.toDataURL("image/jpeg");
         canvas_px.id  = "guess-image";
-        canvas_px.data('id', guess_id);
     } else {
         canvas_px     = new Image();
         canvas_px.src = canvas.toDataURL("image/jpeg");
         canvas_px.id  = "guess-image";
-        canvas_px.data('id', guess_id);
-    }
-}
-
-function clearImg() {
-    $("#guess-image").remove();
-}
-
-//* Timer (ms)
-function countdown() {
-    let timeLeft = 20;
-
-    if (sample == 0 && timeLeft == 0) {
-        clearTimeout(timer);
-        alert();
-        sleep(3000);
-        play();
-        //sample = 100;
-        //* lauch play with previous id
-    } else {
-        //* slow down the depixelized effect
-        //? Maybe check sample lvl with if then cahnge sample -=2 by -=1
-        sample-= 2;
-        draw(guess, sample, true);
-        //timeLeft--;
-        //$("#timer").text(timeLeft);
     }
 }
 
@@ -93,7 +102,11 @@ $("#response").on("keydown", (e) => {
 function play(previous_id) {
     $.ajax({
         type: "POST",
-        url: "/play/" + previous_id,
+        url: "/play",
+        data :  {
+            previous_id : previous_id,
+            game_type   : $("#type").val()
+        },
         success: function (response) {
             draw(response);
         },
@@ -108,13 +121,15 @@ function guess_keyword(keyword) {
     $.ajax({
         type : "GET",
         url  : "/guess/" + keyword,
-        data : { request : $('#img-game').data('id') },
+        data : { request : guess_id.id },
         success: function (response) {
-            alert(response);
             console.log(response);
         },
         error: function (error) {
-            alert(error.message);
+            console.log(error.message);
+        },
+        always: function (msg) {
+            console.log(msg);
         }
     });
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Guess;
 use App\Repository\GuessRepository;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,10 +38,10 @@ class GameController extends AbstractController {
     }
 
     /**
-     * @Route("/play/{previousId}", name="play", methods={"GET"}, requirements={"previousId"="\d+"})
+     * @Route("/play", name="play", methods={"POST"})
      */
-    public function play(int $previousId, GuessRepository $repo) {
-        $result = $repo->findBy(["type" => 'cinema']);
+    public function play(int $previousId, string $game_type, GuessRepository $repo) {
+        $result = $repo->findBy(["type" => $game_type]);
         $guess  = $result[array_rand($result)];
 
         if ($guess->getId() === $previousId) {
@@ -55,13 +56,13 @@ class GameController extends AbstractController {
      * @Route("/guess/{keyword}", name="guess", methods={"GET"})
      */
     public function guess(string $keyword, GuessRepository $repo, Request $request):Response {
-        $id    = $request->request->get('request');
+        $id    = $request->query->get('request');
         $guess = $repo->findOneBy(["id" => $id]);
 
         if ($guess->getKeyword() === $keyword) {
-            return new Response(true, 200, ['Content-Type' => 'text/html']);
+            return new Response('1', 200, ['Content-Type' => 'text/html']);
         } else {
-            return new Response(false, 200, ['Content-Type' => 'text/html']);
+            return new Response('0', 200, ['Content-Type' => 'text/html']);
         }
     }
 }

@@ -1,0 +1,30 @@
+# Dockerfile
+FROM php:7.4-cli
+
+#* Install git, sudo, libmcrypt-dev, libbz2-dev
+RUN apt-get update -y && apt-get install -y libmcrypt-dev git sudo
+RUN apt-get install -y libbz2-dev \
+    && docker-php-ext-install bz2
+
+#* Get Symfony-CLI
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+RUN sudo apt install symfony-cli
+RUN curl -sS https://get.symfony.com/cli/installer | bash
+
+#* Get Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#* Liste des extensions PHP à installer depuis l'image PHP:7.4-cli (PDO, PDO_MYSQL)
+RUN docker-php-ext-install pdo pdo_mysql
+
+WORKDIR /app
+COPY . /app
+
+#* Recuperer toutes les library symfony du fichier composer.json
+RUN composer install
+
+#* Exposer le port 8080
+EXPOSE 8000
+
+#* Start symfony server
+CMD symfony serve
