@@ -1,0 +1,8 @@
+.commentSeparator {
+  height: 0.5em;
+  border-radius: 25px;
+}
+
+.max-h-460px {
+  max-height: 460px;
+}

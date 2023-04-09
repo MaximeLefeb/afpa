@@ -1,0 +1,13 @@
+input.searchbar {
+  border-radius: 20px 20px 20px 0px;
+  border: 2px solid transparent;
+}
+
+.text-blue-custom {
+  color: #081132;
+}
+
+svg.search-logo {
+  top: 25%;
+  left: 85%;
+}

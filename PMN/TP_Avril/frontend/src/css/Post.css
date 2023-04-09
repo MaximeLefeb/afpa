@@ -1,0 +1,23 @@
+img.post-img {
+  border-radius: 2.5rem;
+  max-height: 460px;
+  min-height: 460px;
+}
+
+span.trash {
+  padding: 0.5em;
+  top: -0.5em;
+}
+
+button.post-btn {
+  border-radius: 2.5em;
+}
+
+p.post-text {
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.bg-blue-custom {
+  background-color: #081132;
+}
