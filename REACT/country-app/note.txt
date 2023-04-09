@@ -1,0 +1,13 @@
+#tuto 
+https://www.youtube.com/watch?v=K3D2rjAUQ3o
+
+# Get libraries
+npm i -i react-dom react-router-dom node-sass@4.14.1 
+
+#Navbar
+- replace :
+    import { BrowserRouter, Switch, Route } from 'react-router-dom';
+- to:
+    import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// https://stackoverflow.com/questions/63124161/attempted-import-error-switch-is-not-exported-from-react-router-dom
