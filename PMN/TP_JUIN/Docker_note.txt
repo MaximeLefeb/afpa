@@ -1,0 +1,25 @@
+hub.docker.com/_/node
+
+-v     => Attacher un volume
+-t     => Attribuer un pseudo-TTY
+-i     => Garder STDIN ouvert même s'il n'est pas attaché
+-ti    => terminal interactif
+-w     => Definir l'espace de travail (Chemin)
+--rm   => Supprimer l'image après utilisation
+--name => Nom du volume
+
+docker run
+    --name Node_Angular_PMN
+    --rm
+    -ti
+    -v C:\Users\titma\Documents\folderMaison\PMN\react\dockerized-angular-project:/usr/src/app
+    -w /usr/src/app 
+    node
+    bash -c "
+        npm install -g @angular/cli;
+        git config --global user.email 'lefebvremaximee@gmail.com';
+        git config --global user.name 'Max';
+        ng new angular_pmn;
+    "
+
+docker run --name Node_Angular_PMN --rm -ti -v C:\Users\titma\Documents\folderMaison\PMN\react\dockerized-angular-project:/usr/src/app -w /usr/src/app  node bash -c " npm install -g @angular/cli; git config --global user.email 'lefebvremaximee@gmail.com'; git config --global user.name 'Max'; ng new angular_pmn;"
