@@ -1,0 +1,189 @@
+Citations ------------------------------------------------------------------------------------------------------
+POST - http://localhost:3000/citation
+[
+  {
+    "citation": "Le succès, c'est tomber sept fois et se relever huit.",
+    "author": "Proverbe japonais"
+  },
+  {
+    "citation": "La vie est un défi à relever, un bonheur à mériter, une aventure à tenter.",
+    "author": "Mère Teresa"
+  },
+  {
+    "citation": "La meilleure façon de prédire l'avenir, c'est de le créer.",
+    "author": "Peter Drucker"
+  },
+  {
+    "citation": "La seule limite à notre épanouissement de demain sera nos doutes d'aujourd'hui.",
+    "author": "Franklin D. Roosevelt"
+  },
+  {
+    "citation": "Le bonheur est la clé du succès. Si vous aimez ce que vous faites, vous réussirez.",
+    "author": "Albert Schweitzer"
+  },
+  {
+    "citation": "La créativité consiste à inventer, expérimenter, grandir, prendre des risques, briser les règles, faire des erreurs et s'amuser.",
+    "author": "Mary Lou Cook"
+  },
+  {
+    "citation": "L'échec est le fondement de la réussite.",
+    "author": "Lao Tseu"
+  },
+  {
+    "citation": "La persévérance est le secret de la réussite.",
+    "author": "Charles Chaplin"
+  },
+  {
+    "citation": "La vie n'est pas d'attendre que les orages passent, c'est d'apprendre comment danser sous la pluie.",
+    "author": "Sénèque"
+  },
+  {
+    "citation": "Les seules limites de nos réalisations de demain, ce sont nos doutes et nos hésitations d'aujourd'hui.",
+    "author": "Franklin D. Roosevelt"
+  },
+  {
+    "citation": "La seule façon de faire du bon travail est d'aimer ce que vous faites.",
+    "author": "Steve Jobs"
+  },
+  {
+    "citation": "Le courage est ce qui compte vraiment quand vous comptez vos rêves.",
+    "author": "Muhammad Ali"
+  },
+  {
+    "citation": "L'éducation est l'arme la plus puissante pour changer le monde.",
+    "author": "Nelson Mandela"
+  },
+  {
+    "citation": "La créativité est contagieuse, faites-la passer.",
+    "author": "Albert Einstein"
+  },
+  {
+    "citation": "La seule personne que vous êtes destiné à devenir est la personne que vous décidez d'être.",
+    "author": "Ralph Waldo Emerson"
+  },
+  {
+    "citation": "La vie est comme une bicyclette, il faut avancer pour ne pas perdre l'équilibre.",
+    "author": "Albert Einstein"
+  },
+  {
+    "citation": "Le seul moyen de faire du bon travail est d'aimer ce que vous faites.",
+    "author": "Steve Jobs"
+  },
+  {
+    "citation": "L'imagination est plus importante que le savoir.",
+    "author": "Albert Einstein"
+  },
+  {
+    "citation": "Le succès, c'est d'aller d'échec en échec sans perdre son enthousiasme.",
+    "author": "Winston Churchill"
+  },
+  {
+    "citation": "La vie est un mystère qu'il faut vivre, et non un problème à résoudre.",
+    "author": "Gandhi"
+  },
+  {
+    "citation": "La vie est 10 % ce qui nous arrive et 90 % la façon dont nous y réagissons.",
+    "author": "Charles R. Swindoll"
+  }
+]
+
+Anniversaires ------------------------------------------------------------------------------------------------------
+POST - http://localhost:3000/person
+[
+  {
+    "name": "Alice",
+    "birthdate": "03/06/1985"
+  },
+  {
+    "name": "Bob",
+    "birthdate": "04/06/1969"
+  },
+  {
+    "name": "Charlie",
+    "birthdate": "05/06/1964"
+  },
+  {
+    "name": "David",
+    "birthdate": "06/06/1994"
+  },
+  {
+    "name": "Eve",
+    "birthdate": "07/06/1999"
+  },
+  {
+    "name": "Frank",
+    "birthdate": "08/06/1991"
+  },
+  {
+    "name": "Grace",
+    "birthdate": "09/06/1993"
+  },
+  {
+    "name": "Henry",
+    "birthdate": "10/06/1993"
+  },
+  {
+    "name": "Ivy",
+    "birthdate": "11/06/1977"
+  },
+  {
+    "name": "Jack",
+    "birthdate": "12/06/1974"
+  },
+  {
+    "name": "Karen",
+    "birthdate": "13/06/1996"
+  },
+  {
+    "name": "Larry",
+    "birthdate": "14/06/2003"
+  },
+  {
+    "name": "Megan",
+    "birthdate": "15/06/1988"
+  },
+  {
+    "name": "Nathan",
+    "birthdate": "16/06/2001"
+  },
+  {
+    "name": "Olivia",
+    "birthdate": "17/06/2012"
+  },
+  {
+    "name": "Paul",
+    "birthdate": "18/06/1968"
+  },
+  {
+    "name": "Rachel",
+    "birthdate": "19/06/1949"
+  },
+  {
+    "name": "Samuel",
+    "birthdate": "20/06/2000"
+  },
+  {
+    "name": "Tina",
+    "birthdate": "21/06/2022"
+  },
+  {
+    "name": "Victor",
+    "birthdate": "22/06/2014"
+  },
+  {
+    "name": "Wendy",
+    "birthdate": "23/06/1963"
+  },
+  {
+    "name": "Xavier",
+    "birthdate": "24/06/1989"
+  },
+  {
+    "name": "Yvonne",
+    "birthdate": "25/06/1952"
+  },
+  {
+    "name": "Zachary",
+    "birthdate": "26/06/2007"
+  }
+]

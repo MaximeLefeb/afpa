@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mt-3 px-5">
+                <a class="btn btn-danger" href="{{ path('app_article_index') }}"> &#x2190; back to list</a>
+            </div>
+
+            <div class="col-12 px-5 mt-5">
+                <div class="row">
+                    <div class="col">
+                        <div style="font-size: 2.5em;">
+                            <i>{{ article.name }}</i>
+                        </div>
+
+                        <hr/>
+
+                        <div class="row mt-5">
+                            <div class="col-6 text-center">
+				                <img class="shadow border rounded" src="{{asset('assets/img/4k.jpg')}}" width="650"/>
+                            </div>
+
+                            <div class="col-6">
+                                <p>
+                                    {{ article.description }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <div clas="col-6">
+                                <b>Stock</b> : {{ article.quantity }}
+                            </div>
+
+                            <div clas="col-6">
+                                <b>Note</b> :
+
+                                {% for i in 1..article.note %}
+                                    <img width="16" src="{{asset('assets/img/star.png')}}" width="250"/>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <a class="btn btn-primary" href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                    {{ include('article/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+<div id="app" class="container-fluid h-100 border-bottom" *ngIf="!isLoading">
+  <app-header [date]="date"/>
+
+  <div id="content" class="row">
+    <div class="col-sm-12 col-md-6 flex-column border-end border-black border-2" [style.background-color]="color">
+      <app-birthday [person]="person" class="d-flex justify-content-center h-100"/>
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+      <app-citation [bgcolor]="color" [citation]="citation" />
+    </div>
+  </div>
+</div>

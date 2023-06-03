@@ -1,0 +1,23 @@
+#citation_card,
+#citation_image_card {
+  z-index: 2;
+}
+#citation_shadow,
+#citation_image_shadow {
+  z-index: 1;
+  width: 95%;
+  top: 10px;
+  left: 0;
+}
+
+div#loader-limit {
+  width: 50%;
+  height: 0.4em;
+  z-index: 1;
+  box-shadow: -3px 3px 0px 0px rgba(0, 0, 0, 1);
+}
+div#loader-current {
+  min-width: 78%;
+  height: 0.25em;
+  left: 0.4px;
+}
